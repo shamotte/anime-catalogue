@@ -16,19 +16,37 @@
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
-                    <!--Header-->
+                    <!--Data-->
                     <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Name"></GridViewColumn>
+                                <GridViewColumn Header="Premiere"></GridViewColumn>
+                                <GridViewColumn Header="Episodes"></GridViewColumn>
+                                <GridViewColumn Header="Genre"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
                     </ListView>
-                    <TextBlock>Here be Details</TextBlock>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <!--TODO:ADD FUNCTIONS-->
                     <Button Margin="5">First</Button>
                     <Button Margin="5">Second</Button>
                     <Button Margin="5">Third</Button>
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Vertical">
-                    <TextBlock>Here be Masters</TextBlock>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Name"></GridViewColumn>
+                                <GridViewColumn Header="Address"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
                 </StackPanel>
             </DockPanel>
         </TabItem>
@@ -42,17 +60,35 @@
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
-                    <TextBlock>Here be Details</TextBlock>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <!--TODO:ADD FUNCTIONS-->
                     <Button Margin="5">First</Button>
                     <Button Margin="5">Second</Button>
                     <Button Margin="5">Third</Button>
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Vertical">
-                    
-                    <TextBlock>Here be Masters</TextBlock>
+
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Data premiery"></GridViewColumn>
+                                <GridViewColumn Header="Liczba odcinków"></GridViewColumn>
+                                <GridViewColumn Header="Gatunek"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </StackPanel>
             </DockPanel>
         </TabItem>
@@ -69,7 +105,14 @@
                     <Button Margin="5">Third</Button>
                 </StackPanel>
                 <StackPanel  Orientation="Vertical">
-                    <TextBlock>Here be Details</TextBlock>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </StackPanel>
             </DockPanel>
         </TabItem>
