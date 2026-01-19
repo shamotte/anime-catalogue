@@ -21,10 +21,19 @@
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Name"></GridViewColumn>
-                                <GridViewColumn Header="Premiere"></GridViewColumn>
-                                <GridViewColumn Header="Episodes"></GridViewColumn>
-                                <GridViewColumn Header="Genre"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Premiera"></GridViewColumn>
+                                <GridViewColumn Header="Odcinki"></GridViewColumn>
+                                <GridViewColumn Header="Gatunki"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -41,8 +50,17 @@
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Name"></GridViewColumn>
-                                <GridViewColumn Header="Address"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Adres"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -65,6 +83,15 @@
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
                                 <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -85,7 +112,16 @@
                                 <GridViewColumn Header="Nazwa"></GridViewColumn>
                                 <GridViewColumn Header="Data premiery"></GridViewColumn>
                                 <GridViewColumn Header="Liczba odcinków"></GridViewColumn>
-                                <GridViewColumn Header="Gatunek"></GridViewColumn>
+                                <GridViewColumn Header="Gatunki"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -110,6 +146,15 @@
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
                                 <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+                                                
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
