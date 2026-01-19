@@ -17,8 +17,5 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         Genre Genre { get; set; }
 
-        
-
-
     }
 }
