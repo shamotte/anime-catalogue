@@ -9,25 +9,68 @@
     <TabControl Name="Zakładki">
         <TabItem Name="StudioAnime" Header ="Studia">
             <!--Master detail panel containing Studios and their animes-->
-            <DockPanel >
-                <TextBlock DockPanel.Dock="Left">Here be filters</TextBlock>
-                <TextBlock DockPanel.Dock="Right">Here be Details</TextBlock>
-                <TextBlock > Here be Masters</TextBlock>
+            <DockPanel>
+                <!--Filters for Studio -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Anime -->
+                <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
+                    <!--Header-->
+                    <ListView>
+                    </ListView>
+                    <TextBlock>Here be Details</TextBlock>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <!-- Studio -->
+                <StackPanel  Orientation="Vertical">
+                    <TextBlock>Here be Masters</TextBlock>
+                </StackPanel>
             </DockPanel>
         </TabItem>
         <TabItem Name="AnimeCharacters" Header="Anime">
 
             <!--Master detail panel containing animes and their characters-->
             <DockPanel >
-                <TextBlock DockPanel.Dock="Left">Here be filters</TextBlock>
-                <TextBlock DockPanel.Dock="Right">Here be Details</TextBlock>
-                <TextBlock > Here be Masters</TextBlock>
+                <!--Filters for Anime -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Characters -->
+                <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
+                    <TextBlock>Here be Details</TextBlock>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <!-- Anime -->
+                <StackPanel  Orientation="Vertical">
+                    
+                    <TextBlock>Here be Masters</TextBlock>
+                </StackPanel>
             </DockPanel>
         </TabItem>
         <TabItem Name="Characters" Header="Postacie">
             <DockPanel >
-                <TextBlock DockPanel.Dock="Left">Here be filters</TextBlock>
-                <TextBlock> Here be Masters</TextBlock>
+                <!--Filters for Anime -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Characters -->
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <StackPanel  Orientation="Vertical">
+                    <TextBlock>Here be Details</TextBlock>
+                </StackPanel>
             </DockPanel>
         </TabItem>
         
