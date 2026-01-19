@@ -1,4 +1,5 @@
 ﻿using CichyStrzalko.AnimeKatalog.Core;
+using CichyStrzalko.AnimeKatalog.INTERFACES;
 
 namespace CichyStrzalko.AnimeKatalog.Interfaces
 {
@@ -8,15 +9,13 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         string Name { get; set; }
 
-        string Studio { get; set; }
-
         int Episodes {  get; set; }
 
         string Premiere { get; set; }
 
         Genre Genre { get; set; }
 
-        
+        IStudio Studio { get; set; }
 
 
     }
