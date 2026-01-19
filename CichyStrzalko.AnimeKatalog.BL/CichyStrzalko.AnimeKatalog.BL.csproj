@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.CORE.csproj" />
-  </ItemGroup>
-
 </Project>
