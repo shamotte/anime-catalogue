@@ -29,7 +29,7 @@
                         </ListView.View>
                     </ListView>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
                     <Button Margin="5">First</Button>
                     <Button Margin="5">Second</Button>
@@ -69,7 +69,7 @@
                         </ListView.View>
                     </ListView>
                 </StackPanel>
-                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
                     <Button Margin="5">First</Button>
                     <Button Margin="5">Second</Button>
@@ -99,7 +99,7 @@
                     <TextBlock>Here be filters</TextBlock>
                 </StackPanel>
                 <!-- Characters -->
-                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Margin="5">First</Button>
                     <Button Margin="5">Second</Button>
                     <Button Margin="5">Third</Button>
