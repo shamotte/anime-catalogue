@@ -61,11 +61,12 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         }
 
-
-        public IAnime CreateNewCPU(IAnime anime)
+        public IAnime CreateNewAnime(IAnime anime)
         {
             throw new NotImplementedException();
         }
+
+  
 
         public IStudio CreateNewStudio(IStudio studio)
         {
@@ -84,23 +85,25 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         public IEnumerable<IAnime> GetAllAnimes()
         {
-            throw new NotImplementedException();
+            return animes;
         }
 
         public IEnumerable<ICharacter> GetAllCharacters()
         {
-            throw new NotImplementedException();
+            return characters;
         }
 
         public IEnumerable<IStudio> GetAllStudios()
         {
-            throw new NotImplementedException();
+            return studios;
         }
 
-        public void UpdateCPU(IAnime anime)
+        public void UpdateAnime(IAnime anime)
         {
             throw new NotImplementedException();
         }
+
+       
 
         public void UpdateStudio(IStudio studio)
         {

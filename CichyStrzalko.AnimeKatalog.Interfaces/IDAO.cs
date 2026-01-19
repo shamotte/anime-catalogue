@@ -19,7 +19,7 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
         //CREATES
         IStudio CreateNewStudio(IStudio studio);
         //IProduct CreateNewProduct(IProduct product);
-        IAnime CreateNewCPU(IAnime anime);
+        IAnime CreateNewAnime(IAnime anime);
 
         //DELETES
         void DeleteStudio(int studioId);
@@ -28,6 +28,6 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         //UPDATES
         void UpdateStudio(IStudio studio);
-        void UpdateCPU(IAnime anime);
+        void UpdateAnime(IAnime anime);
     }
 }
