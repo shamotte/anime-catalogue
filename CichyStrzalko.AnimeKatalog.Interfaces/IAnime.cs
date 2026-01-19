@@ -1,9 +1,8 @@
 ﻿using CichyStrzalko.AnimeKatalog.Core;
 
-
 namespace CichyStrzalko.AnimeKatalog.Interfaces
 {
-    public interface Anime
+    public interface IAnime
     {
         int Id { get; set; }
 
