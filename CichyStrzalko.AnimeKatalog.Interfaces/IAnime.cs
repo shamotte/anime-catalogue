@@ -17,6 +17,6 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         IStudio Studio { get; set; }
 
-
+        string ImageFile { get; set; }
     }
 }
