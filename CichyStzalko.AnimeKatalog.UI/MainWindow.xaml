@@ -5,8 +5,163 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CichyStzalko.AnimeKatalog.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Anime Katalog" Height="450" Width="800">
+    <TabControl Name="Zakładki">
+        <TabItem Name="StudioAnime" Header ="Studia">
+            <!--Master detail panel containing Studios and their animes-->
+            <DockPanel>
+                <!--Filters for Studio -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Anime -->
+                <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
+                    <!--Data-->
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Premiera"></GridViewColumn>
+                                <GridViewColumn Header="Odcinki"></GridViewColumn>
+                                <GridViewColumn Header="Gatunki"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
 
-    </Grid>
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <!--TODO:ADD FUNCTIONS-->
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <!-- Studio -->
+                <StackPanel  Orientation="Vertical">
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Adres"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem Name="AnimeCharacters" Header="Anime">
+
+            <!--Master detail panel containing animes and their characters-->
+            <DockPanel >
+                <!--Filters for Anime -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Characters -->
+                <StackPanel DockPanel.Dock="Right"  Orientation="Vertical">
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <!--TODO:ADD FUNCTIONS-->
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <!-- Anime -->
+                <StackPanel  Orientation="Vertical">
+
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Data premiery"></GridViewColumn>
+                                <GridViewColumn Header="Liczba odcinków"></GridViewColumn>
+                                <GridViewColumn Header="Gatunki"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        <TabItem Name="Characters" Header="Postacie">
+            <DockPanel >
+                <!--Filters for Anime -->
+                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
+                    <TextBlock>Here be filters</TextBlock>
+                </StackPanel>
+                <!-- Characters -->
+                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Button Margin="5">First</Button>
+                    <Button Margin="5">Second</Button>
+                    <Button Margin="5">Third</Button>
+                </StackPanel>
+                <StackPanel  Orientation="Vertical">
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <!--TODO:Add DataBinding Here-->
+                                <GridViewColumn Header="Nazwa"></GridViewColumn>
+                                <GridViewColumn Header="Obraz">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image>
+                                                
+                                            </Image>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+        
+    </TabControl>
+    
 </Window>
