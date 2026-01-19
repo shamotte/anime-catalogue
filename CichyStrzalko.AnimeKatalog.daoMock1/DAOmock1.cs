@@ -39,7 +39,9 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
                 Name = $"anime no {x}",
                 Id = x,
                 Premiere = "11.9.2001",
-                Genre = Genre.Horror
+                Genre = Genre.Horror,
+                Studio = studios[rand.Next(0, studioCout)],
+                ImageFile = ""
             })
             .Cast<IAnime>()
             .ToList();

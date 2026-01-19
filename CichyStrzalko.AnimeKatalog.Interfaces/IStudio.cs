@@ -8,7 +8,5 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
         string Name { get; set; }
         string Address { get; set; }
 
-        string ImgageFile { get; set; }
-
     }
 }
