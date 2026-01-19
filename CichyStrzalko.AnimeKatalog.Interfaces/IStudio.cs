@@ -1,6 +1,6 @@
 ﻿using CichyStrzalko.AnimeKatalog.Core;
 
-namespace CichyStrzalko.AnimeKatalog.INTERFACES
+namespace CichyStrzalko.AnimeKatalog.Interfaces
 {
     public interface IStudio
     {

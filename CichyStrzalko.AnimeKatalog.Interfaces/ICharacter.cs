@@ -4,8 +4,8 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 {
     public interface ICharacter
     {
-        int Id { get; }
-        string Name { get; }
-        IAnime Anime { get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public IAnime Anime { get; set; }
     }
 }

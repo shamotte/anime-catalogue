@@ -14,6 +14,8 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
         //IEnumerable<IProduct> GetAllProducts();
         IEnumerable<IAnime> GetAllAnimes();
 
+        IEnumerable<ICharacter> GetAllCharacters();
+
         //CREATES
         IStudio CreateNewStudio(IStudio studio);
         //IProduct CreateNewProduct(IProduct product);
