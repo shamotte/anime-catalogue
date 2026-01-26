@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Lists\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.Core.csproj" />
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
   </ItemGroup>

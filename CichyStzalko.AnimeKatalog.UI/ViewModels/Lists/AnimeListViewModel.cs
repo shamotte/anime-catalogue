@@ -9,7 +9,7 @@ using CichyStrzalko.AnimeKatalog.Interfaces;
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels.Lists
 {
-    internal class AnimeListViewModel: INotifyPropertyChanged
+    public class AnimeListViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
