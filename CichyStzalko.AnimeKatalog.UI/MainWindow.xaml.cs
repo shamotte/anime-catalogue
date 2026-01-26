@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CichyStzalko.AnimeKatalog.UI
+namespace CichyStrzalko.AnimeKatalog.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

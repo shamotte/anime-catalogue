@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CichyStzalko.AnimeKatalog.WEB.Pages
+namespace CichyStrzalko.AnimeKatalog.WEB.Pages
 {
     public class IndexModel : PageModel
     {
