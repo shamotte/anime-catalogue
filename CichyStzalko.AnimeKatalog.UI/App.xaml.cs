@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace CichyStzalko.AnimeKatalog.UI
+namespace CichyStrzalko.AnimeKatalog.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml

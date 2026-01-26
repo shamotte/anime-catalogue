@@ -1,4 +1,4 @@
-namespace CichyStzalko.AnimeKatalog.WEB
+namespace CichyStrzalko.AnimeKatalog.WEB
 {
     public class Program
     {
