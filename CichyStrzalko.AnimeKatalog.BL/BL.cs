@@ -1,6 +1,5 @@
 ﻿using CichyStrzalko.AnimeKatalog.Core;
 using CichyStrzalko.AnimeKatalog.Interfaces;
-using CichyStrzalko.AnimeKatalog.INTERFACES;
 using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Reflection;
@@ -65,13 +64,87 @@ namespace CichyStrzalko.AnimeKatalog.BL
         }
 
 
-        
+        #region ANIMES
         public IEnumerable<IAnime> GetAllAnime() => dao.GetAllAnimes();
 
+        public IAnime GetAnimeByID(int id) => GetAllAnime().First(a => a.Id == id);
+
+        public IEnumerable<IAnime> GetAnimesByStudioID(int studioId) => GetAllAnime().Where(a => a.Studio.Id == studioId);
+
+        public OperationResponse<bool> DeleteAnime(int animeId)
+        {
+            if (GetAllCharacters().Any(c => c.Anime.Id == animeId))
+            {
+                return new OperationResponse<bool>
+                {
+                    value = false,
+                    message = "Nie można usunąć anime, ponieważ istnieją postacie z nim powiązane.",
+                    succesful = false
+                };
+            }
+
+            dao.DeleteAnime(animeId);
+            return new OperationResponse<bool>
+            {
+                value = true,
+                message = "Anime zostało usunięte.",
+                succesful = true
+            };
+        }
+
+
+        #endregion
+            #region STUDIOS
         public IEnumerable<IStudio> GetAllStudios() => dao.GetAllStudios();
+        public IStudio GetStudioByID(int id) => GetAllStudios().First(a => a.Id == id);
+
+        public OperationResponse<bool> DeleteStudio(int studioId)
+        {
+            if (GetAllAnime().Any(a => a.Studio.Id == studioId))
+            {
+                return new OperationResponse<bool>
+                {
+                    value = false,
+                    message = "Nie można usunąć studia, ponieważ istnieją anime z nim powiązane.",
+                    succesful = false
+                };
+            }
+            dao.DeleteStudio(studioId);
+            return new OperationResponse<bool>
+            {
+                value = true,
+                message = "Studio zostało usunięte.",
+                succesful = true
+            };
+        }
+
+
+
+
+
+        #endregion
+
+        #region Characters
 
         public IEnumerable<ICharacter> GetAllCharacters() => dao.GetAllCharacters();
+        public ICharacter GetCharacterByID(int id) => GetAllCharacters().First(a => a.Id == id);
+
+        public IEnumerable<ICharacter> GetCharactersByAnimeID(int animeId) => GetAllCharacters().Where(c => c.Anime.Id == animeId);
+        public OperationResponse<bool> DeleteCharacter(int characterId)
+        {
+            dao.DeleteCharacter(characterId);
+
+            return new OperationResponse<bool>
+            {
+                value = true,
+                message = "Postać została usunięta.",
+                succesful = true
+            };
 
 
-}
+        }
+
+        #endregion
+
+    }
 }

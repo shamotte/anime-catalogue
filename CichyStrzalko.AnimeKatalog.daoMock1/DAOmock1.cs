@@ -61,26 +61,39 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         }
 
+        
+
         public IAnime CreateNewAnime(IAnime anime)
         {
-            throw new NotImplementedException();
+            animes.Add(anime);
+            return anime;
         }
 
-  
+        public ICharacter CreateNewCharacter(ICharacter character)
+        {
+            characters.Add(character);
+            return character;
+        }
 
         public IStudio CreateNewStudio(IStudio studio)
         {
-            throw new NotImplementedException();
+            studios.Add(studio);
+            return studio;
         }
 
         public void DeleteAnime(int animeId)
         {
-            throw new NotImplementedException();
+            animes.RemoveAll(a => a.Id == animeId);
+        }
+
+        public void DeleteCharacter(int characterId)
+        {
+            characters.RemoveAll(c => c.Id == characterId);
         }
 
         public void DeleteStudio(int studioId)
         {
-            throw new NotImplementedException();
+            studios.RemoveAll(s => s.Id == studioId);
         }
 
         public IEnumerable<IAnime> GetAllAnimes()
@@ -100,14 +113,33 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         public void UpdateAnime(IAnime anime)
         {
-            throw new NotImplementedException();
+            animes.Where(a => a.Id == anime.Id).ToList().ForEach(a =>
+            {
+                a.Name = anime.Name;
+                a.Episodes = anime.Episodes;
+                a.Genre = anime.Genre;
+                a.Premiere = anime.Premiere;
+                a.Studio = anime.Studio;
+                a.ImageFile = anime.ImageFile;
+            });
         }
 
-       
+        public void UpdateCharacter(ICharacter character)
+        {
+            characters.Where(c => c.Id == character.Id).ToList().ForEach(c =>
+            {
+                c.Name = character.Name;
+                c.Anime = character.Anime;
+            });
+        }
 
         public void UpdateStudio(IStudio studio)
         {
-            throw new NotImplementedException();
+            studios.Where(s => s.Id == studio.Id).ToList().ForEach(s =>
+            {
+                s.Name = studio.Name;
+                s.Address = studio.Address;
+            });
         }
     }
 }

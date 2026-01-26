@@ -16,18 +16,20 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         IEnumerable<ICharacter> GetAllCharacters();
 
+
         //CREATES
         IStudio CreateNewStudio(IStudio studio);
-        //IProduct CreateNewProduct(IProduct product);
         IAnime CreateNewAnime(IAnime anime);
+        ICharacter CreateNewCharacter(ICharacter character);
 
         //DELETES
         void DeleteStudio(int studioId);
-        //void DeleteProduct(int productId);
+        void DeleteCharacter(int characterId);
         void DeleteAnime(int animeId);
 
         //UPDATES
         void UpdateStudio(IStudio studio);
         void UpdateAnime(IAnime anime);
+        void UpdateCharacter(ICharacter character);
     }
 }
