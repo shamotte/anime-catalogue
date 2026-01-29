@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.Interfaces;
-using CichyStrzalko.AnimeKatalog.UI.ViewModels.Elements;
+using CichyStrzalko.AnimeKatalog.UI.ViewModels;
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels.Lists
 {

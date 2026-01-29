@@ -14,7 +14,6 @@ using CichyStrzalko.AnimeKatalog.BL;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Windows.Xps;
-
 namespace CichyStrzalko.AnimeKatalog.UI
 {
     /// <summary>
@@ -28,7 +27,7 @@ namespace CichyStrzalko.AnimeKatalog.UI
         private ViewModels.CharacterViewModel SelectedCharacter = null;
         public StudioListViewModel StudioList { get; set; } = new StudioListViewModel();
         private IConfiguration Configuration;
-        private ViewModels.StudioVievModel StudioVievModel = null;
+        private ViewModels.StudioVievModel SelectedStudio = null;
         private BL.BL _BL;
 
         public ICommand AddCommandStudio { get; }
@@ -57,7 +56,14 @@ namespace CichyStrzalko.AnimeKatalog.UI
             CharacterList.Refresh(_BL.GetAllCharacters());
             StudioList.Refresh(_BL.GetAllStudios());
             DataContext = this;
+
             InitializeComponent();
+        }
+
+
+        private bool IsValidStudio()
+        {
+            return SelectedStudio != null;
         }
     }
 }
