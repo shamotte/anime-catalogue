@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels"
+        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
     <TabControl Name="Zakładki">
@@ -25,7 +25,7 @@
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}">
+                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}" SelectedItem="{Binding Selectedstudio }">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
@@ -36,11 +36,11 @@
                     </ListView>
                     <StackPanel Orientation="Vertical">
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding SelectedStudio.Studio.Id}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Studio.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding SelectedStudio.Studio.Name}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Studio.Name}"/>
                         <TextBlock>Adres</TextBlock>
-                        <TextBlock Text="{Binding SelectedStudio.Studio.Address}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Studio.Address}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -61,7 +61,7 @@
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}">
+                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}"  SelectedItem ="{Binding Selectedanime}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
@@ -82,13 +82,13 @@
                     </ListView>
                     <StackPanel>
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding SelectedAnime.Anime.Id}"/>
+                        <TextBlock Text="{Binding Selectedanime.Anime.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding SelectedAnime.Anime.Name}"/>
+                        <TextBlock Text="{Binding Selectedanime.Anime.Name}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
-                        <TextBlock Text="{Binding SelectedAnime.Anime.Episodes}"/>
+                        <TextBlock Text="{Binding Selectedanime.Anime.Episodes}"/>
                         <TextBlock>Gatunki</TextBlock>
-                        <TextBlock Text="{Binding SelectedAnime.Genres}"/>
+                        <TextBlock Text="{Binding Selectedanime.Genres}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -106,7 +106,7 @@
                     <Button Content="Usuń"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectedItem="{Binding Selectedcharacter}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>
@@ -115,9 +115,9 @@
                     </ListView>
                     <StackPanel>
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding SelectedCharacter.Character.Id}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.Character.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding SelectedCharacter.Character.Name}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.Character.Name}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
