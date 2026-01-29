@@ -27,7 +27,7 @@
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding StudioList}" SelectionChanged="ListStudioSelectionChanged">
+                    <ListView Name="ListStudio" ItemsSource="{Binding }">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
@@ -68,7 +68,7 @@
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListAnime" ItemsSource="{Binding AnimeList.AnimeList}" SelectionChanged="ListAnimeSelectionChanged">
+                    <ListView Name="ListAnime" ItemsSource="{Binding AnimeList.AnimeList}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
@@ -118,7 +118,7 @@
                        CommandParameter="{Binding}" />
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding CharacterList.CharacterList}" SelectionChanged="ListCharactersSelectionChanged">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding CharacterList.CharacterList}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>

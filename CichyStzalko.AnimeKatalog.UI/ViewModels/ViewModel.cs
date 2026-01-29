@@ -37,6 +37,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
+
         }
         [RelayCommand(CanExecute = nameof(CanEditStudio))]
         private void EditStudio()
