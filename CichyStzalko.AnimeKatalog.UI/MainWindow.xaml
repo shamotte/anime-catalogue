@@ -4,10 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI"
+        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
-    <TabControl Name="Zakładki" DataContext="{Binding ElementName=AnimeCatalogue}">
+    <TabControl Name="Zakładki">
         <TabItem Name="Studio" Header ="Studia">
             <!--detail panel containing Studios-->
             <DockPanel>
@@ -17,17 +17,15 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj"
-                        Command="{Binding AddCommandStudio}"/>
+                        />
                     <Button Content="Edytuj"
-                        Command="{Binding EditCommandStudio}"
-                        CommandParameter="{Binding}" />
+                        />
                     <Button Content="Usuń"
-                        Command="{Binding DeleteCommandStudio}"
-                        CommandParameter="{Binding}" />
+                        />
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding StudioList.StudioList}" SelectionChanged="ListStudioSelectionChanged">
+                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}" SelectionChanged="ListStudioSelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
@@ -57,18 +55,13 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
-                    <Button Content="Dodaj"
-                        Command="{Binding AddCommandAnime}"/>
-                    <Button Content="Edytuj"
-                        Command="{Binding EditCommandAnime}"
-                        CommandParameter="{Binding}" />
-                    <Button Content="Usuń"
-                        Command="{Binding DeleteCommandAnime}"
-                        CommandParameter="{Binding}" />
+                    <Button Content="Dodaj"/>
+                    <Button Content="Edytuj"/>
+                    <Button Content="Usuń"/>
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListAnime" ItemsSource="{Binding AnimeList.AnimeList}" SelectionChanged="ListAnimeSelectionChanged">
+                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}" SelectionChanged="ListAnimeSelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
@@ -108,17 +101,12 @@
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <Button Content="Dodaj"
-                       Command="{Binding AddCommandCharacter}"/>
-                    <Button Content="Edytuj"
-                       Command="{Binding EditCommandCharacter}"
-                       CommandParameter="{Binding}" />
-                    <Button Content="Usuń"
-                       Command="{Binding DeleteCommandCharacter}"
-                       CommandParameter="{Binding}" />
+                    <Button Content="Dodaj"/>
+                    <Button Content="Edytuj" />
+                    <Button Content="Usuń"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding CharacterList.CharacterList}" SelectionChanged="ListCharactersSelectionChanged">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectionChanged="ListCharactersSelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>
