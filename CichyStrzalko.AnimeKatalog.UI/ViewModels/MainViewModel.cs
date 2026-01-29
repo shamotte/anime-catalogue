@@ -68,8 +68,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedstudio != null)
             {
-                _BL.DeleteStudio(Selectedstudio.Studio.Id);
-                Studios.Remove(Selectedstudio);
+                if (_BL.DeleteStudio(Selectedstudio.Studio.Id).succesful)
+                {
+                    Studios.Remove(Selectedstudio);
+                }
             }
         }
 
@@ -113,8 +115,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if(Selectedanime != null)
             {
-                _BL.DeleteAnime(Selectedanime.Anime.Id);
-                Animes.Remove(Selectedanime);
+                if (_BL.DeleteAnime(Selectedanime.Anime.Id).succesful)
+                {
+                    Animes.Remove(Selectedanime);
+                }
+              
             }
         }
         [RelayCommand(CanExecute = nameof(CanEditAnime))]
@@ -155,8 +160,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedcharacter != null)
             {
-                _BL.DeleteCharacter(Selectedcharacter.Character.Id);
+                if (_BL.DeleteCharacter(Selectedcharacter.Character.Id).succesful)
+                {
                 Characters.Remove(Selectedcharacter);
+                }
             }
         }
         [RelayCommand(CanExecute = nameof(CanEditCharacter))]
