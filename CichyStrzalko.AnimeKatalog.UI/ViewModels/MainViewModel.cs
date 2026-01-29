@@ -35,8 +35,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         #region Studio
 
+        
         [ObservableProperty]
         private ObservableCollection<StudioViewModel> studios = new ObservableCollection<StudioViewModel>();
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(DeleteStudioCommand))]
+        private StudioViewModel? selectedstudio;
 
         private bool CanAddStudio()
         {
@@ -44,25 +49,109 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             return true;
         }
 
+        private bool CanDeleteStudio()
+        {
+            return Selectedstudio != null;
+        }
+
+        private bool CanEditStudio()
+        {
+            return Selectedstudio != null;
+        }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
             // Implementation for adding a studio
         }
+        [RelayCommand(CanExecute = nameof(CanDeleteStudio))]
+        private void DeleteStudio()
+        {
+            // Implementation for deleting a studio
+        }
 
-
+        [RelayCommand(CanExecute = nameof(CanEditStudio))]
+        private void EditStudio()
+        {
+            // Implementation for editing a studio
+        }
         #endregion
 
         #region Anime
         [ObservableProperty]
         private ObservableCollection<AnimeViewModel> animes = new ObservableCollection<AnimeViewModel>();
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(DeleteAnimeCommand))]
+        private AnimeViewModel? selectedanime;
 
+        private bool CanAddAnime()
+        {
+            // Implementation for determining if an anime can be added
+            return true;
+        }
+
+        private bool CanDeleteAnime()
+        {
+            return Selectedanime != null;
+        }
+
+        private bool CanEditAnime()
+        {
+            return Selectedanime != null;
+        }
+
+        [RelayCommand(CanExecute = nameof(CanAddAnime))]
+        private void AddAnime()
+        {
+            // Implementation for adding an anime
+        }
+        [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
+        private void DeleteAnime()
+        {
+            // Implementation for deleting an anime
+        }
+        [RelayCommand(CanExecute = nameof(CanEditAnime))]
+        private void EditAnime()
+        {
+            // Implementation for editing an anime
+        }
         #endregion
 
         #region Character
         [ObservableProperty]
         private ObservableCollection<CharacterViewModel> characters = new ObservableCollection<CharacterViewModel>();
 
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(DeleteCharacterCommand))]
+        private CharacterViewModel? selectedcharacter;
+
+        private bool CanAddCharacter()
+        {
+            // Implementation for determining if a character can be added
+            return true;
+        }
+        private bool CanDeleteCharacter()
+        {
+            return Selectedcharacter != null;
+        }
+        private bool CanEditCharacter()
+        {
+            return Selectedcharacter != null;
+        }
+        [RelayCommand(CanExecute = nameof(CanAddCharacter))]
+        private void AddCharacter()
+        {
+            // Implementation for adding a character
+        }
+        [RelayCommand(CanExecute = nameof(CanDeleteCharacter))]
+        private void DeleteCharacter()
+        {
+            // Implementation for deleting a character
+        }
+        [RelayCommand(CanExecute = nameof(CanEditCharacter))]
+        private void EditCharacter()
+        {
+            // Implementation for editing a character
+        }
         #endregion
     }
 }
