@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
-    <TabControl Name="Zakładki" DataContext="{Binding ElementName=AnimeCatalogue}">
+    <TabControl Name="Zakładki">
         <TabItem Name="Studio" Header ="Studia">
             <!--detail panel containing Studios-->
             <DockPanel>
@@ -27,7 +27,7 @@
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding StudioList.StudioList}" SelectionChanged="ListStudioSelectionChanged">
+                    <ListView Name="ListStudio" ItemsSource="{Binding StudioList}" SelectionChanged="ListStudioSelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->

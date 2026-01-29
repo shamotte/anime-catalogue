@@ -47,101 +47,15 @@ namespace CichyStrzalko.AnimeKatalog.UI
         public RelayCommand EditCommandCharacter { get; }
         public RelayCommand DeleteCommandCharacter { get; }
 
-        //TODO: rzeczywiście jakieś funkcje do edycji czy coś
-        public MainWindow()
-        { 
+        public MainWindow(ViewModel viewModel)
+        {
             //TODO: real configuration here
             Configuration = new ConfigurationBuilder().Build();
             _BL = new BL.BL(Configuration);
 
-            AnimeList.Refresh(_BL.GetAllAnime());
-            CharacterList.Refresh(_BL.GetAllCharacters());
-            StudioList.Refresh(_BL.GetAllStudios());
-            DataContext = this;
-
-            AddCommandStudio = new RelayCommand(AddStudio);
-            EditCommandStudio = new RelayCommand(EditStudio);
-            DeleteCommandStudio = new RelayCommand(DeleteStudio);
-            
-            AddCommandAnime = new RelayCommand(AddAnime);
-            EditCommandAnime = new RelayCommand(EditAnime);
-            DeleteCommandAnime = new RelayCommand(DeleteAnime);
-
-            AddCommandCharacter = new RelayCommand(AddCharacter);
-            EditCommandCharacter =  new RelayCommand(EditCharacter);
-            DeleteCommandCharacter = new RelayCommand(DeleteCharacter);
+            DataContext = viewModel;
 
             InitializeComponent();
-        }
-
-        private void ListAnimeSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //SelectedAnime = ListAnime.SelectedItem as AnimeViewModel;
-            //if (SelectedAnime != null)
-            //{
-                DeleteCommandAnime.NotifyCanExecuteChanged();
-                EditCommandAnime.NotifyCanExecuteChanged();
-            //}
-        }
-        private void ListStudioSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //SelectedStudio = ListStudio.SelectedItem as StudioViewModel;
-            //if (SelectedStudio != null)
-            //{
-                DeleteCommandStudio.NotifyCanExecuteChanged();
-                EditCommandStudio.NotifyCanExecuteChanged();
-            //}
-        }
-        private void ListCharactersSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //SelectedCharacter = ListCharacters.SelectedItem as CharacterViewModel;
-            //if (SelectedCharacter != null)
-            //{
-                DeleteCommandCharacter.NotifyCanExecuteChanged();
-                EditCommandCharacter.NotifyCanExecuteChanged();
-            //}
-
-        }
-        private void AddStudio()
-        {
-        }
-
-        private void EditStudio()
-        {
-            //Console.WriteLine(SelectedStudio..Name);
-        }
-
-        private void DeleteStudio()
-        {
-            //Console.WriteLine(SelectedStudio?.Name);
-        }
-        private void AddAnime()
-        {
-
-        }
-
-        private void EditAnime()
-        {
-            //Console.WriteLine(SelectedAnime?.Name);
-        }
-
-        private void DeleteAnime()
-        {
-            //Console.WriteLine(SelectedAnime?.Name);
-        }
-        private void AddCharacter()
-        {
-
-        }
-
-        private void EditCharacter()
-        {
-            //Console.WriteLine(SelectedCharacter?.Name);
-        }
-
-        private void DeleteCharacter()
-        {
-            //Console.WriteLine(SelectedCharacter?.Name);
         }
     }
 }

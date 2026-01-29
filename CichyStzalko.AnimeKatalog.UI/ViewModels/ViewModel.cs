@@ -14,7 +14,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
     {
  
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(CanAddStudio))]
+        //[NotifyCanExecuteChangedFor(nameof(CanAddStudio))]
         private AnimeViewModel? selectedAnime;
 
         #region STUDIO
