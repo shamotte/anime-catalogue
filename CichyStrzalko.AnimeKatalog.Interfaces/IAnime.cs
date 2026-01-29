@@ -1,5 +1,5 @@
 ﻿using CichyStrzalko.AnimeKatalog.Core;
-using CichyStrzalko.AnimeKatalog.INTERFACES;
+using CichyStrzalko.AnimeKatalog.Interfaces;
 
 namespace CichyStrzalko.AnimeKatalog.Interfaces
 {

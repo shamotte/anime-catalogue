@@ -52,6 +52,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             SendPropertyChanged(nameof(Genre));}
         }
 
+        public String Genres
+        {
+            get { return Anime.Genre.ToString(); }
+        }
+
 
         public IStudio Studio
         {

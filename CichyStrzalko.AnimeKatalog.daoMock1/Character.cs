@@ -14,5 +14,7 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
         public int Id { get; set; }
         public string Name { get; set; }
         public IAnime Anime { get; set; }
+
+        public String ImageFile { get; set; }
     }
 }

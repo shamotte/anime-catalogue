@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.BL\CichyStrzalko.AnimeKatalog.BL.csproj" />
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.Core.csproj" />
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
   </ItemGroup>
