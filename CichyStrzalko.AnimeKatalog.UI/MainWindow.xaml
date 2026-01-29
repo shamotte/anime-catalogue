@@ -75,7 +75,7 @@
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-
+                                
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
@@ -89,6 +89,8 @@
                         <TextBlock Text="{Binding Selectedanime.Anime.Episodes}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
+                        <TextBlock>Studio</TextBlock>
+                        <TextBlock Text="{Binding Selectedanime.Anime.Studio.Name}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -118,6 +120,8 @@
                         <TextBlock Text="{Binding Selectedcharacter.Character.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
                         <TextBlock Text="{Binding Selectedcharacter.Character.Name}"/>
+                        <TextBlock>Anime</TextBlock>
+                        <TextBlock Text="{Binding Selectedcharacter.Character.Anime.Name}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
