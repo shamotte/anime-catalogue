@@ -20,7 +20,7 @@
                         />
                     <Button Content="Edytuj"
                         />
-                    <Button Content="Usuń"
+                    <Button Content="Usuń" Command="{Binding DeleteStudioCommand}"
                         />
                 </StackPanel>
                 <!-- Studio -->
@@ -103,7 +103,7 @@
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj"/>
                     <Button Content="Edytuj" />
-                    <Button Content="Usuń"/>
+                    <Button Content="Usuń" Command="{Binding DeleteCharacterCommand}"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
                     <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectedItem="{Binding Selectedcharacter}">

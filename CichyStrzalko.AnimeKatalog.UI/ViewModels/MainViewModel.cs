@@ -66,7 +66,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanDeleteStudio))]
         private void DeleteStudio()
         {
-            // Implementation for deleting a studio
+            if (Selectedstudio != null)
+            {
+                _BL.DeleteStudio(Selectedstudio.Studio.Id);
+                Studios.Remove(Selectedstudio);
+            }
         }
 
         [RelayCommand(CanExecute = nameof(CanEditStudio))]
@@ -107,7 +111,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()
         {
-            // Implementation for deleting an anime
+            if(Selectedanime != null)
+            {
+                _BL.DeleteAnime(Selectedanime.Anime.Id);
+                Animes.Remove(Selectedanime);
+            }
         }
         [RelayCommand(CanExecute = nameof(CanEditAnime))]
         private void EditAnime()
@@ -145,7 +153,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanDeleteCharacter))]
         private void DeleteCharacter()
         {
-            // Implementation for deleting a character
+            if (Selectedcharacter != null)
+            {
+                _BL.DeleteCharacter(Selectedcharacter.Character.Id);
+                Characters.Remove(Selectedcharacter);
+            }
         }
         [RelayCommand(CanExecute = nameof(CanEditCharacter))]
         private void EditCharacter()
