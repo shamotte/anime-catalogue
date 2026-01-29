@@ -11,12 +11,12 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
     public partial class StudioViewModel : ObservableObject
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        //public event PropertyChangedEventHandler? PropertyChanged;
 
         [ObservableProperty]
-        private IStudio _Studio;
+        private IStudio studio;
         public StudioViewModel(IStudio studio) { 
-            this._Studio = studio;
+            this.studio = studio;
         }
 
         //public int Id { get => Studio.Id;}

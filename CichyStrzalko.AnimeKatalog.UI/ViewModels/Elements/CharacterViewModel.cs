@@ -13,9 +13,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
     {
         //public event PropertyChangedEventHandler? PropertyChanged;
         [ObservableProperty]
-        private ICharacter _Character;
+        private ICharacter character;
         public CharacterViewModel(ICharacter character) {
-        this._Character = character;
+        this.character = character;
         }
 
         //public int Id { get => Character.Id;}
