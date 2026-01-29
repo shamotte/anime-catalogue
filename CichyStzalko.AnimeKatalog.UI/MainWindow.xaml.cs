@@ -14,6 +14,7 @@ using CichyStrzalko.AnimeKatalog.BL;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Windows.Xps;
+using CommunityToolkit.Mvvm.Input;
 namespace CichyStrzalko.AnimeKatalog.UI
 {
     /// <summary>
@@ -57,13 +58,61 @@ namespace CichyStrzalko.AnimeKatalog.UI
             StudioList.Refresh(_BL.GetAllStudios());
             DataContext = this;
 
+            AddCommandStudio = new RelayCommand(AddStudio);
+            EditCommandStudio = new RelayCommand(EditStudio, () => { return SelectedStudio != null; });
+            DeleteCommandStudio = new RelayCommand(DeleteStudio, () => { return SelectedStudio != null; });
+            
+            AddCommandAnime = new RelayCommand(AddAnime);
+            EditCommandAnime = new RelayCommand(EditAnime, () => { return SelectedAnime != null; });
+            DeleteCommandAnime = new RelayCommand(DeleteAnime, () => { return SelectedAnime != null; });
+
+            AddCommandCharacter = new RelayCommand(AddCharacter);
+            EditCommandCharacter =  new RelayCommand(EditCharacter, () => { return SelectedCharacter != null; });
+            DeleteCommandCharacter = new RelayCommand(DeleteCharacter, () => { return SelectedCharacter != null; });
+
             InitializeComponent();
         }
 
-
-        private bool IsValidStudio()
+        private void AddStudio()
         {
-            return SelectedStudio != null;
+        }
+
+        private void EditStudio()
+        {
+            Console.WriteLine(SelectedStudio.Name);
+        }
+
+        private void DeleteStudio()
+        {
+            Console.WriteLine(SelectedStudio.Name);
+        }
+        private void AddAnime()
+        {
+
+        }
+
+        private void EditAnime()
+        {
+            Console.WriteLine(SelectedAnime.Name);
+        }
+
+        private void DeleteAnime()
+        {
+            Console.WriteLine(SelectedAnime.Name);
+        }
+        private void AddCharacter()
+        {
+
+        }
+
+        private void EditCharacter()
+        {
+            Console.WriteLine(SelectedCharacter.Name);
+        }
+
+        private void DeleteCharacter()
+        {
+            Console.WriteLine(SelectedCharacter.Name);
         }
     }
 }
