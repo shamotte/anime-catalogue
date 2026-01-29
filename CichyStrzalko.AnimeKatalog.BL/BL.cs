@@ -94,8 +94,17 @@ namespace CichyStrzalko.AnimeKatalog.BL
         }
 
 
+        public IEnumerable<IAnime> GetAnimesByTitle(string titlePart) =>
+            GetAllAnime().Where(a => a.Name.Contains(titlePart));
+
+        public IEnumerable<IAnime> GetAnimeByCategory(Genre genre) =>
+            GetAllAnime().Where(a => (a.Genre & genre) == genre);
+
+
+
         #endregion
-            #region STUDIOS
+
+        #region STUDIOS
         public IEnumerable<IStudio> GetAllStudios() => dao.GetAllStudios();
         public IStudio GetStudioByID(int id) => GetAllStudios().First(a => a.Id == id);
 
