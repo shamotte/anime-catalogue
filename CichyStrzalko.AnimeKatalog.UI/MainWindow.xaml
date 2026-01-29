@@ -57,7 +57,7 @@
                     <!--TODO:ADD FUNCTIONS-->
                     <Button Content="Dodaj"/>
                     <Button Content="Edytuj"/>
-                    <Button Content="Usuń"/>
+                    <Button Content="Usuń" Command="{Binding DeleteAnimeCommand}"/>
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
