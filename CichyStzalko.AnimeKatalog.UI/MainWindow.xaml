@@ -11,14 +11,13 @@
         <TabItem Name="Studio" Header ="Studia">
             <!--detail panel containing Studios-->
             <DockPanel>
-                <!--Filters for Studio -->
+                <!--TODO:Filters for Studio -->
                 <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
                     <TextBlock>Here be filters</TextBlock>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <!--TODO:ADD FUNCTIONS-->
                     <Button Content="Dodaj"
-                        Command="{Binding AddStudio}"/>
+                        Command="{Binding AddCommandStudio}"/>
                     <Button Content="Edytuj"
                         Command="{Binding EditCommandStudio}"
                         CommandParameter="{Binding}" />
@@ -27,26 +26,24 @@
                         CommandParameter="{Binding}" />
                 </StackPanel>
                 <!-- Studio -->
-                <StackPanel  Orientation="Vertical">
-                    <ListView ItemsSource="{Binding StudioList.StudioList}" SelectedItem="{Binding SelectedStudio}">
+                <StackPanel  Orientation="Horizontal">
+                    <ListView Name="ListStudio" ItemsSource="{Binding StudioList.StudioList}" SelectionChanged="ListStudioSelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                                <GridViewColumn Header="Adres" DisplayMemberBinding="{Binding Address}"></GridViewColumn>
-                                <GridViewColumn Header="Obraz">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image>
-
-                                            </Image>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Studio.Name}"></GridViewColumn>
+                                <GridViewColumn Header="Adres" DisplayMemberBinding="{Binding Studio.Address}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock Text="{Binding SelectedStudio.Studio.Id}"/>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBlock Text="{Binding SelectedStudio.Studio.Name}"/>
+                        <TextBlock>Adres</TextBlock>
+                        <TextBlock Text="{Binding SelectedStudio.Studio.Address}"/>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </TabItem>
@@ -70,36 +67,36 @@
                         CommandParameter="{Binding}" />
                 </StackPanel>
                 <!-- Anime -->
-                <StackPanel  Orientation="Vertical">
-                    <ListView Name="list_anime" ItemsSource="{Binding AnimeList.AnimeList}" SelectedItem="{Binding SelectedAnime}">
+                <StackPanel  Orientation="Horizontal">
+                    <ListView Name="ListAnime" ItemsSource="{Binding AnimeList.AnimeList}" SelectionChanged="ListAnimeSelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                                <GridViewColumn Header="Data premiery" DisplayMemberBinding="{Binding Premiere}"></GridViewColumn>
-                                <GridViewColumn Header="Liczba odcinków" DisplayMemberBinding="{Binding Episodes}"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
+                                <GridViewColumn Header="Data premiery" DisplayMemberBinding="{Binding Anime.Premiere}"></GridViewColumn>
+                                <GridViewColumn Header="Liczba odcinków" DisplayMemberBinding="{Binding Anime.Episodes}"></GridViewColumn>
                                 <GridViewColumn Header="Gatunki">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding Genres}">
-                                                
+
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-                                    
-                                </GridViewColumn>
-                                <GridViewColumn Header="Obraz">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding ImageFile}">
-                                                  
-                                            </Image>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
+
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <StackPanel>
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock Text="{Binding SelectedAnime.Anime.Id}"/>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBlock Text="{Binding SelectedAnime.Anime.Name}"/>
+                        <TextBlock>Liczba odcinków</TextBlock>
+                        <TextBlock Text="{Binding SelectedAnime.Anime.Episodes}"/>
+                        <TextBlock>Gatunki</TextBlock>
+                        <TextBlock Text="{Binding SelectedAnime.Genres}"/>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </TabItem>
@@ -120,24 +117,20 @@
                        Command="{Binding DeleteCommandCharacter}"
                        CommandParameter="{Binding}" />
                 </StackPanel>
-                <StackPanel  Orientation="Vertical">
-                    <ListView ItemsSource="{Binding CharacterList.CharacterList}" SelectedItem="{Binding SelectedCharacter}">
+                <StackPanel  Orientation="Horizontal">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding CharacterList.CharacterList}" SelectionChanged="ListCharactersSelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
-                                <GridViewColumn Header="Obraz">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Image Source="{Binding ImageFile}">
-                                                
-                                            </Image>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <StackPanel>
+                        <TextBlock>Id</TextBlock>
+                        <TextBlock Text="{Binding SelectedCharacter.Character.Id}"/>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBlock Text="{Binding SelectedCharacter.Character.Name}"/>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </TabItem>

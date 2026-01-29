@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Windows.Xps;
 using CommunityToolkit.Mvvm.Input;
+using System.CodeDom.Compiler;
 namespace CichyStrzalko.AnimeKatalog.UI
 {
     /// <summary>
@@ -23,44 +24,15 @@ namespace CichyStrzalko.AnimeKatalog.UI
     public partial class MainWindow : Window
     {
         public AnimeListViewModel AnimeList { get; set; } = new AnimeListViewModel();
-        private ViewModels.AnimeViewModel? _selectedAnime = null;
 
-        public ViewModels.AnimeViewModel? SelectedAnime
-        {
-            get => _selectedAnime;
-            set
-            {
-                _selectedAnime = value;
-                DeleteCommandAnime.NotifyCanExecuteChanged();
-                EditCommandAnime.NotifyCanExecuteChanged();
-            }
-        }
+        public ViewModels.AnimeViewModel? SelectedAnime { get; set; } = null;
 
         public CharacterListViewModel CharacterList { get; set; } = new CharacterListViewModel();
-        private ViewModels.CharacterViewModel? _selectedCharacter = null;
-        public ViewModels.CharacterViewModel? SelectedCharacter
-        {
-            get => _selectedCharacter;
-            set
-            {
-                _selectedCharacter = value;
-                DeleteCommandCharacter.NotifyCanExecuteChanged();
-                EditCommandCharacter.NotifyCanExecuteChanged();
-            }
-        }
+
+        public ViewModels.CharacterViewModel? SelectedCharacter { get; set; } = null;
         public StudioListViewModel StudioList { get; set; } = new StudioListViewModel();
         private IConfiguration Configuration;
-        private ViewModels.StudioVievModel? _selectedStudio = null;
-        public ViewModels.StudioVievModel? SelectedStudio
-        {
-            get => _selectedStudio;
-            set
-            {
-                _selectedStudio = value;
-                DeleteCommandStudio.NotifyCanExecuteChanged();
-                EditCommandStudio.NotifyCanExecuteChanged();
-            }
-        }
+        public ViewModels.StudioViewModel? SelectedStudio { get; set; } = null;
 
 
         private BL.BL _BL;
@@ -107,18 +79,46 @@ namespace CichyStrzalko.AnimeKatalog.UI
             InitializeComponent();
         }
 
+        private void ListAnimeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedAnime = ListAnime.SelectedItem as AnimeViewModel;
+            if (SelectedAnime != null)
+            {
+                DeleteCommandAnime.NotifyCanExecuteChanged();
+                EditCommandAnime.NotifyCanExecuteChanged();
+            }
+        }
+        private void ListStudioSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedStudio = ListStudio.SelectedItem as StudioViewModel;
+            if (SelectedStudio != null)
+            {
+                DeleteCommandStudio.NotifyCanExecuteChanged();
+                EditCommandStudio.NotifyCanExecuteChanged();
+            }
+        }
+        private void ListCharactersSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SelectedCharacter = ListCharacters.SelectedItem as CharacterViewModel;
+            if (SelectedCharacter != null)
+            {
+                DeleteCommandCharacter.NotifyCanExecuteChanged();
+                EditCommandCharacter.NotifyCanExecuteChanged();
+            }
+
+        }
         private void AddStudio()
         {
         }
 
         private void EditStudio()
         {
-            Console.WriteLine(SelectedStudio?.Name);
+            //Console.WriteLine(SelectedStudio..Name);
         }
 
         private void DeleteStudio()
         {
-            Console.WriteLine(SelectedStudio?.Name);
+            //Console.WriteLine(SelectedStudio?.Name);
         }
         private void AddAnime()
         {
@@ -127,12 +127,12 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         private void EditAnime()
         {
-            Console.WriteLine(SelectedAnime?.Name);
+            //Console.WriteLine(SelectedAnime?.Name);
         }
 
         private void DeleteAnime()
         {
-            Console.WriteLine(SelectedAnime?.Name);
+            //Console.WriteLine(SelectedAnime?.Name);
         }
         private void AddCharacter()
         {
@@ -141,12 +141,12 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         private void EditCharacter()
         {
-            Console.WriteLine(SelectedCharacter?.Name);
+            //Console.WriteLine(SelectedCharacter?.Name);
         }
 
         private void DeleteCharacter()
         {
-            Console.WriteLine(SelectedCharacter?.Name);
+            //Console.WriteLine(SelectedCharacter?.Name);
         }
     }
 }

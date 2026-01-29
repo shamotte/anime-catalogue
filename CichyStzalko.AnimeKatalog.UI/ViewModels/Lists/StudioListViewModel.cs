@@ -14,13 +14,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels.Lists
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ObservableCollection<StudioVievModel> StudioList { get; set; } = new ObservableCollection<StudioVievModel>();
+        public ObservableCollection<StudioViewModel> StudioList { get; set; } = new ObservableCollection<StudioViewModel>();
 
         public void Refresh(IEnumerable<IStudio> studios) {
             StudioList.Clear();
 
             foreach (var studio in studios) { 
-            var a = new StudioVievModel(studio);
+            var a = new StudioViewModel(studio);
                 StudioList.Add(a);
             }
             
