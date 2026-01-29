@@ -15,7 +15,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             this._Anime = anime;
         }
-        public string Genres { get => _Anime.Genre.ToString(); }
+        public string Genres { get => Anime.Genre.ToString(); }
         //public int Id
         //{
         //    get => _Anime.Id;
