@@ -23,28 +23,62 @@ namespace CichyStrzalko.AnimeKatalog.UI
     public partial class MainWindow : Window
     {
         public AnimeListViewModel AnimeList { get; set; } = new AnimeListViewModel();
-        private ViewModels.AnimeViewModel SelectedAnime = null;
+        private ViewModels.AnimeViewModel? _selectedAnime = null;
+
+        public ViewModels.AnimeViewModel? SelectedAnime
+        {
+            get => _selectedAnime;
+            set
+            {
+                _selectedAnime = value;
+                DeleteCommandAnime.NotifyCanExecuteChanged();
+                EditCommandAnime.NotifyCanExecuteChanged();
+            }
+        }
+
         public CharacterListViewModel CharacterList { get; set; } = new CharacterListViewModel();
-        private ViewModels.CharacterViewModel SelectedCharacter = null;
+        private ViewModels.CharacterViewModel? _selectedCharacter = null;
+        public ViewModels.CharacterViewModel? SelectedCharacter
+        {
+            get => _selectedCharacter;
+            set
+            {
+                _selectedCharacter = value;
+                DeleteCommandCharacter.NotifyCanExecuteChanged();
+                EditCommandCharacter.NotifyCanExecuteChanged();
+            }
+        }
         public StudioListViewModel StudioList { get; set; } = new StudioListViewModel();
         private IConfiguration Configuration;
-        private ViewModels.StudioVievModel SelectedStudio = null;
+        private ViewModels.StudioVievModel? _selectedStudio = null;
+        public ViewModels.StudioVievModel? SelectedStudio
+        {
+            get => _selectedStudio;
+            set
+            {
+                _selectedStudio = value;
+                DeleteCommandStudio.NotifyCanExecuteChanged();
+                EditCommandStudio.NotifyCanExecuteChanged();
+            }
+        }
+
+
         private BL.BL _BL;
 
-        public ICommand AddCommandStudio { get; }
-        public ICommand EditCommandStudio { get; }
-        public ICommand DeleteCommandStudio { get; }
+        public RelayCommand AddCommandStudio { get; }
+        public RelayCommand EditCommandStudio { get; }
+        public RelayCommand DeleteCommandStudio { get; }
 
 
 
-        public ICommand AddCommandAnime { get; }
-        public ICommand EditCommandAnime { get; }
-        public ICommand DeleteCommandAnime { get; }
+        public RelayCommand AddCommandAnime { get; }
+        public RelayCommand EditCommandAnime { get; }
+        public RelayCommand DeleteCommandAnime { get; }
 
 
-        public ICommand AddCommandCharacter { get; }
-        public ICommand EditCommandCharacter { get; }
-        public ICommand DeleteCommandCharacter { get; }
+        public RelayCommand AddCommandCharacter { get; }
+        public RelayCommand EditCommandCharacter { get; }
+        public RelayCommand DeleteCommandCharacter { get; }
 
         //TODO: rzeczywiście jakieś funkcje do edycji czy coś
         public MainWindow()
@@ -79,12 +113,12 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         private void EditStudio()
         {
-            Console.WriteLine(SelectedStudio.Name);
+            Console.WriteLine(SelectedStudio?.Name);
         }
 
         private void DeleteStudio()
         {
-            Console.WriteLine(SelectedStudio.Name);
+            Console.WriteLine(SelectedStudio?.Name);
         }
         private void AddAnime()
         {
@@ -93,12 +127,12 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         private void EditAnime()
         {
-            Console.WriteLine(SelectedAnime.Name);
+            Console.WriteLine(SelectedAnime?.Name);
         }
 
         private void DeleteAnime()
         {
-            Console.WriteLine(SelectedAnime.Name);
+            Console.WriteLine(SelectedAnime?.Name);
         }
         private void AddCharacter()
         {
@@ -107,12 +141,12 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         private void EditCharacter()
         {
-            Console.WriteLine(SelectedCharacter.Name);
+            Console.WriteLine(SelectedCharacter?.Name);
         }
 
         private void DeleteCharacter()
         {
-            Console.WriteLine(SelectedCharacter.Name);
+            Console.WriteLine(SelectedCharacter?.Name);
         }
     }
 }
