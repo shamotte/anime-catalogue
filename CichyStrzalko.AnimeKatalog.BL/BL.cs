@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Reflection;
 
-
+using CichyStrzalko.AnimeKatalog.daoMock1;
 namespace CichyStrzalko.AnimeKatalog.BL
 {
     public class BL
@@ -14,13 +14,14 @@ namespace CichyStrzalko.AnimeKatalog.BL
 
         public BL(IConfiguration configuration)
         {
-            
-            string libraryName = configuration["DAOLibraryName"] ?? "";
+            //TODO: change to correct form
+            //dao = new 
+            //string libraryName = configuration["DAOLibraryName"] ?? "";
+            dao = new DAOmock1();
+            //if (string.IsNullOrEmpty(libraryName))
+            //    throw new Exception("Brak klucza 'DAOLibraryName' w pliku konfiguracyjnym.");
 
-            if (string.IsNullOrEmpty(libraryName))
-                throw new Exception("Brak klucza 'DAOLibraryName' w pliku konfiguracyjnym.");
-
-            LoadLibrary(libraryName, configuration);
+            //LoadLibrary(libraryName, configuration);
         }
 
         private void LoadLibrary(string libraryName, IConfiguration configuration)

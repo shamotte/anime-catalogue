@@ -6,24 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.Interfaces;
+using CichyStrzalko.AnimeKatalog.UI.ViewModels;
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels.Lists
 {
-    internal class AnimeListViewModel: INotifyPropertyChanged
+    public class StudioListViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public ObservableCollection<AnimeViewModel> AnimeList { get; set; } = new ObservableCollection<AnimeViewModel>();
+        public ObservableCollection<StudioViewModel> StudioList { get; set; } = new ObservableCollection<StudioViewModel>();
 
-        public void Refresh(IEnumerable<IAnime> animes) { 
-        AnimeList.Clear();
+        public void Refresh(IEnumerable<IStudio> studios) {
+            StudioList.Clear();
 
-            foreach (var anime in animes) { 
-            var a = new AnimeViewModel(anime);
-            AnimeList.Add(a);
+            foreach (var studio in studios) { 
+            var a = new StudioViewModel(studio);
+                StudioList.Add(a);
             }
             
-            SendPropertyChanged(nameof(AnimeList));
+            SendPropertyChanged(nameof(StudioList));
         }
 
 

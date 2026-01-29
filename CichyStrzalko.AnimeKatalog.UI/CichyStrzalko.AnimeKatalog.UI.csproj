@@ -9,12 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Lists\" />
+    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.BL\CichyStrzalko.AnimeKatalog.BL.csproj" />
+    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.Core.csproj" />
+    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.Core.csproj" />
-    <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
+    <Folder Include="Images\DaoMock1\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
 </Project>
