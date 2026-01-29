@@ -26,7 +26,7 @@ namespace CichyStrzalko.DAOSQL.Models
         }
 
 
-        public DbSet<Anime> Models { get; set; }
+        public DbSet<Anime> animes { get; set; }
 
         public DbSet<Studio> Studios { get; set; }
 
