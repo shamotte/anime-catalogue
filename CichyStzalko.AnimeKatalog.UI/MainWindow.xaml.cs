@@ -25,14 +25,9 @@ namespace CichyStrzalko.AnimeKatalog.UI
     {
         public AnimeListViewModel AnimeList { get; set; } = new AnimeListViewModel();
 
-        public ViewModels.AnimeViewModel? SelectedAnime { get; set; } = null;
-
         public CharacterListViewModel CharacterList { get; set; } = new CharacterListViewModel();
-
-        public ViewModels.CharacterViewModel? SelectedCharacter { get; set; } = null;
         public StudioListViewModel StudioList { get; set; } = new StudioListViewModel();
         private IConfiguration Configuration;
-        public ViewModels.StudioViewModel? SelectedStudio { get; set; } = null;
 
 
         private BL.BL _BL;
@@ -65,46 +60,46 @@ namespace CichyStrzalko.AnimeKatalog.UI
             DataContext = this;
 
             AddCommandStudio = new RelayCommand(AddStudio);
-            EditCommandStudio = new RelayCommand(EditStudio, () => { return SelectedStudio != null; });
-            DeleteCommandStudio = new RelayCommand(DeleteStudio, () => { return SelectedStudio != null; });
+            EditCommandStudio = new RelayCommand(EditStudio);
+            DeleteCommandStudio = new RelayCommand(DeleteStudio);
             
             AddCommandAnime = new RelayCommand(AddAnime);
-            EditCommandAnime = new RelayCommand(EditAnime, () => { return SelectedAnime != null; });
-            DeleteCommandAnime = new RelayCommand(DeleteAnime, () => { return SelectedAnime != null; });
+            EditCommandAnime = new RelayCommand(EditAnime);
+            DeleteCommandAnime = new RelayCommand(DeleteAnime);
 
             AddCommandCharacter = new RelayCommand(AddCharacter);
-            EditCommandCharacter =  new RelayCommand(EditCharacter, () => { return SelectedCharacter != null; });
-            DeleteCommandCharacter = new RelayCommand(DeleteCharacter, () => { return SelectedCharacter != null; });
+            EditCommandCharacter =  new RelayCommand(EditCharacter);
+            DeleteCommandCharacter = new RelayCommand(DeleteCharacter);
 
             InitializeComponent();
         }
 
         private void ListAnimeSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectedAnime = ListAnime.SelectedItem as AnimeViewModel;
-            if (SelectedAnime != null)
-            {
+            //SelectedAnime = ListAnime.SelectedItem as AnimeViewModel;
+            //if (SelectedAnime != null)
+            //{
                 DeleteCommandAnime.NotifyCanExecuteChanged();
                 EditCommandAnime.NotifyCanExecuteChanged();
-            }
+            //}
         }
         private void ListStudioSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectedStudio = ListStudio.SelectedItem as StudioViewModel;
-            if (SelectedStudio != null)
-            {
+            //SelectedStudio = ListStudio.SelectedItem as StudioViewModel;
+            //if (SelectedStudio != null)
+            //{
                 DeleteCommandStudio.NotifyCanExecuteChanged();
                 EditCommandStudio.NotifyCanExecuteChanged();
-            }
+            //}
         }
         private void ListCharactersSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SelectedCharacter = ListCharacters.SelectedItem as CharacterViewModel;
-            if (SelectedCharacter != null)
-            {
+            //SelectedCharacter = ListCharacters.SelectedItem as CharacterViewModel;
+            //if (SelectedCharacter != null)
+            //{
                 DeleteCommandCharacter.NotifyCanExecuteChanged();
                 EditCommandCharacter.NotifyCanExecuteChanged();
-            }
+            //}
 
         }
         private void AddStudio()
