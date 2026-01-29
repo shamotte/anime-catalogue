@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.BL;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Configuration;
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
@@ -36,6 +37,19 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<StudioViewModel> studios = new ObservableCollection<StudioViewModel>();
+
+        private bool CanAddStudio()
+        {
+            // Implementation for determining if a studio can be added
+            return true;
+        }
+
+        [RelayCommand(CanExecute = nameof(CanAddStudio))]
+        private void AddStudio()
+        {
+            // Implementation for adding a studio
+        }
+
 
         #endregion
 
