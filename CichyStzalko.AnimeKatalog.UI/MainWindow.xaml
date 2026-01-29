@@ -17,9 +17,14 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
-                    <Button Margin="5">First</Button>
-                    <Button Margin="5">Second</Button>
-                    <Button Margin="5">Third</Button>
+                    <Button Content="Dodaj"
+                        Command="{Binding AddStudio}"/>
+                    <Button Content="Edytuj"
+                        Command="{Binding EditCommandStudio}"
+                        CommandParameter="{Binding}" />
+                    <Button Content="Usuń"
+                        Command="{Binding DeleteCommandStudio}"
+                        CommandParameter="{Binding}" />
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Vertical">
@@ -55,9 +60,14 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
-                    <Button Margin="5">First</Button>
-                    <Button Margin="5">Second</Button>
-                    <Button Margin="5">Third</Button>
+                    <Button Content="Dodaj"
+                        Command="{Binding AddCommandAnime}"/>
+                    <Button Content="Edytuj"
+                        Command="{Binding EditCommandAnime}"
+                        CommandParameter="{Binding}" />
+                    <Button Content="Usuń"
+                        Command="{Binding DeleteCommandAnime}"
+                        CommandParameter="{Binding}" />
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Vertical">
@@ -95,15 +105,20 @@
         </TabItem>
         <TabItem Name="Characters" Header="Postacie">
             <DockPanel >
-                <!--Filters for Anime -->
+                <!--Filters for Characters -->
                 <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
                     <TextBlock>Here be filters</TextBlock>
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <Button Margin="5">Dodaj</Button>
-                    <Button Margin="5">Usuń</Button>
-                    <Button Margin="5">Edytuj</Button>
+                    <Button Content="Dodaj"
+                       Command="{Binding AddCommandCharacter}"/>
+                    <Button Content="Edytuj"
+                       Command="{Binding EditCommandCharacter}"
+                       CommandParameter="{Binding}" />
+                    <Button Content="Usuń"
+                       Command="{Binding DeleteCommandCharacter}"
+                       CommandParameter="{Binding}" />
                 </StackPanel>
                 <StackPanel  Orientation="Vertical">
                     <ListView ItemsSource="{Binding CharacterList.CharacterList}">

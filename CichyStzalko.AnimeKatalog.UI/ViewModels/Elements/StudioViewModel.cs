@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.Interfaces;
 
-namespace CichyStrzalko.AnimeKatalog.UI.ViewModels.Elements
+namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
     public class StudioVievModel : INotifyPropertyChanged
     {
