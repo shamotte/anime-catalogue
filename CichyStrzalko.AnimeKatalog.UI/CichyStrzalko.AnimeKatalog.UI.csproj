@@ -14,12 +14,4 @@
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Images\DaoMock1\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-  </ItemGroup>
-
 </Project>

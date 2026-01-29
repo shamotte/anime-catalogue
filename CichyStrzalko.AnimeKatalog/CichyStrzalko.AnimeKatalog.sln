@@ -16,9 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.daoMock1", "..\CichyStrzalko.AnimeKatalog.daoMock1\CichyStrzalko.AnimeKatalog.daoMock1.csproj", "{8330AB77-E679-4D39-95BB-0AB381D353D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.UI", "..\CichyStzalko.AnimeKatalog.UI\CichyStrzalko.AnimeKatalog.UI.csproj", "{CCE529C2-B1CA-9B4F-45F7-32A5FA0287FD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.WEB", "..\CichyStzalko.AnimeKatalog.WEB\CichyStrzalko.AnimeKatalog.WEB.csproj", "{7DB60E7D-B4EA-1550-2542-B73E577F7964}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.UI", "..\CichyStrzalko.AnimeKatalog.UI\CichyStrzalko.AnimeKatalog.UI.csproj", "{740BF095-2F04-4678-BD5A-FB423FB8D41B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,14 +44,10 @@ Global
 		{8330AB77-E679-4D39-95BB-0AB381D353D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8330AB77-E679-4D39-95BB-0AB381D353D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8330AB77-E679-4D39-95BB-0AB381D353D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCE529C2-B1CA-9B4F-45F7-32A5FA0287FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCE529C2-B1CA-9B4F-45F7-32A5FA0287FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCE529C2-B1CA-9B4F-45F7-32A5FA0287FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCE529C2-B1CA-9B4F-45F7-32A5FA0287FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DB60E7D-B4EA-1550-2542-B73E577F7964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DB60E7D-B4EA-1550-2542-B73E577F7964}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DB60E7D-B4EA-1550-2542-B73E577F7964}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DB60E7D-B4EA-1550-2542-B73E577F7964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
     <TabControl Name="Zakładki">
@@ -25,7 +25,7 @@
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}" SelectionChanged="ListStudioSelectionChanged">
+                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}">
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
@@ -61,7 +61,7 @@
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}" SelectionChanged="ListAnimeSelectionChanged">
+                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
@@ -106,7 +106,7 @@
                     <Button Content="Usuń"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectionChanged="ListCharactersSelectionChanged">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>
@@ -122,7 +122,7 @@
                 </StackPanel>
             </DockPanel>
         </TabItem>
-        
+
     </TabControl>
-    
+
 </Window>
