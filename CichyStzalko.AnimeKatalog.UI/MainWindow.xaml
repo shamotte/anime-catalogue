@@ -81,8 +81,8 @@
                                 <GridViewColumn Header="Obraz">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image>
-
+                                            <Image Source="{Binding ImageFile}">
+                                                  
                                             </Image>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -114,7 +114,7 @@
                                 <GridViewColumn Header="Obraz">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image>
+                                            <Image Source="{Binding ImageFile}">
                                                 
                                             </Image>
                                         </DataTemplate>

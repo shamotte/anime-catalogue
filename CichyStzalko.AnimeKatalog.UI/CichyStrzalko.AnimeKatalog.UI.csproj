@@ -14,4 +14,8 @@
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\DaoMock1\" />
+  </ItemGroup>
+
 </Project>
