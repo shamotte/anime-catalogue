@@ -85,11 +85,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             s.Address = NewStudio.Studio.Address;
             s.Name = NewStudio.Studio.Name;
             _BL.UpdateStudio(s);
+            Studios.Add(new StudioViewModel(s));
 
             NewStudio.Studio.Name = string.Empty;
             NewStudio.Studio.Address = string.Empty;
 
-            Studios.Add(new StudioViewModel(s));
 
 
             // Implementation for adding a studio
