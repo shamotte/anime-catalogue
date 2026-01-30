@@ -19,17 +19,17 @@ namespace CichyStrzalko.DAOSQL
             context.Database.Migrate();
         }
 
-        public IAnime CreateNewAnime(IAnime anime)
+        public IAnime CreateNewAnime()
         {
             return new Anime();
         }
 
-        public ICharacter CreateNewCharacter(ICharacter character)
+        public ICharacter CreateNewCharacter()  
         {
             return new Character();
         }
 
-        public IStudio CreateNewStudio(IStudio studio)
+        public IStudio CreateNewStudio()
         {
             return new Studio();
         }

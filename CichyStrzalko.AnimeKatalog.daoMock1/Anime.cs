@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CichyStrzalko.AnimeKatalog.daoMock1
 {
-    internal class Anime : IAnime
+    internal record class Anime : IAnime
     {
         public int Id{ get; set;}
         public string Name { get; set; }
