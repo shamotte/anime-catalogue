@@ -64,19 +64,19 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         
 
-        public IAnime CreateNewAnime(IAnime anime)
+        public IAnime CreateNewAnime()
         {
-            return new Anime();
+            return new Anime() { Id = animes.Max(a => a.Id) + 1};
         }
 
-        public ICharacter CreateNewCharacter(ICharacter character)
+        public ICharacter CreateNewCharacter()
         {
-            return new Character();
+            return new Character() { Id = characters.Max(c => c.Id) + 1 };
         }
 
-        public IStudio CreateNewStudio(IStudio studio)
+        public IStudio CreateNewStudio()
         {
-            return new Studio();
+            return new Studio() { Id = studios.Max(s => s.Id) + 1 };
         }
 
         public void DeleteAnime(int animeId)
@@ -111,33 +111,21 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         public void UpdateAnime(IAnime anime)
         {
-            animes.Where(a => a.Id == anime.Id).ToList().ForEach(a =>
-            {
-                a.Name = anime.Name;
-                a.Episodes = anime.Episodes;
-                a.Genre = anime.Genre;
-                a.Premiere = anime.Premiere;
-                a.Studio = anime.Studio;
-                a.ImageFile = anime.ImageFile;
-            });
+            
+            animes.RemoveAll(a => a.Id == anime.Id);
+            animes.Add(anime);
         }
 
         public void UpdateCharacter(ICharacter character)
         {
-            characters.Where(c => c.Id == character.Id).ToList().ForEach(c =>
-            {
-                c.Name = character.Name;
-                c.Anime = character.Anime;
-            });
+            characters.RemoveAll(c => c.Id == character.Id);
+            characters.Add(character);
         }
 
         public void UpdateStudio(IStudio studio)
         {
-            studios.Where(s => s.Id == studio.Id).ToList().ForEach(s =>
-            {
-                s.Name = studio.Name;
-                s.Address = studio.Address;
-            });
+               studios.RemoveAll(s => s.Id == studio.Id);
+                studios.Add(studio);
         }
     }
 }

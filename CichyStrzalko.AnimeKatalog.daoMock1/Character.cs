@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CichyStrzalko.AnimeKatalog.daoMock1
 {
-    internal class Character : ICharacter
+    internal record class Character : ICharacter
     {
 
 

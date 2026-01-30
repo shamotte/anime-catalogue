@@ -18,9 +18,9 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
 
         //CREATES
-        IStudio CreateNewStudio(IStudio studio);
-        IAnime CreateNewAnime(IAnime anime);
-        ICharacter CreateNewCharacter(ICharacter character);
+        IStudio CreateNewStudio();
+        IAnime CreateNewAnime();
+        ICharacter CreateNewCharacter();
 
         //DELETES
         void DeleteStudio(int studioId);

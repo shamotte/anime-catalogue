@@ -100,6 +100,16 @@ namespace CichyStrzalko.AnimeKatalog.BL
         public IEnumerable<IAnime> GetAnimeByCategory(Genre genre) =>
             GetAllAnime().Where(a => (a.Genre & genre) == genre);
 
+        public IAnime CreateAnime(IAnime anime)
+        {
+            return dao.CreateNewAnime(anime);
+        }
+
+        public void UpdateAnime(IAnime anime)
+        {
+            dao.UpdateAnime(anime);
+        }
+
 
 
         #endregion
@@ -128,6 +138,14 @@ namespace CichyStrzalko.AnimeKatalog.BL
             };
         }
 
+        public IStudio CreateStudio(IStudio studio)
+        {
+            return dao.CreateNewStudio(studio);
+        }
+        public void UpdateStudio(IStudio studio)
+        {
+            dao.UpdateStudio(studio);
+        }
 
 
 
@@ -152,6 +170,15 @@ namespace CichyStrzalko.AnimeKatalog.BL
             };
 
 
+        }
+        public void UpdateCharacter(ICharacter character)
+        {
+            dao.UpdateCharacter(character);
+        }
+
+        public ICharacter CreateCharacter(ICharacter character)
+        {
+            return dao.CreateNewCharacter(character);
         }
 
         #endregion
