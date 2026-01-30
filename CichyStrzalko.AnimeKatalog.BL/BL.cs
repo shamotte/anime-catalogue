@@ -17,7 +17,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
             //TODO: change to correct form
             //dao = new 
             //string libraryName = configuration["DAOLibraryName"] ?? "";
-            dao = new DAOmock1();
+            //dao = new DAOSQL();
             //if (string.IsNullOrEmpty(libraryName))
             //    throw new Exception("Brak klucza 'DAOLibraryName' w pliku konfiguracyjnym.");
 

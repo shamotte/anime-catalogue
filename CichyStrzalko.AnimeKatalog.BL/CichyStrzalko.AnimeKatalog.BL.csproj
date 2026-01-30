@@ -15,6 +15,7 @@
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Core\CichyStrzalko.AnimeKatalog.Core.csproj" />
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.daoMock1\CichyStrzalko.AnimeKatalog.daoMock1.csproj" />
     <ProjectReference Include="..\CichyStrzalko.AnimeKatalog.Interfaces\CichyStrzalko.AnimeKatalog.Interfaces.csproj" />
+    <ProjectReference Include="..\CichyStrzalko.DAOSQL\CichyStrzalko.DAOSQL.csproj" />
   </ItemGroup>
 
 </Project>

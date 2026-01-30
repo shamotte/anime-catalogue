@@ -25,8 +25,8 @@ namespace CichyStrzalko.DAOSQL.Models
             base.OnModelCreating(modelBuilder);
         }
 
-
-        public DbSet<Anime> animes { get; set; }
+        
+        public DbSet<Anime> Animes { get; set; }
 
         public DbSet<Studio> Studios { get; set; }
 

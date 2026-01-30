@@ -66,20 +66,17 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
 
         public IAnime CreateNewAnime(IAnime anime)
         {
-            animes.Add(anime);
-            return anime;
+            return new Anime();
         }
 
         public ICharacter CreateNewCharacter(ICharacter character)
         {
-            characters.Add(character);
-            return character;
+            return new Character();
         }
 
         public IStudio CreateNewStudio(IStudio studio)
         {
-            studios.Add(studio);
-            return studio;
+            return new Studio();
         }
 
         public void DeleteAnime(int animeId)
