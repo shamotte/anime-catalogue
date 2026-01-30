@@ -43,25 +43,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [NotifyCanExecuteChangedFor(nameof(DeleteStudioCommand))]
         private StudioViewModel? selectedstudio;
 
-        private bool CanAddStudio()
-        {
-            // Implementation for determining if a studio can be added
-            return true;
-        }
 
         private bool CanDeleteStudio()
         {
             return Selectedstudio != null;
-        }
-
-        private bool CanEditStudio()
-        {
-            return Selectedstudio != null;
-        }
-        [RelayCommand(CanExecute = nameof(CanAddStudio))]
-        private void AddStudio()
-        {
-            // Implementation for adding a studio
         }
         [RelayCommand(CanExecute = nameof(CanDeleteStudio))]
         private void DeleteStudio()
@@ -73,6 +58,29 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                     Studios.Remove(Selectedstudio);
                 }
             }
+        }
+
+        private bool CanEditStudio()
+        {
+            return Selectedstudio != null;
+        }
+
+        [ObservableProperty]
+        private StudioViewModel? newStudio;
+        private void ResetNewStudio()
+        {
+            //NewStudio = new StudioViewModel();
+        }
+
+        private bool CanAddStudio()
+        {
+            // Implementation for determining if a studio can be added
+            return true;
+        }
+        [RelayCommand(CanExecute = nameof(CanAddStudio))]
+        private void AddStudio()
+        {
+            // Implementation for adding a studio
         }
 
         [RelayCommand(CanExecute = nameof(CanEditStudio))]

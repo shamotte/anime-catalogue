@@ -42,6 +42,14 @@
                         <TextBlock>Adres</TextBlock>
                         <TextBlock Text="{Binding Selectedstudio.Studio.Address}"/>
                     </StackPanel>
+                    <!-- Addition-->
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <TextBlock>Dodaj nowe studio</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding NewStudio.Studio.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Adres</TextBlock>
+                        <TextBox Text="{Binding NewStudio.Studio.Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </TabItem>
