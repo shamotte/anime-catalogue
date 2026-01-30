@@ -17,7 +17,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
             //TODO: change to correct form
             //dao = new 
             //string libraryName = configuration["DAOLibraryName"] ?? "";
-            //dao = new DAOSQL();
+            dao = new DAOmock1();
             //if (string.IsNullOrEmpty(libraryName))
             //    throw new Exception("Brak klucza 'DAOLibraryName' w pliku konfiguracyjnym.");
 
@@ -100,9 +100,9 @@ namespace CichyStrzalko.AnimeKatalog.BL
         public IEnumerable<IAnime> GetAnimeByCategory(Genre genre) =>
             GetAllAnime().Where(a => (a.Genre & genre) == genre);
 
-        public IAnime CreateAnime(IAnime anime)
+        public IAnime CreateAnime()
         {
-            return dao.CreateNewAnime(anime);
+            return dao.CreateNewAnime();
         }
 
         public void UpdateAnime(IAnime anime)
@@ -138,9 +138,9 @@ namespace CichyStrzalko.AnimeKatalog.BL
             };
         }
 
-        public IStudio CreateStudio(IStudio studio)
+        public IStudio CreateStudio()
         {
-            return dao.CreateNewStudio(studio);
+            return dao.CreateNewStudio();
         }
         public void UpdateStudio(IStudio studio)
         {
@@ -176,9 +176,9 @@ namespace CichyStrzalko.AnimeKatalog.BL
             dao.UpdateCharacter(character);
         }
 
-        public ICharacter CreateCharacter(ICharacter character)
+        public ICharacter CreateCharacter()
         {
-            return dao.CreateNewCharacter(character);
+            return dao.CreateNewCharacter();
         }
 
         #endregion
