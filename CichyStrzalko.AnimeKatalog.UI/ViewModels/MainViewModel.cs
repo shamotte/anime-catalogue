@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.BL;
+using CichyStrzalko.AnimeKatalog.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Configuration;
@@ -80,6 +81,17 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
+            IStudio s = _BL.CreateStudio();
+            s.Address = NewStudio.Studio.Address;
+            s.Name = NewStudio.Studio.Name;
+            _BL.UpdateStudio(s);
+
+            NewStudio.Studio.Name = string.Empty;
+            NewStudio.Studio.Address = string.Empty;
+
+            Studios.Add(new StudioViewModel(s));
+
+
             // Implementation for adding a studio
         }
 

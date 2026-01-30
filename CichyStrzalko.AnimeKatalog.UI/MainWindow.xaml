@@ -17,7 +17,7 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj"
-                        />
+                        Command="{Binding AddStudioCommand}"/>
                     <Button Content="Edytuj"
                         />
                     <Button Content="Usuń" Command="{Binding DeleteStudioCommand}"
