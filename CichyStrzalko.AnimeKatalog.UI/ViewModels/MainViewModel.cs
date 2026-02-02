@@ -55,7 +55,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedstudio != null)
             {
-                if (_BL.DeleteStudio(Selectedstudio.Studio.Id).succesful)
+                if (_BL.DeleteStudio(Selectedstudio.Id).succesful)
                 {
                     Studios.Remove(Selectedstudio);
                 }
@@ -72,20 +72,20 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         
         private void ResetNewStudio()
         {
-            NewStudio.Studio = _BL.CreateStudio();
+            NewStudio = new StudioViewModel( _BL.CreateStudio());
         }
 
         private bool CanAddStudio()
         {
             // TODO: Add erros
-            return NewStudio.Studio != null && NewStudio.Studio.Name != null && NewStudio.Studio.Address != null;
+            return NewStudio != null && NewStudio.Name != null && NewStudio.Address != null;
         }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
             IStudio s = _BL.CreateStudio();
-            s.Address = NewStudio.Studio.Address;
-            s.Name = NewStudio.Studio.Name;
+            s.Address = NewStudio.Address;
+            s.Name = NewStudio.Name;
             _BL.UpdateStudio(s);
             Studios.Add(new StudioViewModel(s));
 
@@ -136,7 +136,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if(Selectedanime != null)
             {
-                if (_BL.DeleteAnime(Selectedanime.Anime.Id).succesful)
+                if (_BL.DeleteAnime(Selectedanime.Id).succesful)
                 {
                     Animes.Remove(Selectedanime);
                 }
@@ -181,7 +181,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedcharacter != null)
             {
-                if (_BL.DeleteCharacter(Selectedcharacter.Character.Id).succesful)
+                if (_BL.DeleteCharacter(Selectedcharacter.Id).succesful)
                 {
                 Characters.Remove(Selectedcharacter);
                 }

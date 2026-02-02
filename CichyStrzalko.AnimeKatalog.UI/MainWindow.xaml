@@ -29,26 +29,26 @@
                         <ListView.View>
                             <GridView>
                                 <!--TODO:Add DataBinding Here-->
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Studio.Name}"></GridViewColumn>
-                                <GridViewColumn Header="Adres" DisplayMemberBinding="{Binding Studio.Address}"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                <GridViewColumn Header="Adres" DisplayMemberBinding="{Binding Address}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
                     <StackPanel Orientation="Vertical">
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding Selectedstudio.Studio.Id}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding Selectedstudio.Studio.Name}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Name}"/>
                         <TextBlock>Adres</TextBlock>
-                        <TextBlock Text="{Binding Selectedstudio.Studio.Address}"/>
+                        <TextBlock Text="{Binding Selectedstudio.Address}"/>
                     </StackPanel>
                     <!-- Addition-->
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <TextBlock>Dodaj nowe studio</TextBlock>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBox Text="{Binding NewStudio.Studio.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding NewStudio.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Adres</TextBlock>
-                        <TextBox Text="{Binding NewStudio.Studio.Address, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding NewStudio.Address, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -72,9 +72,9 @@
                     <ListView Name="ListAnime" ItemsSource="{Binding Animes}"  SelectedItem ="{Binding Selectedanime}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Anime.Name}"></GridViewColumn>
-                                <GridViewColumn Header="Data premiery" DisplayMemberBinding="{Binding Anime.Premiere}"></GridViewColumn>
-                                <GridViewColumn Header="Liczba odcinków" DisplayMemberBinding="{Binding Anime.Episodes}"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                <GridViewColumn Header="Data premiery" DisplayMemberBinding="{Binding Premiere}"></GridViewColumn>
+                                <GridViewColumn Header="Liczba odcinków" DisplayMemberBinding="{Binding Episodes}"></GridViewColumn>
                                 <GridViewColumn Header="Gatunki">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -90,15 +90,15 @@
                     </ListView>
                     <StackPanel>
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.Anime.Id}"/>
+                        <TextBlock Text="{Binding Selectedanime.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.Anime.Name}"/>
+                        <TextBlock Text="{Binding Selectedanime.Name}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.Anime.Episodes}"/>
+                        <TextBlock Text="{Binding Selectedanime.Episodes}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
                         <TextBlock>Studio</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.Anime.Studio.Name}"/>
+                        <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -119,17 +119,17 @@
                     <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectedItem="{Binding Selectedcharacter}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Character.Name}"></GridViewColumn>
+                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
                     <StackPanel>
                         <TextBlock>Id</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.Character.Id}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.Id}"/>
                         <TextBlock>Nazwa</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.Character.Name}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.Name}"/>
                         <TextBlock>Anime</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.Character.Anime.Name}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.Anime.Name}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
