@@ -69,6 +69,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         private StudioViewModel? newStudio;
+        
         private void ResetNewStudio()
         {
             NewStudio.Studio = _BL.CreateStudio();
@@ -76,8 +77,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         private bool CanAddStudio()
         {
-            // Implementation for determining if a studio can be added
-            return true;
+            // TODO: Add erros
+            return NewStudio.Studio != null && NewStudio.Studio.Name != null && NewStudio.Studio.Address != null;
         }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
