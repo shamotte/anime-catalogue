@@ -32,6 +32,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
             );
 
+            newStudio = new StudioViewModel( _BL.CreateStudio());
         }
 
         #region Studio
@@ -70,7 +71,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private StudioViewModel? newStudio;
         private void ResetNewStudio()
         {
-            //NewStudio = new StudioViewModel();
+            NewStudio.Studio.Address = String.Empty;
+            NewStudio.Studio.Name = String.Empty;
         }
 
         private bool CanAddStudio()
@@ -87,8 +89,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             _BL.UpdateStudio(s);
             Studios.Add(new StudioViewModel(s));
 
-            NewStudio.Studio.Name = string.Empty;
-            NewStudio.Studio.Address = string.Empty;
+            ResetNewStudio();
 
 
 
