@@ -71,8 +71,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private StudioViewModel? newStudio;
         private void ResetNewStudio()
         {
-            NewStudio.Studio.Address = String.Empty;
-            NewStudio.Studio.Name = String.Empty;
+            NewStudio.Studio = _BL.CreateStudio();
         }
 
         private bool CanAddStudio()
