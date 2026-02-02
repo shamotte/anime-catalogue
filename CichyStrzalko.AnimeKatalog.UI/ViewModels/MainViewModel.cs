@@ -37,6 +37,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
             );
 
+            newStudio = new StudioViewModel( _BL.CreateStudio());
         }
 
         #region Studio
@@ -59,7 +60,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedstudio != null)
             {
-                if (_BL.DeleteStudio(Selectedstudio.Studio.Id).succesful)
+                if (_BL.DeleteStudio(Selectedstudio.Id).succesful)
                 {
                     Studios.Remove(Selectedstudio);
                 }
@@ -73,27 +74,27 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         private StudioViewModel? newStudio;
+        
         private void ResetNewStudio()
         {
-            //NewStudio = new StudioViewModel();
+            NewStudio = new StudioViewModel( _BL.CreateStudio());
         }
 
         private bool CanAddStudio()
         {
-            // Implementation for determining if a studio can be added
-            return true;
+            // TODO: Add erros
+            return NewStudio != null && NewStudio.Name != null && NewStudio.Address != null;
         }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
             IStudio s = _BL.CreateStudio();
-            s.Address = NewStudio.Studio.Address;
-            s.Name = NewStudio.Studio.Name;
+            s.Address = NewStudio.Address;
+            s.Name = NewStudio.Name;
             _BL.UpdateStudio(s);
             Studios.Add(new StudioViewModel(s));
 
-            NewStudio.Studio.Name = string.Empty;
-            NewStudio.Studio.Address = string.Empty;
+            ResetNewStudio();
 
 
 
@@ -140,7 +141,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if(Selectedanime != null)
             {
-                if (_BL.DeleteAnime(Selectedanime.Anime.Id).succesful)
+                if (_BL.DeleteAnime(Selectedanime.Id).succesful)
                 {
                     Animes.Remove(Selectedanime);
                 }
@@ -185,7 +186,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (Selectedcharacter != null)
             {
-                if (_BL.DeleteCharacter(Selectedcharacter.Character.Id).succesful)
+                if (_BL.DeleteCharacter(Selectedcharacter.Id).succesful)
                 {
                 Characters.Remove(Selectedcharacter);
                 }
