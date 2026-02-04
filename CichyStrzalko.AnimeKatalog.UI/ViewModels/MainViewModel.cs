@@ -141,7 +141,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             IAnime a = _BL.CreateAnime();
             a.Name = NewAnime.Name;
-            a.Premiere = NewAnime.Premiere;
+            a.Premiere = DateTime.Parse(NewAnime.Premiere);
             a.Genre = NewAnime.Genre;
             a.Studio = NewAnime.Studio;
             a.Episodes = NewAnime.Episodes;

@@ -1,22 +1,44 @@
-﻿using CichyStrzalko.DAOSQL.Models;
+﻿using CichyStrzalko.AnimeKatalog.Interfaces;
+using CichyStrzalko.DAOSQL.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Graph.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CichyStrzalko.AnimeKatalog.Interfaces;
 
 namespace CichyStrzalko.DAOSQL
 {
     public class Dao : IDAO
     {
         private readonly DataContext context;
-        
+
+        private const string DatabaseName = "catalog.db";
+
         public Dao()
         {
-            context = new DataContext();
+            var options = CreateOptions();
+            context = new DataContext(options);
             context.Database.Migrate();
+        }
+        private static string GetConnectionString()
+        {
+            var appDataPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "Catalog");
+
+            Directory.CreateDirectory(appDataPath);
+
+            var dbPath = Path.Combine(appDataPath, DatabaseName);
+            return $"Data Source={dbPath}";
+        }
+
+        private static DbContextOptions<DataContext> CreateOptions()
+        {
+            var builder = new DbContextOptionsBuilder<DataContext>();
+            builder.UseSqlite(GetConnectionString());
+            return builder.Options;
         }
 
         public IAnime CreateNewAnime()
@@ -97,13 +119,13 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Animes.Remove(remove);
-                    context.SaveChanges();
+                    
                 }
                 a.StudioId = a.Studio.Id;
 
                 context.Animes.Add(a);
+                context.SaveChanges();
             }
-            context.SaveChanges();
         }
 
         public void UpdateCharacter(ICharacter character)
@@ -114,10 +136,10 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Characters.Remove(remove);
-                    context.SaveChanges();
                 }
                 c.AnimeId = c.Anime.Id;
                 context.Characters.Add(c);
+                context.SaveChanges();
             }
         }
 
@@ -129,9 +151,9 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Studios.Remove(remove);
-                    context.SaveChanges();
                 }
                 context.Studios.Add(s);
+                context.SaveChanges();
             }
         }
     }

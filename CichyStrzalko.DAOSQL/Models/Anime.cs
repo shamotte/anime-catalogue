@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace CichyStrzalko.DAOSQL.Models
 {
     
-        internal class Anime : IAnime
+        public class Anime : IAnime
         {
         
         
