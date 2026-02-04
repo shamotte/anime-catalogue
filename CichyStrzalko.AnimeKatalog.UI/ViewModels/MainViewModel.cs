@@ -319,14 +319,17 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (EditedAnime != null)
             {
+                Genre genre = Genre.Unknown;
                 foreach(GenreViewModel g in EditedGenres)
                 {
+                    
                     if (g.IsSelected)
                     {
-                        EditedAnime.Genre |= g.SelectedGenre;
+                        genre |= g.SelectedGenre;
 
                     }
                 }
+                EditedAnime.Genre = genre;
                 _BL.UpdateAnime(EditedAnime.ToModel());
                 RefreshAnimes();
 
