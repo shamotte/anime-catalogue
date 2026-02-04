@@ -27,24 +27,27 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             _configuration = AppConfiguration.Configuration;
             _BL = new BL.BL(_configuration);
 
-            studios = new ObservableCollection<StudioViewModel>(
-                _BL.GetAllStudios().Select(s => new StudioViewModel(s))
-            );
-            animes = new ObservableCollection<AnimeViewModel>(
-                _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
-            );
-            characters = new ObservableCollection<CharacterViewModel>(
-                _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
-            );
+            //studios = new ObservableCollection<StudioViewModel>(
+            //    _BL.GetAllStudios().Select(s => new StudioViewModel(s))
+            //);
+            //animes = new ObservableCollection<AnimeViewModel>(
+            //    _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
+            //);
+            //characters = new ObservableCollection<CharacterViewModel>(
+            //    _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
+            //);
+            RefreshStudios();
+            RefreshAnimes();
+            RefreshCharacters();
 
             newStudio = new StudioViewModel( _BL.CreateStudio());
             newAnime = new AnimeViewModel(_BL.CreateAnime());
             newCharacter = new CharacterViewModel(_BL.CreateCharacter());
 
 
-            filteredStudios = new ObservableCollection<StudioViewModel>(Studios);
-            filteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
-            filteredCharacters = new ObservableCollection<CharacterViewModel>(Characters);
+            //filteredStudios = new ObservableCollection<StudioViewModel>(Studios);
+            //filteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
+            //filteredCharacters = new ObservableCollection<CharacterViewModel>(Characters);
         }
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
@@ -52,6 +55,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         
         #region Studio
 
+        private void RefreshStudios()
+        {
+            Studios = new ObservableCollection<StudioViewModel>(
+                _BL.GetAllStudios().Select(s => new StudioViewModel(s))
+            );
+            OnStudioFilterTextChanged(StudioFilterText);
+        }
 
         [ObservableProperty]
         private ObservableCollection<StudioViewModel> studios = new ObservableCollection<StudioViewModel>();
@@ -73,6 +83,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                     Studios.Where(s => s.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
                                       s.Address.Contains(value, StringComparison.OrdinalIgnoreCase))
                 );
+
             }
         }
 
@@ -124,10 +135,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             s.Address = NewStudio.Address;
             s.Name = NewStudio.Name;
             _BL.UpdateStudio(s);
-            Studios.Add(new StudioViewModel(s));
-
-            ResetNewStudio();
-
+            //Studios.Add(new StudioViewModel(s));
+            NewStudio = new StudioViewModel(_BL.CreateStudio());
+            RefreshStudios();
 
 
             // Implementation for adding a studio
@@ -141,6 +151,15 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #endregion
 
         #region Anime
+
+        private void RefreshAnimes()
+        {
+            Animes = new ObservableCollection<AnimeViewModel>(
+                _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
+            );
+            OnAnimeFilterTextChanged(AnimeFilterText);
+        }
+
         [ObservableProperty]
         private ObservableCollection<AnimeViewModel> animes = new ObservableCollection<AnimeViewModel>();
 
@@ -173,7 +192,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private AnimeViewModel? newAnime;
         private bool CanAddAnime()
         {
-            // Implementation for determining if an anime can be added
+            //return NewAnime != null && !NewAnime.HasErrors;
             return true;
         }
 
@@ -199,7 +218,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             a.ImageData = NewAnime.ImageData;
             NewAnime = new AnimeViewModel(_BL.CreateAnime());
             _BL.UpdateAnime(a);
-            Animes.Add(new AnimeViewModel(a));
+            RefreshAnimes();
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()
@@ -222,6 +241,15 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #endregion
 
         #region Character
+
+        private void RefreshCharacters()
+        {
+            Characters = new ObservableCollection<CharacterViewModel>(
+                _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
+            );
+            OnCharactersFilterTextChanged(CharactersFilterText);
+        }
+
         [ObservableProperty]
         private ObservableCollection<CharacterViewModel> characters = new ObservableCollection<CharacterViewModel>();
 
@@ -272,9 +300,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             c.Name = NewCharacter.Name;
             c.Anime = NewCharacter.Anime.Anime;
             c.ImageData = NewCharacter.ImageData;
-            NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
             _BL.UpdateCharacter(c);
-            Characters.Add(new CharacterViewModel(c));
+            NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
+            RefreshCharacters();
 
         }
         [RelayCommand(CanExecute = nameof(CanDeleteCharacter))]

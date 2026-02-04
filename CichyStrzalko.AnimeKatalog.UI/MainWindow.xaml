@@ -151,7 +151,7 @@
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <Button Content="Dodaj"/>
+                    <Button Content="Dodaj" Command="{Binding AddCharacterCommand}"/>
                     <Button Content="Edytuj" />
                     <Button Content="Usuń" Command="{Binding DeleteCharacterCommand}"/>
                 </StackPanel>
