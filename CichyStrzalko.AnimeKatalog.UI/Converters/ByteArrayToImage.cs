@@ -7,7 +7,7 @@ using System.Windows.Data;
 
 namespace CichyStrzalko.AnimeKatalog.UI.Converters
 {
-    internal class ByteArrayToImage: IValueConverter
+    public class ByteArrayToImage: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

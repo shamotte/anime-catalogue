@@ -13,6 +13,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
     public partial class CharacterViewModel : ObservableValidator
     {
         [ObservableProperty]
+        private ICharacter character;
+        [ObservableProperty]
         private int id;
         [Required]
         [ObservableProperty]
@@ -21,15 +23,16 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [Required]
         [ObservableProperty]
-        private IAnime anime;
+        private AnimeViewModel anime;
 
         [ObservableProperty]
         private Byte[] imageData;
         public CharacterViewModel(ICharacter character) {
-        this.id = character.Id;
-        this.name = character.Name;
-        this.anime = character.Anime;
-        this.imageData = character.ImageData;
+            this.character = character;
+            this.id = character.Id;
+            this.name = character.Name;
+            this.anime = new AnimeViewModel(character.Anime);
+            this.imageData = character.ImageData;
         }
 
         public string DisplayName { get => $"{Id}: {Name}"; }

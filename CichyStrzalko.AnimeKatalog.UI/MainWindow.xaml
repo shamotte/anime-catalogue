@@ -161,6 +161,19 @@
                         <TextBlock>Anime</TextBlock>
                         <TextBlock Text="{Binding Selectedcharacter.DisplayAnime}"/>
                     </StackPanel>
+                    <StackPanel>
+                        <TextBlock> Dodaj Nową Postać</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding NewCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Anime</TextBlock>
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding NewCharacter.Anime}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
             </DockPanel>
         </TabItem>

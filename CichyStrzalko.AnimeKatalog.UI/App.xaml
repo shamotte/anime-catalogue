@@ -7,5 +7,6 @@
     <Application.Resources>
         <converters:ByteArrayToImage x:Key="ByteArrayToImage"/>
         <converters:EnumToNameConverter x:Key="EnumToNameConverter"/>
+        <converters:StudioVMToIStudio x:Key="StudioVMToIStudio" />
     </Application.Resources>
 </Application>

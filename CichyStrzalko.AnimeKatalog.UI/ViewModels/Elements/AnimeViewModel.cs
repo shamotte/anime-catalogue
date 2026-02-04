@@ -10,8 +10,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
     public partial class AnimeViewModel : ObservableValidator
     {
-        //[ObservableProperty]
-        //private IAnime _Anime;
+        [ObservableProperty]
+        private IAnime anime;
         [ObservableProperty]
         private int id;
         [ObservableProperty]
@@ -31,7 +31,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         [Required]
-        private IStudio studio;
+        private StudioViewModel studio;
 
         [ObservableProperty]
         private int episodes;
@@ -42,14 +42,18 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         public AnimeViewModel(IAnime anime)
         {
-            //this._Anime = anime;
-            this.id = anime.Id;
-            this.name = anime.Name;
-            this.premiere = anime.Premiere;
-            this.genre = anime.Genre;
-            this.studio = anime.Studio;
-            this.episodes = anime.Episodes;
-            this.imageData = anime.ImageData;
+            this.anime = anime;
+            if (anime != null)
+            {
+
+                this.id = anime.Id;
+                this.name = anime.Name;
+                this.premiere = anime.Premiere;
+                this.genre = anime.Genre;
+                this.studio = new StudioViewModel(anime.Studio);
+                this.episodes = anime.Episodes;
+                this.imageData = anime.ImageData;
+            }
 
 
         }

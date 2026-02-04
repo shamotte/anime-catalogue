@@ -39,6 +39,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
             newStudio = new StudioViewModel( _BL.CreateStudio());
             newAnime = new AnimeViewModel(_BL.CreateAnime());
+            newCharacter = new CharacterViewModel(_BL.CreateCharacter());
 
         }
         [ObservableProperty]
@@ -144,7 +145,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             a.Name = NewAnime.Name;
             a.Premiere = NewAnime.Premiere;
             a.Genre = NewAnime.Genre;
-            a.Studio = NewAnime.Studio;
+            a.Studio = NewAnime.Studio.Studio;
             a.Episodes = NewAnime.Episodes;
             a.ImageData = NewAnime.ImageData;
             NewAnime = new AnimeViewModel(_BL.CreateAnime());
@@ -179,6 +180,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [NotifyCanExecuteChangedFor(nameof(DeleteCharacterCommand))]
         private CharacterViewModel? selectedcharacter;
 
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddCharacterCommand))]
+        private CharacterViewModel? newCharacter;
         private bool CanAddCharacter()
         {
             // Implementation for determining if a character can be added
@@ -195,7 +199,14 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddCharacter))]
         private void AddCharacter()
         {
-            // Implementation for adding a character
+            ICharacter c = _BL.CreateCharacter();
+            c.Name = NewCharacter.Name;
+            c.Anime = NewCharacter.Anime.Anime;
+            c.ImageData = NewCharacter.ImageData;
+            NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
+            _BL.UpdateCharacter(c);
+            Characters.Add(new CharacterViewModel(c));
+
         }
         [RelayCommand(CanExecute = nameof(CanDeleteCharacter))]
         private void DeleteCharacter()
