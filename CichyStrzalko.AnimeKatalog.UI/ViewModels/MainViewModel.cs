@@ -27,15 +27,6 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             _configuration = AppConfiguration.Configuration;
             _BL = new BL.BL(_configuration);
 
-            //studios = new ObservableCollection<StudioViewModel>(
-            //    _BL.GetAllStudios().Select(s => new StudioViewModel(s))
-            //);
-            //animes = new ObservableCollection<AnimeViewModel>(
-            //    _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
-            //);
-            //characters = new ObservableCollection<CharacterViewModel>(
-            //    _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
-            //);
             RefreshStudios();
             RefreshAnimes();
             RefreshCharacters();
@@ -43,18 +34,29 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             newStudio = new StudioViewModel( _BL.CreateStudio());
             newAnime = new AnimeViewModel(_BL.CreateAnime());
             newCharacter = new CharacterViewModel(_BL.CreateCharacter());
-
-
-            //filteredStudios = new ObservableCollection<StudioViewModel>(Studios);
-            //filteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
-            //filteredCharacters = new ObservableCollection<CharacterViewModel>(Characters);
         }
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
-        
-        
-        #region Studio
+        [RelayCommand]
+        private void isChecked(object parameter) {
+            //Implementation for checkbox checked event
+        }
+        [RelayCommand]
+        private void isUnchecked(object parameter)
+        {
+            //Implementation for checkbox unchecked event
+        }
 
+        [ObservableProperty]
+        private StudioViewModel? editedStudio;
+        #region Studio
+        partial void OnSelectedstudioChanged(StudioViewModel? value)
+        {
+            if(value != null)
+            {
+                EditedStudio = new StudioViewModel(value.Studio);
+            }
+        }
         private void RefreshStudios()
         {
             Studios = new ObservableCollection<StudioViewModel>(
@@ -90,7 +92,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(DeleteStudioCommand))]
+        [NotifyCanExecuteChangedFor(nameof(DeleteStudioCommand), nameof(EditStudioCommand))]
         private StudioViewModel? selectedstudio;
 
 
@@ -146,7 +148,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditStudio))]
         private void EditStudio()
         {
-            // Implementation for editing a studio
+            _BL.UpdateStudio(EditedStudio.ToModel());
+            RefreshStudios();
         }
         #endregion
 

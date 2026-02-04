@@ -35,5 +35,14 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             }
         }
         public string DisplayName { get => $"{Id}: {Name}, {Address}"; }
+
+        public IStudio ToModel()
+        {
+            Studio.Id = Id;
+            Studio.Name = Name;
+            Studio.Address = Address;
+            return Studio;
+        }
+
     }
 }

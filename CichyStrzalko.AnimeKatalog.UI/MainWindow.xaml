@@ -23,7 +23,7 @@
                     <Button Content="Dodaj"
                         Command="{Binding AddStudioCommand}"/>
                     <Button Content="Edytuj"
-                        />
+                        Command="{Binding EditStudioCommand}"/>
                     <Button Content="Usuń" Command="{Binding DeleteStudioCommand}"
                         />
                 </StackPanel>
@@ -52,6 +52,14 @@
                         <TextBox Text="{Binding NewStudio.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Adres</TextBlock>
                         <TextBox Text="{Binding NewStudio.Address, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    <!-- Edition-->
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <TextBlock>Edytuj studio</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding EditedStudio.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Adres</TextBlock>
+                        <TextBox Text="{Binding EditedStudio.Address, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
