@@ -24,15 +24,16 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Address can't be empty")]
         private string address;
 
-        //[ObservableProperty]
-        //private IStudio studio;
+        [ObservableProperty]
+        private IStudio studio;
         public StudioViewModel(IStudio studio) {
-            //this.studio = studio;
-            this.id = studio.Id;
-            this.name = studio.Name;
-            this.address = studio.Address;
+            this.studio = studio;
+            if(studio != null) {
+                this.id = studio.Id;
+                this.name = studio.Name;
+                this.address = studio.Address;
+            }
         }
-
         public string DisplayName { get => $"{Id}: {Name}, {Address}"; }
     }
 }

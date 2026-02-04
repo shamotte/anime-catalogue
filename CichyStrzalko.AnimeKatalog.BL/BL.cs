@@ -89,7 +89,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
             {
                 value = true,
                 message = "Anime zostało usunięte.",
-                succesful = false
+                succesful = true
             };
         }
 

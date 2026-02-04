@@ -4,7 +4,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI"
+        xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
     <TabControl Name="Zakładki">
@@ -12,8 +14,10 @@
             <!--detail panel containing Studios-->
             <DockPanel>
                 <!--TODO:Filters for Studio -->
-                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <TextBlock>Here be filters</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox Text="{Binding StudioFilterText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right">
+                    </TextBox>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj"
@@ -25,10 +29,9 @@
                 </StackPanel>
                 <!-- Studio -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListStudio" ItemsSource="{Binding Studios}" SelectedItem="{Binding Selectedstudio }">
+                    <ListView Name="ListStudio" ItemsSource="{Binding FilteredStudios}" SelectedItem="{Binding Selectedstudio }">
                         <ListView.View>
                             <GridView>
-                                <!--TODO:Add DataBinding Here-->
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
                                 <GridViewColumn Header="Adres" DisplayMemberBinding="{Binding Address}"></GridViewColumn>
                             </GridView>
@@ -58,8 +61,9 @@
             <!--Master detail panel containing animes and their characters-->
             <DockPanel >
                 <!--Filters for Anime -->
-                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <TextBlock>Here be filters</TextBlock>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox Text="{Binding AnimeFilterText, UpdateSourceTrigger=PropertyChanged}"> </TextBox>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
@@ -70,7 +74,7 @@
                 </StackPanel>
                 <!-- Anime -->
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListAnime" ItemsSource="{Binding Animes}"  SelectedItem ="{Binding Selectedanime}">
+                    <ListView Name="ListAnime" ItemsSource="{Binding FilteredAnimes}"  SelectedItem ="{Binding Selectedanime}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
@@ -84,7 +88,6 @@
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
@@ -96,20 +99,24 @@
                         <TextBlock Text="{Binding Selectedanime.Name}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Episodes}"/>
+                        <TextBlock>Data premiery</TextBlock>
+                        <TextBlock Text="{Binding Selectedanime.Premiere}"/>
                         <TextBlock>Studio</TextBlock>
+                        <TextBlock Text="{Binding Selectedanime.DisplayStudio}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
-                        <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
+                        <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <!-- Addition Anime-->
                         <TextBlock>Dodaj nowe anime</TextBlock>
                         <TextBlock>Nazwa</TextBlock>
                         <TextBox Text="{Binding NewAnime.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
                         <TextBox Text="{Binding NewAnime.Episodes, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Premiera</TextBlock>
-                        <TextBox Text="{Binding NewAnime.Premiere, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock>Twórcy</TextBlock>
+                        <DatePicker SelectedDate="{Binding NewAnime.Premiere}"/>
+                        <TextBlock>Twórca</TextBlock>
                         <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.Studio}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -120,11 +127,17 @@
                         <ListBox ItemsSource="{Binding Genres}">
                             <ListBox.ItemTemplate>
                             <DataTemplate>
-                                    <CheckBox Content=""/>
+                                    <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
                             </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-
+                        <TextBlock>Obrazek</TextBlock>
+                        <Image Source="{Binding NewAnime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="100" Margin="0,0,0,0">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick"
+                                              Command="{Binding NewAnime.SetImageCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -132,17 +145,18 @@
         <TabItem Name="Characters" Header="Postacie">
             <DockPanel >
                 <!--Filters for Characters -->
-                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <TextBlock>Here be filters</TextBlock>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox Text="{Binding CharactersFilterText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
-                    <Button Content="Dodaj"/>
+                    <Button Content="Dodaj" Command="{Binding AddCharacterCommand}"/>
                     <Button Content="Edytuj" />
                     <Button Content="Usuń" Command="{Binding DeleteCharacterCommand}"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectedItem="{Binding Selectedcharacter}">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding FilteredCharacters}" SelectedItem="{Binding Selectedcharacter}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
@@ -155,7 +169,26 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBlock Text="{Binding Selectedcharacter.Name}"/>
                         <TextBlock>Anime</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.Anime.Name}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.DisplayAnime}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock> Dodaj Nową Postać</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding NewCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Anime</TextBlock>
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding NewCharacter.Anime}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Image Source="{Binding NewCharacter.ImageData, Converter={StaticResource ByteArrayToImage}}">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick"
+                                              Command="{Binding NewCharacter.SetImageCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
