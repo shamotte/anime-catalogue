@@ -38,6 +38,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
             foreach (Genre g in Enum.GetValues<Genre>())
             {
+                if (g == Genre.Unknown)
+                    continue;
                 AddeddGenres.Add(new GenreViewModel(g, false));
                 editedGenres.Add(new GenreViewModel(g, false));
             }
@@ -354,9 +356,12 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddCharacter))]
         private void AddCharacter()
         {
-            _BL.UpdateCharacter(NewCharacter.ToModel());
-            NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
-            RefreshCharacters();
+            if(NewCharacter != null)
+            {
+                _BL.UpdateCharacter(NewCharacter.ToModel());
+                NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
+                RefreshCharacters();
+            }
 
         }
         [RelayCommand(CanExecute = nameof(CanDeleteCharacter))]
