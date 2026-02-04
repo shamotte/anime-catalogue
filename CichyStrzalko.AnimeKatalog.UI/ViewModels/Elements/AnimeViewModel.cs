@@ -76,6 +76,16 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             }
         }
 
-
+        public IAnime ToModel()
+        {
+            Anime.Id = Id;
+            Anime.Name = Name;
+            Anime.Premiere = Premiere;
+            Anime.Genre = Genre;
+            Anime.Studio = Studio.ToModel();
+            Anime.Episodes = Episodes;
+            Anime.ImageData = ImageData;
+            return Anime;
+        }
     }
 }
