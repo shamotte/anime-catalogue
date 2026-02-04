@@ -52,6 +52,28 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [ObservableProperty]
         private ObservableCollection<StudioViewModel> studios = new ObservableCollection<StudioViewModel>();
 
+        //Filtratrion
+        [ObservableProperty]
+        private ObservableCollection<StudioViewModel> filteredStudios = new ObservableCollection<StudioViewModel>();
+        [ObservableProperty]
+        private string studioFilterText = string.Empty;
+        partial void OnStudioFilterTextChanged(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                FilteredStudios = new ObservableCollection<StudioViewModel>(Studios);
+            }
+            else
+            {
+                FilteredStudios = new ObservableCollection<StudioViewModel>(
+                    Studios.Where(s => s.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+                                      s.Address.Contains(value, StringComparison.OrdinalIgnoreCase))
+                );
+            }
+        }
+
+
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(DeleteStudioCommand))]
         private StudioViewModel? selectedstudio;
@@ -117,6 +139,27 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #region Anime
         [ObservableProperty]
         private ObservableCollection<AnimeViewModel> animes = new ObservableCollection<AnimeViewModel>();
+
+        //Filtratrion
+        [ObservableProperty]
+        private ObservableCollection<AnimeViewModel> filteredAnimes = new ObservableCollection<AnimeViewModel>();
+        [ObservableProperty]
+        private string animeFilterText = string.Empty;
+        partial void OnAnimeFilterTextChanged(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                FilteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
+            }
+            else
+            {
+                FilteredAnimes = new ObservableCollection<AnimeViewModel>(
+                    Animes.Where(a => a.Name.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Genres.Contains(value, StringComparison.OrdinalIgnoreCase))
+                );
+            }
+        }
+
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(DeleteAnimeCommand))]
         private AnimeViewModel? selectedanime;
