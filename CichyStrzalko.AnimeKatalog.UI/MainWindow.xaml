@@ -14,9 +14,9 @@
             <!--detail panel containing Studios-->
             <DockPanel>
                 <!--TODO:Filters for Studio -->
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <TextBox Text="{Binding StudioFilterText, UpdateSourceTrigger=PropertyChanged}">
-                        
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                    <TextBox Text="{Binding StudioFilterText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right">
                     </TextBox>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
@@ -62,6 +62,7 @@
             <DockPanel >
                 <!--Filters for Anime -->
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                     <TextBox Text="{Binding AnimeFilterText, UpdateSourceTrigger=PropertyChanged}"> </TextBox>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
@@ -145,6 +146,7 @@
             <DockPanel >
                 <!--Filters for Characters -->
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Szukaj:" VerticalAlignment="Center" Margin="0,0,5,0"/>
                     <TextBox Text="{Binding CharactersFilterText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <!-- Characters -->
