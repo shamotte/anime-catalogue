@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using CichyStrzalko.AnimeKatalog.BL;
 using CichyStrzalko.AnimeKatalog.Core;
 using CichyStrzalko.AnimeKatalog.Core.Project.Core.Configuration;
@@ -34,21 +35,22 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             newStudio = new StudioViewModel( _BL.CreateStudio());
             newAnime = new AnimeViewModel(_BL.CreateAnime());
             newCharacter = new CharacterViewModel(_BL.CreateCharacter());
+
+            foreach (Genre g in Enum.GetValues<Genre>())
+            {
+                Addeddgenres.Add(new GenreViewModel(g, false));
+                editedGenres.Add(new GenreViewModel(g, false));
+            }
         }
 
 
 
         [ObservableProperty]
-        private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
-        [RelayCommand]
-        private void isChecked(object parameter) {
-            //Implementation for checkbox checked event
-        }
-        [RelayCommand]
-        private void isUnchecked(object parameter)
-        {
-            //Implementation for checkbox unchecked event
-        }
+        private ObservableCollection<GenreViewModel> addeddgenres = new ObservableCollection<GenreViewModel>();
+        [ObservableProperty]
+        private ObservableCollection<GenreViewModel> editedGenres = new ObservableCollection<GenreViewModel>();
+        //[ObservableProperty]
+        //private ObservableCollection<CheckBox> genreCheckBoxes = new ObservableCollection<CheckBox>();
 
         #region Studio
         partial void OnSelectedstudioChanged(StudioViewModel? value)
@@ -161,10 +163,29 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             if(value != null)
             {
                 EditedAnime = new AnimeViewModel(value.Anime);
+                foreach(GenreViewModel g in EditedGenres)
+                {
+                    if (EditedAnime.Genre.HasFlag(g.SelectedGenre))
+                    {
+                        g.IsSelected = true;
+                    }
+                    else
+                    {
+                        g.IsSelected = false;
+                    }
+                }
             }
         }
         private void RefreshAnimes()
         {
+            foreach(var g in Addeddgenres)
+            {
+                g.IsSelected = false;
+            }
+            foreach (var g in EditedGenres)
+            {
+                g.IsSelected = false;
+            }
             Animes = new ObservableCollection<AnimeViewModel>(
                 _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
             );
@@ -241,6 +262,14 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private void EditAnime()
         {
             if (EditedAnime != null)
+                foreach(GenreViewModel g in EditedGenres)
+                {
+                    if (g.IsSelected)
+                    {
+                        EditedAnime.Genre |= g.SelectedGenre;
+
+                    }
+                }
                 _BL.UpdateAnime(EditedAnime.ToModel());
                 RefreshAnimes();
         }

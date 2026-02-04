@@ -163,10 +163,10 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <ListBox ItemsSource="{Binding Genres}">
+                        <ListBox ItemsSource="{Binding EditedGenres}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
+                                    <CheckBox Content="{Binding SelectedGenre, Converter={StaticResource EnumToNameConverter}}" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
