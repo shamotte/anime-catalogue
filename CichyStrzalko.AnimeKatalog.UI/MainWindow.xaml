@@ -192,7 +192,7 @@
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj" Command="{Binding AddCharacterCommand}"/>
-                    <Button Content="Edytuj" />
+                    <Button Content="Edytuj"  Command="{Binding EditCharacterCommand}"/>
                     <Button Content="Usuń" Command="{Binding DeleteCharacterCommand}"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
@@ -229,6 +229,25 @@
                                               Command="{Binding NewCharacter.SetImageCommand}"/>
                             </Image.InputBindings>
                         </Image>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock> Edytuj Postać</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding EditedCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Anime</TextBlock>
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding EditedCharacter.Anime}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <!--<Image Source="{Binding EditedCharacter.ImageData, Converter={StaticResource ByteArrayToImage}}">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick"
+                                              Command="{Binding EditedCharacter.SetImageCommand}"/>
+                            </Image.InputBindings>
+                        </Image>-->
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

@@ -247,6 +247,15 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #endregion
 
         #region Character
+        [ObservableProperty]
+        private CharacterViewModel? editedCharacter;
+        partial void OnSelectedcharacterChanged(CharacterViewModel? value)
+        {
+            if (value != null)
+            {
+                EditedCharacter = new CharacterViewModel(value.Character);
+            }
+        }
 
         private void RefreshCharacters()
         {
@@ -261,7 +270,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private ObservableCollection<CharacterViewModel> characters = new ObservableCollection<CharacterViewModel>();
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(DeleteCharacterCommand))]
+        [NotifyCanExecuteChangedFor(nameof(DeleteCharacterCommand), nameof(EditCharacterCommand))]
         private CharacterViewModel? selectedcharacter;
 
         //Filtratrion
@@ -285,7 +294,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(AddCharacterCommand))]
+        [NotifyCanExecuteChangedFor(nameof(AddCharacterCommand), nameof(EditCharacterCommand))]
         private CharacterViewModel? newCharacter;
         private bool CanAddCharacter()
         {
@@ -303,11 +312,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddCharacter))]
         private void AddCharacter()
         {
-            ICharacter c = _BL.CreateCharacter();
-            c.Name = NewCharacter.Name;
-            c.Anime = NewCharacter.Anime.Anime;
-            c.ImageData = NewCharacter.ImageData;
-            _BL.UpdateCharacter(c);
+            _BL.UpdateCharacter(NewCharacter.ToModel());
             NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
             RefreshCharacters();
 
@@ -326,7 +331,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditCharacter))]
         private void EditCharacter()
         {
-            // Implementation for editing a character
+            if (EditedCharacter != null)
+            {
+                _BL.UpdateCharacter(EditedCharacter.ToModel());
+                RefreshCharacters();
+            }
         }
         #endregion
     }
