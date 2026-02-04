@@ -8,7 +8,7 @@
         xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-        Title="Anime Katalog" Height="450" Width="800">
+        Title="Anime Katalog" Height="600" Width="1200">
     <TabControl Name="Zakładki">
         <TabItem Name="Studio" Header ="Studia">
             <!--detail panel containing Studios-->
