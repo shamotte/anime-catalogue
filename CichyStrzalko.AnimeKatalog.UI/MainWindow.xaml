@@ -22,8 +22,7 @@
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button Content="Dodaj"
                         Command="{Binding AddStudioCommand}"/>
-                    <Button Content="Edytuj"
-                        Command="{Binding EditStudioCommand}"/>
+                    <Button Content="Edytuj" Command="{Binding EditStudioCommand}"/>
                     <Button Content="Usuń" Command="{Binding DeleteStudioCommand}"
                         />
                 </StackPanel>
@@ -77,7 +76,7 @@
                     <!--TODO:ADD FUNCTIONS-->
                     <Button Content="Dodaj"
                             Command="{Binding AddAnimeCommand}"/>
-                    <Button Content="Edytuj"/>
+                    <Button Content="Edytuj" Command="{Binding EditAnimeCommand}"/>
                     <Button Content="Usuń" Command="{Binding DeleteAnimeCommand}"/>
                 </StackPanel>
                 <!-- Anime -->
@@ -146,6 +145,39 @@
                                               Command="{Binding NewAnime.SetImageCommand}"/>
                             </Image.InputBindings>
                         </Image>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <!-- Edition Anime-->
+                        <TextBlock>Edytuj anime</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding EditedAnime.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Liczba odcinków</TextBlock>
+                        <TextBox Text="{Binding EditedAnime.Episodes, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Premiera</TextBlock>
+                        <DatePicker SelectedDate="{Binding EditedAnime.Premiere}"/>
+                        <TextBlock>Twórca</TextBlock>
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding EditedAnime.Studio}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DisplayName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <ListBox ItemsSource="{Binding Genres}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock>Obrazek</TextBlock>
+                        <!--TODO:IMAGE-->
+                        <!--<Image Source="{Binding EditedAnime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="100" Margin="0,0,0,0">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick"
+                                              Command="{Binding EditedAnime.SetImageCommand}"/>
+                            </Image.InputBindings>
+                        </Image>-->
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

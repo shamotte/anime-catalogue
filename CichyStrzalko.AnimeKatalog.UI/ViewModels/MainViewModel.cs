@@ -35,6 +35,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             newAnime = new AnimeViewModel(_BL.CreateAnime());
             newCharacter = new CharacterViewModel(_BL.CreateCharacter());
         }
+
+
+
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
         [RelayCommand]
@@ -47,8 +50,6 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             //Implementation for checkbox unchecked event
         }
 
-        [ObservableProperty]
-        private StudioViewModel? editedStudio;
         #region Studio
         partial void OnSelectedstudioChanged(StudioViewModel? value)
         {
@@ -113,6 +114,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             }
         }
 
+        [ObservableProperty]
+        private StudioViewModel? editedStudio;
         private bool CanEditStudio()
         {
             return Selectedstudio != null;
@@ -134,11 +137,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
-            if(NewStudio != null) { 
-                IStudio s = _BL.CreateStudio();
-                s.Address = NewStudio.Address;
-                s.Name = NewStudio.Name;
-                _BL.UpdateStudio(s);
+            if(NewStudio != null) {
+                _BL.UpdateStudio(NewStudio.ToModel());
                 NewStudio = new StudioViewModel(_BL.CreateStudio());
                 RefreshStudios();
             }
@@ -147,13 +147,22 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditStudio))]
         private void EditStudio()
         {
-            _BL.UpdateStudio(EditedStudio.ToModel());
+            if(EditedStudio != null)
+                _BL.UpdateStudio(EditedStudio.ToModel());
             RefreshStudios();
         }
         #endregion
 
         #region Anime
-
+        [ObservableProperty]
+        private AnimeViewModel? editedAnime;
+        partial void OnSelectedanimeChanged(AnimeViewModel? value)
+        {
+            if(value != null)
+            {
+                EditedAnime = new AnimeViewModel(value.Anime);
+            }
+        }
         private void RefreshAnimes()
         {
             Animes = new ObservableCollection<AnimeViewModel>(
@@ -187,7 +196,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(DeleteAnimeCommand))]
+        [NotifyCanExecuteChangedFor(nameof(DeleteAnimeCommand), nameof(EditAnimeCommand))]
         private AnimeViewModel? selectedanime;
 
         [ObservableProperty]
@@ -212,21 +221,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddAnime))]
         private void AddAnime()
         {
-            IAnime a = _BL.CreateAnime();
-            a.Name = NewAnime.Name;
-            a.Premiere = NewAnime.Premiere;
-            a.Genre = NewAnime.Genre;
-            a.Studio = NewAnime.Studio.Studio;
-            a.Episodes = NewAnime.Episodes;
-            a.ImageData = NewAnime.ImageData;
+            _BL.UpdateAnime(NewAnime.ToModel());
             NewAnime = new AnimeViewModel(_BL.CreateAnime());
-            _BL.UpdateAnime(a);
             RefreshAnimes();
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()
         {
-            if(Selectedanime != null)
             if(Selectedanime != null)
             {
                 if (_BL.DeleteAnime(Selectedanime.Id).succesful)
@@ -239,7 +240,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditAnime))]
         private void EditAnime()
         {
-            // Implementation for editing an anime
+            if (EditedAnime != null)
+                _BL.UpdateAnime(EditedAnime.ToModel());
+                RefreshAnimes();
         }
         #endregion
 
