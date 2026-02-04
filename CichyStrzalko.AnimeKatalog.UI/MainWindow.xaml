@@ -97,10 +97,12 @@
                         <TextBlock Text="{Binding Selectedanime.Name}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Episodes}"/>
+                        <TextBlock>Data premiery</TextBlock>
+                        <TextBlock Text="{Binding Selectedanime.Premiere}"/>
                         <TextBlock>Studio</TextBlock>
+                        <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
-                        <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
                         <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
@@ -119,7 +121,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <ListBox ItemsSource="{Binding Genres}" SelectedItem="{Binding g}">
+                        <ListBox ItemsSource="{Binding Genres}">
                             <ListBox.ItemTemplate>
                             <DataTemplate>
                                     <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
