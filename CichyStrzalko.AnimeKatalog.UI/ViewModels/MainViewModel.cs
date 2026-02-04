@@ -158,7 +158,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             else
             {
                 FilteredAnimes = new ObservableCollection<AnimeViewModel>(
-                    Animes.Where(a => a.Name.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Genres.Contains(value, StringComparison.OrdinalIgnoreCase))
+                    Animes.Where(a => a.Name.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Genres.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Studio.Name.Contains(value, StringComparison.OrdinalIgnoreCase))
                 );
             }
         }
