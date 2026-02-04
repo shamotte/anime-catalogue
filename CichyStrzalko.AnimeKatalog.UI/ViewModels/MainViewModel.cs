@@ -44,6 +44,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
+        
+        
         #region Studio
 
 

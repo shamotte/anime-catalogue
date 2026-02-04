@@ -1,10 +1,14 @@
 ﻿
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Windows.Navigation;
 using CichyStrzalko.AnimeKatalog.Core;
 using CichyStrzalko.AnimeKatalog.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
+
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
@@ -61,5 +65,17 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         public string DisplayName { get => $"{Id}: {Name} ({Premiere})"; }
         public string DisplayStudio { get => $"{Studio.Id}: {Studio.Name}, {Studio.Address}"; }
+
+        [RelayCommand]
+        private void SetImage(object parameter)
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                ImageData =  File.ReadAllBytes(dialog.FileName);
+            }
+        }
+
+
     }
 }
