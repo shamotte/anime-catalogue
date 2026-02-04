@@ -41,6 +41,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             newAnime = new AnimeViewModel(_BL.CreateAnime());
             newCharacter = new CharacterViewModel(_BL.CreateCharacter());
 
+
+            filteredStudios = new ObservableCollection<StudioViewModel>(Studios);
+            filteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
+
         }
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
