@@ -49,5 +49,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 ImageData = File.ReadAllBytes(dialog.FileName);
             }
         }
+        public ICharacter ToModel()
+        {
+            Character.Id = Id;
+            Character.Name = Name;
+            Character.Anime = Anime.ToModel();
+            Character.ImageData = ImageData;
+            return Character;
+        }
     }
 }

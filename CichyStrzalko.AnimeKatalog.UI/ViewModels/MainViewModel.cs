@@ -62,6 +62,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Studios = new ObservableCollection<StudioViewModel>(
                 _BL.GetAllStudios().Select(s => new StudioViewModel(s))
             );
+            Studios.OrderBy(s => s.Id);
             OnStudioFilterTextChanged(StudioFilterText);
         }
 
@@ -133,16 +134,14 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
         {
-            IStudio s = _BL.CreateStudio();
-            s.Address = NewStudio.Address;
-            s.Name = NewStudio.Name;
-            _BL.UpdateStudio(s);
-            //Studios.Add(new StudioViewModel(s));
-            NewStudio = new StudioViewModel(_BL.CreateStudio());
-            RefreshStudios();
-
-
-            // Implementation for adding a studio
+            if(NewStudio != null) { 
+                IStudio s = _BL.CreateStudio();
+                s.Address = NewStudio.Address;
+                s.Name = NewStudio.Name;
+                _BL.UpdateStudio(s);
+                NewStudio = new StudioViewModel(_BL.CreateStudio());
+                RefreshStudios();
+            }
         }
 
         [RelayCommand(CanExecute = nameof(CanEditStudio))]
@@ -160,6 +159,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Animes = new ObservableCollection<AnimeViewModel>(
                 _BL.GetAllAnime().Select(a => new AnimeViewModel(a))
             );
+            Animes.OrderBy(a => a.Id);
             OnAnimeFilterTextChanged(AnimeFilterText);
         }
 
@@ -214,7 +214,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             IAnime a = _BL.CreateAnime();
             a.Name = NewAnime.Name;
-            a.Premiere = DateTime.Parse(NewAnime.Premiere);
+            a.Premiere = NewAnime.Premiere;
             a.Genre = NewAnime.Genre;
             a.Studio = NewAnime.Studio.Studio;
             a.Episodes = NewAnime.Episodes;
@@ -250,6 +250,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Characters = new ObservableCollection<CharacterViewModel>(
                 _BL.GetAllCharacters().Select(c => new CharacterViewModel(c))
             );
+            Characters.OrderBy(c => c.Id);
             OnCharactersFilterTextChanged(CharactersFilterText);
         }
 
