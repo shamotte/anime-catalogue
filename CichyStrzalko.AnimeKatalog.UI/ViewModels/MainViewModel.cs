@@ -55,6 +55,38 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         //private ObservableCollection<CheckBox> genreCheckBoxes = new ObservableCollection<CheckBox>();
 
         #region Studio
+
+        private StudioViewModel? _previousStudio;
+
+
+        public IEnumerable<string> NewStudioErrors
+        {
+            get => NewStudio?.GetErrors().Select(x => x.ErrorMessage);
+        }
+
+        partial void OnNewStudioChanged(StudioViewModel? value)
+        {
+            if(_previousStudio != null)
+            {
+                _previousStudio.ErrorsChanged -= NewStudio_ErrorsChanged;
+            }
+            if(NewStudio != null)
+            {
+                NewStudio.ErrorsChanged += NewStudio_ErrorsChanged;
+            }
+            _previousStudio = NewStudio;
+            OnPropertyChanged(nameof(NewStudioErrors));
+            AddStudioCommand.NotifyCanExecuteChanged();
+            
+        }
+        private void NewStudio_ErrorsChanged(object? sender, System.ComponentModel.DataErrorsChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(NewStudioErrors));
+            AddStudioCommand.NotifyCanExecuteChanged();
+        }
+
+        
+        
         partial void OnSelectedstudioChanged(StudioViewModel? value)
         {
             if(value != null)
@@ -62,6 +94,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 EditedStudio = new StudioViewModel(value.Studio);
             }
         }
+
+
         private void RefreshStudios()
         {
             Studios = new ObservableCollection<StudioViewModel>(
@@ -126,8 +160,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
 
         [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddStudioCommand))]
         private StudioViewModel? newStudio;
-        
         private void ResetNewStudio()
         {
             NewStudio = new StudioViewModel( _BL.CreateStudio());
@@ -136,7 +170,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private bool CanAddStudio()
         {
             // TODO: Add erros
-            return NewStudio != null && NewStudio.HasErrors == false;
+            return NewStudio != null
+                //&& 
+                //NewStudio.HasErrors == false
+                ;
         }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
@@ -227,8 +264,15 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private AnimeViewModel? newAnime;
         private bool CanAddAnime()
         {
-            return NewAnime != null && !NewAnime.HasErrors;
+            return NewAnime != null
+                //&& !NewAnime.HasErrors
+                ;
             //return true;
+        }
+        partial void OnNewAnimeChanged(AnimeViewModel? value)
+        {
+            NewAnime.CheckValidity();
+            AddAnimeCommand.NotifyCanExecuteChanged();
         }
 
         private bool CanDeleteAnime()
