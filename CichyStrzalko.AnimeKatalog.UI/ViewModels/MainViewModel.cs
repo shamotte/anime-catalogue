@@ -38,6 +38,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             );
 
             newStudio = new StudioViewModel( _BL.CreateStudio());
+            newAnime = new AnimeViewModel(_BL.CreateAnime());
 
         }
         [ObservableProperty]
@@ -147,6 +148,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             a.Episodes = NewAnime.Episodes;
             a.ImageData = NewAnime.ImageData;
             NewAnime = new AnimeViewModel(_BL.CreateAnime());
+            _BL.UpdateAnime(a);
+            Animes.Add(new AnimeViewModel(a));
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()

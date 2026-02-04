@@ -110,8 +110,8 @@
                         <TextBlock>Liczba odcinków</TextBlock>
                         <TextBox Text="{Binding NewAnime.Episodes, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Premiera</TextBlock>
-                        <TextBox Text="{Binding NewAnime.Premiere, UpdateSourceTrigger=PropertyChanged}"/>
-                        <TextBlock>Twórcy</TextBlock>
+                        <DatePicker SelectedDate="{Binding NewAnime.Premiere}"/>
+                        <TextBlock>Twórca</TextBlock>
                         <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.Studio}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
