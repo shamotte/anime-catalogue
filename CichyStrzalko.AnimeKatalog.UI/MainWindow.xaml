@@ -144,8 +144,8 @@
         <TabItem Name="Characters" Header="Postacie">
             <DockPanel >
                 <!--Filters for Characters -->
-                <StackPanel DockPanel.Dock="Left" Orientation="Vertical">
-                    <TextBlock>Here be filters</TextBlock>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                    <TextBox Text="{Binding CharactersFilterText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 </StackPanel>
                 <!-- Characters -->
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
@@ -154,7 +154,7 @@
                     <Button Content="Usuń" Command="{Binding DeleteCharacterCommand}"/>
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <ListView Name="ListCharacters" ItemsSource="{Binding Characters}" SelectedItem="{Binding Selectedcharacter}">
+                    <ListView Name="ListCharacters" ItemsSource="{Binding FilteredCharacters}" SelectedItem="{Binding Selectedcharacter}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}"></GridViewColumn>

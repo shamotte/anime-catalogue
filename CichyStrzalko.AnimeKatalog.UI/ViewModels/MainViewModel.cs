@@ -44,7 +44,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
             filteredStudios = new ObservableCollection<StudioViewModel>(Studios);
             filteredAnimes = new ObservableCollection<AnimeViewModel>(Animes);
-
+            filteredCharacters = new ObservableCollection<CharacterViewModel>(Characters);
         }
         [ObservableProperty]
         private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
@@ -228,6 +228,26 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(DeleteCharacterCommand))]
         private CharacterViewModel? selectedcharacter;
+
+        //Filtratrion
+        [ObservableProperty]
+        private ObservableCollection<CharacterViewModel> filteredCharacters = new ObservableCollection<CharacterViewModel>();
+        [ObservableProperty]
+        private string charactersFilterText = string.Empty;
+        partial void OnCharactersFilterTextChanged(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                FilteredCharacters = new ObservableCollection<CharacterViewModel>(Characters);
+            }
+            else
+            {
+                FilteredCharacters = new ObservableCollection<CharacterViewModel>(
+                    Characters.Where(c => c.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
+                                      c.Anime.Name.Contains(value, StringComparison.OrdinalIgnoreCase))
+                );
+            }
+        }
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(AddCharacterCommand))]
