@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.BL;
+using CichyStrzalko.AnimeKatalog.Core;
 using CichyStrzalko.AnimeKatalog.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -35,10 +36,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             newStudio = new StudioViewModel( _BL.CreateStudio());
 
         }
-
+        [ObservableProperty]
+        private ObservableCollection<Genre> genres =new ObservableCollection<Genre>( Enum.GetValues<Genre>());
         #region Studio
 
-        
+
         [ObservableProperty]
         private ObservableCollection<StudioViewModel> studios = new ObservableCollection<StudioViewModel>();
 

@@ -96,9 +96,9 @@
                         <TextBlock Text="{Binding Selectedanime.Name}"/>
                         <TextBlock>Liczba odcinków</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Episodes}"/>
+                        <TextBlock>Studio</TextBlock>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
-                        <TextBlock>Studio</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
@@ -113,11 +113,18 @@
                         <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.Studio}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                <TextBlock Text="{Binding DisplayName}"/>
-                                    
+                                    <TextBlock Text="{Binding DisplayName}"/>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+                        <ListBox ItemsSource="{Binding Genres}">
+                            <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                    <CheckBox Content=""/>
+                            </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

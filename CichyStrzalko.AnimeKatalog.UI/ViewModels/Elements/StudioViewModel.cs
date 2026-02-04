@@ -33,6 +33,6 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             this.address = studio.Address;
         }
 
-        public string DisplayName { get => $"{Id}:{Name},{Address}"; }
+        public string DisplayName { get => $"{Id}: {Name}, {Address}"; }
     }
 }
