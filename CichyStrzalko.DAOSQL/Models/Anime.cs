@@ -19,14 +19,14 @@ namespace CichyStrzalko.DAOSQL.Models
             public int Id { get; set; }
             public string Name { get; set; }
             public int Episodes { get; set; }
-            public string Premiere { get; set; }
+            public DateTime Premiere { get; set; }
             public Genre Genre { get; set; }
 
             [NotMapped]
             public IStudio Studio { get; set; }
 
             public int StudioId { get; set; }
-            public string ImageFile { get; set; }
-        }
+            public byte[] ImageData { get; set; }
+    }
     
 }
