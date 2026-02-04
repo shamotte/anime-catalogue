@@ -43,7 +43,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             //this._Anime = anime;
             this.id = anime.Id;
             this.name = anime.Name;
-            this.premiere = anime.Premiere;
+            this.premiere = anime.Premiere.ToString();
             this.genre = anime.Genre;
             this.studio = anime.Studio;
             this.episodes = anime.Episodes;

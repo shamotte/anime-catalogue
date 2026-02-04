@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Reflection;
 
-using CichyStrzalko.AnimeKatalog.daoMock1;
+
 namespace CichyStrzalko.AnimeKatalog.BL
 {
     public class BL
@@ -14,14 +14,14 @@ namespace CichyStrzalko.AnimeKatalog.BL
 
         public BL(IConfiguration configuration)
         {
-            //TODO: change to correct form
-            //dao = new 
-            //string libraryName = configuration["DAOLibraryName"] ?? "";
-            dao = new DAOmock1();
-            //if (string.IsNullOrEmpty(libraryName))
-            //    throw new Exception("Brak klucza 'DAOLibraryName' w pliku konfiguracyjnym.");
+            
+            
+            string libraryName = configuration["DLL_NAME"] ?? "";
+            
+            if (string.IsNullOrEmpty(libraryName))
+                throw new Exception("Brak klucza 'DLL_NAME' w pliku konfiguracyjnym.");
 
-            //LoadLibrary(libraryName, configuration);
+            LoadLibrary(libraryName, configuration);
         }
 
         private void LoadLibrary(string libraryName, IConfiguration configuration)
@@ -60,7 +60,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
             string localPath = Path.Combine(baseDir, libraryName);
             if (File.Exists(localPath)) return localPath;
 
-            
+            throw new Exception($"nie można odnaleźć pliku DLL {baseDir} w {localPath}");
             return null;
         }
 

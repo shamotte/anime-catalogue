@@ -20,6 +20,6 @@ namespace CichyStrzalko.DAOSQL.Models
 
         public int AnimeId { get; set; }
 
-        public String ImageFile { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }

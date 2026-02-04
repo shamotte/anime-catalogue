@@ -11,12 +11,14 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         int Episodes {  get; set; }
 
-        string Premiere { get; set; }
+        DateTime Premiere { get; set; }
 
         Genre Genre { get; set; }
 
         IStudio Studio { get; set; }
 
-        string ImageFile { get; set; }
+        
+
+        public byte[] ImageData { get; set; }
     }
 }

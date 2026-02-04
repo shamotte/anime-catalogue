@@ -8,6 +8,6 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
         string Name { get; set; }
         IAnime Anime { get; set; }
 
-        string ImageFile { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }

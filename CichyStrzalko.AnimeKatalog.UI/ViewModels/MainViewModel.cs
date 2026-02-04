@@ -7,10 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CichyStrzalko.AnimeKatalog.BL;
 using CichyStrzalko.AnimeKatalog.Core;
+using CichyStrzalko.AnimeKatalog.Core.Project.Core.Configuration;
 using CichyStrzalko.AnimeKatalog.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+
+
 
 namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
@@ -20,7 +24,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private BL.BL _BL;
         public MainViewModel()
         {
-            _configuration = new ConfigurationBuilder().Build();
+            _configuration = AppConfiguration.Configuration;
             _BL = new BL.BL(_configuration);
 
             studios = new ObservableCollection<StudioViewModel>(
