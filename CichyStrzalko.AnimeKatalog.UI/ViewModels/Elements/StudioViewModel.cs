@@ -44,5 +44,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             return Studio;
         }
 
+        public void copyFrom(StudioViewModel s)
+        {
+            Id = s.Id;
+            Name = s.Name;
+            Address = s.Address;
+            Studio = ToModel();
+        }
+
     }
 }

@@ -108,7 +108,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             {
                 if (_BL.DeleteStudio(Selectedstudio.Id).succesful)
                 {
-                    Studios.Remove(Selectedstudio);
+                    RefreshStudios();
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             {
                 if (_BL.DeleteAnime(Selectedanime.Id).succesful)
                 {
-                    Animes.Remove(Selectedanime);
+                    RefreshAnimes();
                 }
               
             }
@@ -316,7 +316,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             {
                 if (_BL.DeleteCharacter(Selectedcharacter.Id).succesful)
                 {
-                Characters.Remove(Selectedcharacter);
+                    RefreshCharacters();
                 }
             }
         }
