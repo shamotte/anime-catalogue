@@ -28,7 +28,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         public CharacterViewModel(ICharacter character) {
 
             //this.character = character;
-            this.id = character.Id;
+        this.id = character.Id;
         this.name = character.Name;
         this.anime = character.Anime;
         }

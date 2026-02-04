@@ -63,7 +63,8 @@
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <!--TODO:ADD FUNCTIONS-->
-                    <Button Content="Dodaj"/>
+                    <Button Content="Dodaj"
+                            Command="{Binding AddAnimeCommand}"/>
                     <Button Content="Edytuj"/>
                     <Button Content="Usuń" Command="{Binding DeleteAnimeCommand}"/>
                 </StackPanel>
@@ -83,7 +84,7 @@
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-                                
+
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
@@ -99,6 +100,24 @@
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
                         <TextBlock>Studio</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                        <TextBlock>Dodaj nowe anime</TextBlock>
+                        <TextBlock>Nazwa</TextBlock>
+                        <TextBox Text="{Binding NewAnime.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Liczba odcinków</TextBlock>
+                        <TextBox Text="{Binding NewAnime.Episodes, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Premiera</TextBlock>
+                        <TextBox Text="{Binding NewAnime.Premiere, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock>Twórcy</TextBlock>
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.Studio}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                <TextBlock Text="{Binding DisplayName}"/>
+                                    
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
