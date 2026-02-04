@@ -38,7 +38,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
             foreach (Genre g in Enum.GetValues<Genre>())
             {
-                Addeddgenres.Add(new GenreViewModel(g, false));
+                AddeddGenres.Add(new GenreViewModel(g, false));
                 editedGenres.Add(new GenreViewModel(g, false));
             }
         }
@@ -46,7 +46,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
 
         [ObservableProperty]
-        private ObservableCollection<GenreViewModel> addeddgenres = new ObservableCollection<GenreViewModel>();
+        private ObservableCollection<GenreViewModel> addeddGenres = new ObservableCollection<GenreViewModel>();
         [ObservableProperty]
         private ObservableCollection<GenreViewModel> editedGenres = new ObservableCollection<GenreViewModel>();
         //[ObservableProperty]
@@ -178,7 +178,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
         private void RefreshAnimes()
         {
-            foreach(var g in Addeddgenres)
+            foreach(var g in AddeddGenres)
             {
                 g.IsSelected = false;
             }
@@ -242,9 +242,19 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddAnime))]
         private void AddAnime()
         {
-            _BL.UpdateAnime(NewAnime.ToModel());
-            NewAnime = new AnimeViewModel(_BL.CreateAnime());
-            RefreshAnimes();
+            if (NewAnime != null)
+            {
+                foreach (var g in AddeddGenres)
+                {
+                    if (g.IsSelected)
+                    {
+                        NewAnime.Genre |= g.SelectedGenre;
+                    }
+                }
+                _BL.UpdateAnime(NewAnime.ToModel());
+                NewAnime = new AnimeViewModel(_BL.CreateAnime());
+                RefreshAnimes();
+            }
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()
@@ -262,6 +272,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private void EditAnime()
         {
             if (EditedAnime != null)
+            {
                 foreach(GenreViewModel g in EditedGenres)
                 {
                     if (g.IsSelected)
@@ -272,6 +283,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 }
                 _BL.UpdateAnime(EditedAnime.ToModel());
                 RefreshAnimes();
+
+            }
         }
         #endregion
 

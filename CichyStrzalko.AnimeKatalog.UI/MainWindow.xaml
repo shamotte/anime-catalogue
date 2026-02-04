@@ -131,11 +131,11 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <ListBox ItemsSource="{Binding Genres}">
+                        <ListBox ItemsSource="{Binding AddeddGenres}">
                             <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                    <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
-                            </DataTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding SelectedGenre, Converter={StaticResource EnumToNameConverter}}" IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+                                </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                         <TextBlock>Obrazek</TextBlock>
