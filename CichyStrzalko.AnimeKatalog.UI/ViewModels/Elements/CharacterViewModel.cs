@@ -23,14 +23,15 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [ObservableProperty]
         private IAnime anime;
 
-        //[ObservableProperty]
-        //private ICharacter character;
+        [ObservableProperty]
+        private Byte[] imageData;
         public CharacterViewModel(ICharacter character) {
 
             //this.character = character;
         this.id = character.Id;
         this.name = character.Name;
         this.anime = character.Anime;
+        this.imageData = character.ImageData;
         }
 
     }

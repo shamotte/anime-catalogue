@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             xmlns:converters="clr-namespace:CichyStrzalko.AnimeKatalog.UI.Converters">
     <Application.Resources>
-         
+        <converters:ByteArrayToImage x:Key="ByteArrayToImage"/>
+        <converters:EnumToNameConverter x:Key="EnumToNameConverter"/>
     </Application.Resources>
 </Application>

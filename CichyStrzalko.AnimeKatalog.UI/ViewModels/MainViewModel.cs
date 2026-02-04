@@ -145,6 +145,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             a.Genre = NewAnime.Genre;
             a.Studio = NewAnime.Studio;
             a.Episodes = NewAnime.Episodes;
+            a.ImageData = NewAnime.ImageData;
             NewAnime = new AnimeViewModel(_BL.CreateAnime());
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]

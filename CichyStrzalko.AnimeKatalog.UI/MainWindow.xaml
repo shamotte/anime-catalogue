@@ -4,7 +4,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI" xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        xmlns:local="clr-namespace:CichyStrzalko.AnimeKatalog.UI"
+        xmlns:viewmodels="clr-namespace:CichyStrzalko.AnimeKatalog.UI.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Anime Katalog" Height="450" Width="800">
     <TabControl Name="Zakładki">
@@ -84,7 +86,6 @@
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
-
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
@@ -100,6 +101,7 @@
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
                         <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
+                        <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <TextBlock>Dodaj nowe anime</TextBlock>
@@ -117,10 +119,10 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <ListBox ItemsSource="{Binding Genres}">
+                        <ListBox ItemsSource="{Binding Genres}" SelectedItem="{Binding g}">
                             <ListBox.ItemTemplate>
                             <DataTemplate>
-                                    <CheckBox Content=""/>
+                                    <CheckBox Content="{Binding Converter={StaticResource EnumToNameConverter}}"/>
                             </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>

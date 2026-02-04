@@ -22,7 +22,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [ObservableProperty]
         [Required]
         [StringLength(100, MinimumLength = 1)]
-        private String premiere;
+        private DateTime premiere;
 
 
         [ObservableProperty]
@@ -37,16 +37,19 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private int episodes;
 
         //TODO: image file
+        [ObservableProperty]
+        private byte[] imageData;
 
         public AnimeViewModel(IAnime anime)
         {
             //this._Anime = anime;
             this.id = anime.Id;
             this.name = anime.Name;
-            this.premiere = anime.Premiere.ToString();
+            this.premiere = anime.Premiere;
             this.genre = anime.Genre;
             this.studio = anime.Studio;
             this.episodes = anime.Episodes;
+            this.imageData = anime.ImageData;
 
 
         }
