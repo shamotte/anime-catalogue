@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CichyStrzalko.AnimeKatalog.Web.Data;
 using CichyStrzalko.AnimeKatalog.Web.Models;
+using CichyStrzalko.AnimeKatalog.Interfaces;
 
 namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 {
@@ -15,27 +16,44 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         private readonly CichyStrzalkoAnimeKatalogWebContext _context;
         private readonly BL.BL _BL;
 
-        public StudiosController(CichyStrzalkoAnimeKatalogWebContext context)
+        public StudiosController(BL.BL bL)
         {
-            _context = context;
+            _BL = bL;
+        }
+
+        public Studio MapFromIStudio(IStudio studio)
+        {
+            return new Studio
+            {
+                Id = studio.Id,
+                Name = studio.Name,
+                Address = studio.Address
+            };
         }
 
         // GET: Studios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Studio.ToListAsync());
+            var studios = _BL.GetAllStudios().Select(s => MapFromIStudio(s));
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                studios = studios.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+            return View(studios);
         }
 
         // GET: Studios/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+            else if(id != null)
+            {
 
-            var studio = await _context.Studio
-                .FirstOrDefaultAsync(m => m.Id == id);
+            }
+            var studio = MapFromIStudio(_BL.GetStudioByID(id));
             if (studio == null)
             {
                 return NotFound();
@@ -59,22 +77,22 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(studio);
-                await _context.SaveChangesAsync();
+                _BL.UpdateStudio(studio);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(studio);
         }
 
         // GET: Studios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var studio = await _context.Studio.FindAsync(id);
+            var studio = MapFromIStudio(_BL.GetStudioByID(id));
             if (studio == null)
             {
                 return NotFound();
@@ -93,46 +111,59 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 return NotFound();
             }
-
+            var edited = MapFromIStudio(_BL.GetStudioByID(id));
+            if (edited == null)
+            {
+                return NotFound();
+            }
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(studio);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StudioExists(studio.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                studio.Id = id;
+                _BL.UpdateStudio(studio);
                 return RedirectToAction(nameof(Index));
+                //    try
+                //    {
+                //        _context.Update(studio);
+                //        await _context.SaveChangesAsync();
+                //    }
+                //    catch (DbUpdateConcurrencyException)
+                //    {
+                //        if (!StudioExists(studio.Id))
+                //        {
+                //            return NotFound();
+                //        }
+                //        else
+                //        {
+                //            throw;
+                //        }
+                //    }
+                //    return RedirectToAction(nameof(Index));
             }
             return View(studio);
         }
 
         // GET: Studios/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var studio = await _context.Studio
-                .FirstOrDefaultAsync(m => m.Id == id);
+
+            var studio = MapFromIStudio(_BL.GetStudioByID(id));
             if (studio == null)
             {
                 return NotFound();
             }
-
-            return View(studio);
+            var animes = _BL.GetAllAnime().Where(a => a.Studio.Id == id);
+            bool hasAnimes = animes.Any();
+            int animeCount = animes.Count();
+            if (hasAnimes)
+            {
+                ViewBag.ErrorMessage = $"Nie można usunąć studia, ponieważ istnieją {animeCount} anime z nim powiązane.";
+            }
+                return View(studio);
         }
 
         // POST: Studios/Delete/5
@@ -140,13 +171,14 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var studio = await _context.Studio.FindAsync(id);
-            if (studio != null)
-            {
-                _context.Studio.Remove(studio);
-            }
+            //var studio = await _context.Studio.FindAsync(id);
+            //if (studio != null)
+            //{
+            //    _context.Studio.Remove(studio);
+            //}
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
+            _BL.DeleteStudio(id);
             return RedirectToAction(nameof(Index));
         }
 
