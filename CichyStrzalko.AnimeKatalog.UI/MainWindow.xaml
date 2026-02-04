@@ -100,7 +100,7 @@
                         <TextBlock>Data premiery</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Premiere}"/>
                         <TextBlock>Studio</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.Studio.Name}"/>
+                        <TextBlock Text="{Binding Selectedanime.DisplayStudio}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
                         <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
@@ -159,7 +159,7 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBlock Text="{Binding Selectedcharacter.Name}"/>
                         <TextBlock>Anime</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.Anime.Name}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.DisplayAnime}"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>

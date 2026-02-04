@@ -55,6 +55,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
         public string Genres { get => Genre.ToString(); }
 
-        public string DisplayName { get => $"{Id}:{Name}({Premiere})"; }
+        public string DisplayName { get => $"{Id}: {Name} ({Premiere})"; }
+        public string DisplayStudio { get => $"{Studio.Id}: {Studio.Name}, {Studio.Address}"; }
     }
 }

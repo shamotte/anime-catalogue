@@ -155,6 +155,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private void DeleteAnime()
         {
             if(Selectedanime != null)
+            if(Selectedanime != null)
             {
                 if (_BL.DeleteAnime(Selectedanime.Id).succesful)
                 {
