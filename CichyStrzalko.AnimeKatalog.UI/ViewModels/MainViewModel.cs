@@ -227,8 +227,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private AnimeViewModel? newAnime;
         private bool CanAddAnime()
         {
-            //return NewAnime != null && !NewAnime.HasErrors;
-            return true;
+            return NewAnime != null && !NewAnime.HasErrors;
+            //return true;
         }
 
         private bool CanDeleteAnime()
@@ -238,7 +238,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         private bool CanEditAnime()
         {
-            return Selectedanime != null;
+            return EditedAnime != null && !EditedAnime.HasErrors;
         }
 
         [RelayCommand(CanExecute = nameof(CanAddAnime))]
