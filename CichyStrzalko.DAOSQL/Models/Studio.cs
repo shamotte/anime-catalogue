@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CichyStrzalko.DAOSQL.Models
 {
-    internal class Studio : IStudio
+    public class Studio : IStudio
     {
 
 

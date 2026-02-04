@@ -1,31 +1,32 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace CichyStrzalko.DAOSQL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "animes",
+                name: "Animes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Episodes = table.Column<int>(type: "INTEGER", nullable: false),
-                    Premiere = table.Column<string>(type: "TEXT", nullable: false),
+                    Premiere = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Genre = table.Column<int>(type: "INTEGER", nullable: false),
                     StudioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ImageFile = table.Column<string>(type: "TEXT", nullable: false)
+                    ImageData = table.Column<byte[]>(type: "BLOB", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_animes", x => x.Id);
+                    table.PrimaryKey("PK_Animes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +37,7 @@ namespace CichyStrzalko.DAOSQL.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     AnimeId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ImageFile = table.Column<string>(type: "TEXT", nullable: false)
+                    ImageData = table.Column<byte[]>(type: "BLOB", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +63,7 @@ namespace CichyStrzalko.DAOSQL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "animes");
+                name: "Animes");
 
             migrationBuilder.DropTable(
                 name: "Characters");

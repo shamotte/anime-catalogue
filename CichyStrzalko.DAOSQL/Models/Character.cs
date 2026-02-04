@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CichyStrzalko.DAOSQL.Models
 {
-    internal class Character : ICharacter
+    public class Character : ICharacter
     {
 
 
