@@ -38,6 +38,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             );
 
             newStudio = new StudioViewModel( _BL.CreateStudio());
+
         }
 
         #region Studio
@@ -83,7 +84,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private bool CanAddStudio()
         {
             // TODO: Add erros
-            return NewStudio != null && NewStudio.Name != null && NewStudio.Address != null;
+            return NewStudio != null && NewStudio.HasErrors == false;
         }
         [RelayCommand(CanExecute = nameof(CanAddStudio))]
         private void AddStudio()
@@ -115,6 +116,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [NotifyCanExecuteChangedFor(nameof(DeleteAnimeCommand))]
         private AnimeViewModel? selectedanime;
 
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddAnimeCommand))]
+        private AnimeViewModel? newAnime;
         private bool CanAddAnime()
         {
             // Implementation for determining if an anime can be added
@@ -134,7 +138,13 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddAnime))]
         private void AddAnime()
         {
-            // Implementation for adding an anime
+            IAnime a = _BL.CreateAnime();
+            a.Name = NewAnime.Name;
+            a.Premiere = NewAnime.Premiere;
+            a.Genre = NewAnime.Genre;
+            a.Studio = NewAnime.Studio;
+            a.Episodes = NewAnime.Episodes;
+            NewAnime = new AnimeViewModel(_BL.CreateAnime());
         }
         [RelayCommand(CanExecute = nameof(CanDeleteAnime))]
         private void DeleteAnime()

@@ -41,7 +41,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         public AnimeViewModel(IAnime anime)
         {
             //this._Anime = anime;
-
+            this.id = anime.Id;
             this.name = anime.Name;
             this.premiere = anime.Premiere.ToString();
             this.genre = anime.Genre;
@@ -52,5 +52,6 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         }
         public string Genres { get => Genre.ToString(); }
 
+        public string DisplayName { get => $"{Id}:{Name}({Premiere})"; }
     }
 }
