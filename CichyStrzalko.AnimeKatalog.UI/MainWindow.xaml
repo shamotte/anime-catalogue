@@ -112,7 +112,7 @@
                         <TextBlock Text="{Binding Selectedanime.StudioID}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
-                        <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
+                        <Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}, TargetNullValue={StaticResource Placeholder}}"  Height="200" Margin="0,10,0,0"/> 
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <!-- Addition Anime-->

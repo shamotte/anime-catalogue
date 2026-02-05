@@ -13,8 +13,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.Converters
         {
             if (value is byte[] byteArray && byteArray.Length > 0)
             {
-                using (var stream = new System.IO.MemoryStream(byteArray))
+                try
                 {
+                    var stream = new System.IO.MemoryStream(byteArray);
                     var image = new System.Windows.Media.Imaging.BitmapImage();
                     image.BeginInit();
                     image.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
@@ -22,6 +23,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.Converters
                     image.EndInit();
                     image.Freeze(); // Freeze the image for cross-thread operations
                     return image;
+                    
+
+                }catch(Exception)
+                {
+                    return null;
                 }
             }
             return null; // Return null if the value is not a byte array

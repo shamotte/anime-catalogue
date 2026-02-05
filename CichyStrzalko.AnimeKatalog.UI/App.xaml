@@ -7,5 +7,14 @@
         <converters:ByteArrayToImage x:Key="ByteArrayToImage"/>
         <converters:EnumToNameConverter x:Key="EnumToNameConverter"/>
         <converters:StudioVMToIStudio x:Key="StudioVMToIStudio" />
+        <DrawingImage x:Key="Placeholder">
+            <DrawingImage.Drawing>
+                <GeometryDrawing Brush="LightGray">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,1,1" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingImage.Drawing>
+        </DrawingImage>
     </Application.Resources>
 </Application>
