@@ -184,7 +184,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
         private bool AnimeExists(int id)
         {
-            return _context.Anime.Any(e => e.Id == id);
+            return _BL.GetAllAnime().Any(e => e.Id == id);
         }
     }
 }

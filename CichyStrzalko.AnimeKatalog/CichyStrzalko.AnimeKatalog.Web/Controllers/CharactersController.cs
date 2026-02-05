@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CichyStrzalko.AnimeKatalog.Web.Data;
 using CichyStrzalko.AnimeKatalog.Web.Models;
+using AspNetCoreGeneratedDocument;
 
 namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 {
@@ -19,10 +20,28 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             _BL = bL;
         }
 
-        // GET: Characters
-        public async Task<IActionResult> Index()
+        private Character MapFromICharacter(Interfaces.ICharacter character)
         {
-            return View(await _context.Character.ToListAsync());
+            return new Character
+            {
+                Id = character.Id,
+                Name = character.Name,
+                AnimeId = character.AnimeId,
+                ImageData = character.ImageData
+            };
+        }
+
+        // GET: Characters
+        public async Task<IActionResult> Index(String SearchString)
+        {
+            var characters = _BL.GetAllCharacters().Select(c => MapFromICharacter(c));
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                characters = characters.Where(c => c.Name.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
+                return View(characters);
+            }
+            return View(characters);
         }
 
         // GET: Characters/Details/5
@@ -33,8 +52,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var character = MapFromICharacter( _BL.GetCharacterByID(id.Value));
             if (character == null)
             {
                 return NotFound();
@@ -58,8 +76,9 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(character);
-                await _context.SaveChangesAsync();
+                _BL.UpdateCharacter(character);
+                //_context.Add(character);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(character);
@@ -73,7 +92,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character.FindAsync(id);
+            var character = MapFromICharacter( _BL.GetCharacterByID(id.Value));
             if (character == null)
             {
                 return NotFound();
@@ -95,22 +114,24 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(character);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CharacterExists(character.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                //try
+                //{
+                //    _context.Update(character);
+                //    await _context.SaveChangesAsync();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!CharacterExists(character.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+                _BL.UpdateCharacter(character);
                 return RedirectToAction(nameof(Index));
             }
             return View(character);
@@ -124,8 +145,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var character = await _context.Character
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var character =MapFromICharacter(_BL.GetCharacterByID(id.Value)) ;
             if (character == null)
             {
                 return NotFound();
@@ -139,19 +159,19 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var character = await _context.Character.FindAsync(id);
+            var character = MapFromICharacter(_BL.GetCharacterByID(id));
             if (character != null)
             {
-                _context.Character.Remove(character);
+                _BL.DeleteCharacter(id);
             }
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CharacterExists(int id)
         {
-            return _context.Character.Any(e => e.Id == id);
+            return _BL.GetAllCharacters().Any(e => e.Id == id);
         }
     }
 }
