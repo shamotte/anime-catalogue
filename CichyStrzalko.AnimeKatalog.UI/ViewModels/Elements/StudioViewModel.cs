@@ -14,34 +14,63 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
     {
         [ObservableProperty]
         private int id;
+
+        //[NotifyDataErrorInfo]
+        //[ObservableProperty]
         [Required]
-        [ObservableProperty]
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Name can't be empty")]
-        private string name;
+        public string Name {
+            get => studio.Name;
+            set
+            {
+                if (value != studio.Name)
+                {
+                studio.Name = value;
+                ValidateProperty(value, nameof(Name));
+                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(DisplayName));
+                }
+            }
 
+
+        }
+
+
+
+        //[NotifyDataErrorInfo]
+        //[ObservableProperty]
         [Required]
-        [ObservableProperty]
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Address can't be empty")]
-        private string address;
+        public string Address {
+            get => studio.Address;
+            set
+            {
+                studio.Address = value;
+                ValidateProperty(value, nameof(Address));
+                OnPropertyChanged(nameof(Address));
+            }
+        }
 
-        [ObservableProperty]
+
         private IStudio studio;
+        public IStudio Studio => studio;
         public StudioViewModel(IStudio studio) {
             this.studio = studio;
             if(studio != null) {
                 this.id = studio.Id;
-                this.name = studio.Name;
-                this.address = studio.Address;
+                this.Name = studio.Name;
+                this.Address = studio.Address;
+                ValidateAllProperties();
             }
         }
         public string DisplayName { get => $"{Id}: {Name}, {Address}"; }
 
         public IStudio ToModel()
         {
-            Studio.Id = Id;
-            Studio.Name = Name;
-            Studio.Address = Address;
-            return Studio;
+            studio.Id = Id;
+            studio.Name = Name;
+            studio.Address = Address;
+            return studio;
         }
 
         public void copyFrom(StudioViewModel s)
@@ -49,8 +78,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Id = s.Id;
             Name = s.Name;
             Address = s.Address;
-            Studio = ToModel();
+            //studio = ToModel();
         }
-
+        public void CheckValidity()
+        {
+            ValidateAllProperties();
+        }
     }
 }

@@ -16,14 +16,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.UI", "..\CichyStrzalko.AnimeKatalog.UI\CichyStrzalko.AnimeKatalog.UI.csproj", "{740BF095-2F04-4678-BD5A-FB423FB8D41B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.WEB", "..\CichyStrzalko.AnimeKatalog.WEB\CichyStrzalko.AnimeKatalog.WEB.csproj", "{C179806D-E3B3-4C3B-8A72-E13E75E52F2E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.DAOSQL", "..\CichyStrzalko.DAOSQL\CichyStrzalko.DAOSQL.csproj", "{B7B3A7A7-40B0-463F-F47F-7B20CAC340CD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CichyStrzalko.AnimeKatalog.Web", "CichyStrzalko.AnimeKatalog.Web\CichyStrzalko.AnimeKatalog.Web.csproj", "{F29FEF5B-F6DF-4F4D-83F7-62CD8B068993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,14 +51,14 @@ Global
 		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{740BF095-2F04-4678-BD5A-FB423FB8D41B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C179806D-E3B3-4C3B-8A72-E13E75E52F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C179806D-E3B3-4C3B-8A72-E13E75E52F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C179806D-E3B3-4C3B-8A72-E13E75E52F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C179806D-E3B3-4C3B-8A72-E13E75E52F2E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B7B3A7A7-40B0-463F-F47F-7B20CAC340CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B7B3A7A7-40B0-463F-F47F-7B20CAC340CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7B3A7A7-40B0-463F-F47F-7B20CAC340CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7B3A7A7-40B0-463F-F47F-7B20CAC340CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29FEF5B-F6DF-4F4D-83F7-62CD8B068993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29FEF5B-F6DF-4F4D-83F7-62CD8B068993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29FEF5B-F6DF-4F4D-83F7-62CD8B068993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29FEF5B-F6DF-4F4D-83F7-62CD8B068993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

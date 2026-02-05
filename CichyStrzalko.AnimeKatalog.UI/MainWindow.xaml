@@ -140,11 +140,9 @@
                         </ListBox>
                         <TextBlock>Obrazek</TextBlock>
                         <Image Source="{Binding NewAnime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="100" Margin="0,0,0,0">
-                            <Image.InputBindings>
-                                <MouseBinding Gesture="LeftClick"
-                                              Command="{Binding NewAnime.SetImageCommand}"/>
-                            </Image.InputBindings>
                         </Image>
+                        <Button Content="Dodaj Obraz" Command="{Binding NewAnime.SetImageCommand}">
+                        </Button>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <!-- Edition Anime-->
