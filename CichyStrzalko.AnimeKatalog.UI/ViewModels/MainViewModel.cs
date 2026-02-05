@@ -298,7 +298,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddAnime))]
         private void AddAnime()
         {
-            if (NewAnime != null)
+            if (NewAnime != null && SelectedStudioForNewAnime != null)
             {
                 Genre genre = Genre.Unknown;
                 foreach (var g in AddeddGenres)

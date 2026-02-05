@@ -139,7 +139,7 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                         <TextBlock>Obrazek</TextBlock>
-                        <Image Source="{Binding NewAnime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="100" Margin="0,0,0,0">
+                        <Image Source="{Binding NewAnime.ImageData, Converter={StaticResource ByteArrayToImage}, TargetNullValue={StaticResource Placeholder}}" Height="100" Margin="0,0,0,0">
                         </Image>
                         <Button Content="Dodaj Obraz" Command="{Binding NewAnime.SetImageCommand}">
                         </Button>
@@ -170,12 +170,7 @@
                         </ListBox>
                         <TextBlock>Obrazek</TextBlock>
                         <!--TODO:IMAGE-->
-                        <!--<Image Source="{Binding EditedAnime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="100" Margin="0,0,0,0">
-                            <Image.InputBindings>
-                                <MouseBinding Gesture="LeftClick"
-                                              Command="{Binding EditedAnime.SetImageCommand}"/>
-                            </Image.InputBindings>
-                        </Image>-->
+                        <Image Source="{Binding EditedAnime.ImageData, Converter={StaticResource ByteArrayToImage}, TargetNullValue={StaticResource Placeholder}}"  Height="200" Margin="0,10,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
