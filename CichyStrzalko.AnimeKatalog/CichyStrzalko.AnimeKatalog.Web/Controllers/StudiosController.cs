@@ -39,6 +39,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 studios = studios.Where(s => s.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
+
             return View(studios);
         }
 

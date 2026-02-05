@@ -31,7 +31,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnimeId)
+                @* @Html.DisplayFor(modelItem => item.AnimeId) *@
+                @ViewBag.Animes[item.AnimeId]
             </td>
             <td>
                     @if (item?.ImageData != null && item.ImageData.Length > 0)

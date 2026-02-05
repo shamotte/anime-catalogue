@@ -48,8 +48,13 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             if (!String.IsNullOrEmpty(SearchString))
             {
                 characters = characters.Where(c => c.Name.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
-                return View(characters);
             }
+            Dictionary<int, String> animes= new Dictionary<int, string>();
+            foreach(var a in _BL.GetAllAnime())
+            {
+                animes[a.Id] = a.Name;
+            }
+            ViewBag.Animes = animes;
             return View(characters);
         }
 
