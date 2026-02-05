@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CichyStrzalko.AnimeKatalog.Web.Data;
 using CichyStrzalko.AnimeKatalog.Web.Models;
-using AspNetCoreGeneratedDocument;
 
 namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 {

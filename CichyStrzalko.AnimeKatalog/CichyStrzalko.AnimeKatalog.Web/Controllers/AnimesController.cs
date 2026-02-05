@@ -41,6 +41,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 Id = anime.Id,
                 Name = anime.Name,
                 Premiere = anime.Premiere,
+                StudioId = anime.StudioId,
                 ImageData = anime.ImageData,
                 Genre = anime.Genre,
                 Episodes = anime.Episodes
@@ -69,7 +70,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         public async Task<IActionResult> Index(string SearchString)
         {
             var animes = _BL.GetAllAnime().Select(a => MapFromIAnime(a));
-            if(!string.IsNullOrEmpty(SearchString))
+            if (!string.IsNullOrEmpty(SearchString))
             {
                 animes = animes.Where(a => a.Name.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
             }
