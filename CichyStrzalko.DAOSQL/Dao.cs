@@ -119,7 +119,11 @@ namespace CichyStrzalko.DAOSQL
                     context.Animes.Remove(remove);
                     
                 }
-                
+                if(a.ImageData == null)
+                {
+                    a.ImageData = Array.Empty<byte>();
+                }
+
 
                 context.Animes.Add(a);
                 context.SaveChanges();
@@ -135,7 +139,12 @@ namespace CichyStrzalko.DAOSQL
                 {
                     context.Characters.Remove(remove);
                 }
-                
+
+                if(c.ImageData == null)
+                {
+                    c.ImageData = Array.Empty<byte>();
+                }
+
                 context.Characters.Add(c);
                 context.SaveChanges();
             }
