@@ -25,10 +25,10 @@ namespace CichyStrzalko.AnimeKatalog.UI
             if (configuration == null)
                 throw new Exception("Configuration is NULL");
 
-            var bl = new BL.BL(configuration);
+            
 
             serviceCollection.AddSingleton(configuration);
-            serviceCollection.AddSingleton<BL.BL>(bl);
+            serviceCollection.AddSingleton<BL.BL>();
             serviceCollection.AddSingleton<MainViewModel>();
             serviceCollection.AddSingleton<MainWindow>();
 

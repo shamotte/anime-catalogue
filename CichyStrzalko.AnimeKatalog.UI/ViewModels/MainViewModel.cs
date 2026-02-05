@@ -21,16 +21,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 {
     public partial class MainViewModel: ObservableValidator
     {
-        private IConfiguration _configuration;
+        
         private BL.BL _BL;
-        public MainViewModel()
+        public MainViewModel(BL.BL bl)
         {
-            _configuration = AppConfiguration.Configuration;
-
-            if (_configuration == null)
-                throw new Exception("Configuration is NULL");
-
-            _BL = new BL.BL(_configuration);
+            _BL = bl;
 
             RefreshStudios();
             RefreshAnimes();
