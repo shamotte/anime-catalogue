@@ -24,12 +24,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="StudioId" class="control-label"></label>
-                <input asp-for="StudioId" class="form-control" />
+                <select asp-for="StudioId" asp-items="ViewBag.StudiosIds" class="form-control"></select>
                 <span asp-validation-for="StudioId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageData" class="control-label"></label>
-                <input asp-for="ImageData" class="form-control" />
+               <input id="imageFileInput"
+                       type="file"
+                       accept="image/*"
+                       class="form-control-file" />
+
+                <input type="hidden" asp-for="ImageData" id="Image" />
+
+                <img id="imagePreview"
+                     alt="Image preview"
+                     class="img-thumbnail mt-2"
+                     style="max-height:200px; display:none;" />
                 <span asp-validation-for="ImageData" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -55,4 +65,33 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                <script>
+                (function () {
+                    var fileInput = document.getElementById('imageFileInput');
+                    var hiddenField = document.getElementById('Image');
+                    var preview = document.getElementById('imagePreview');
+
+                    if (!fileInput) return;
+
+                    fileInput.addEventListener('change', function () {
+                        var file = this.files && this.files[0];
+                        if (!file) {
+                            preview.style.display = 'none';
+                            preview.src = '';
+                            hiddenField.value = '';
+                            return;
+                        }
+
+                        var reader = new FileReader();
+                        reader.onload = function (evt) {
+                            var dataUrl = evt.target.result;
+                            preview.src = dataUrl;
+                            preview.style.display = 'block';
+                            var base64 = dataUrl.split(',')[1] || '';
+                            hiddenField.value = base64;
+                        };
+                        reader.readAsDataURL(file);
+                    }, false);
+                })();
+            </script>
 }
