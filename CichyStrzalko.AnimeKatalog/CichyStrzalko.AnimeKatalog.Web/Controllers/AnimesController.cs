@@ -14,7 +14,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 {
     public class AnimesController : Controller
     {
-        private readonly CichyStrzalkoAnimeKatalogWebContext _context;
+        //private readonly CichyStrzalkoAnimeKatalogWebContext _context;
         private readonly BL.BL _BL;
 
         public AnimesController(BL.BL bL)
@@ -41,17 +41,36 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 Id = anime.Id,
                 Name = anime.Name,
                 Premiere = anime.Premiere,
+                StudioId = anime.StudioId,
                 ImageData = anime.ImageData,
                 Genre = anime.Genre,
                 Episodes = anime.Episodes
             };
         }
+        private IEnumerable<SelectListItem> GetAllGenres()
+        {
+            return Enum.GetValues<Genre>().Select(
+                g =>
+                {
+                    return new SelectListItem { Text = g.ToString(), Value = ((int)g).ToString() };
+                }
+                );
+        }
 
+        private IEnumerable<SelectListItem> GetAllStudiosId()
+        {
+            return _BL.GetAllStudios().Select(
+                s =>
+                {
+                    return new SelectListItem { Text = s.Name, Value = s.Id.ToString() };
+                }
+            );
+        }
         // GET: Animes
         public async Task<IActionResult> Index(string SearchString)
         {
             var animes = _BL.GetAllAnime().Select(a => MapFromIAnime(a));
-            if(!string.IsNullOrEmpty(SearchString))
+            if (!string.IsNullOrEmpty(SearchString))
             {
                 animes = animes.Where(a => a.Name.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
             }
@@ -78,6 +97,8 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         // GET: Animes/Create
         public IActionResult Create()
         {
+            ViewBag.StudiosIds = GetAllStudiosId();
+            ViewBag.Genres = GetAllGenres();
             return View();
         }
 
@@ -105,12 +126,14 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var anime =MapFromIAnime(_BL.GetAnimeByID(id.Value));
+            var anime = MapFromIAnime(_BL.GetAnimeByID(id.Value));
 
             if (anime == null)
             {
                 return NotFound();
             }
+            ViewBag.StudiosIds = GetAllStudiosId();
+            ViewBag.Genres = GetAllGenres();
             return View(anime);
         }
 
@@ -184,7 +207,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
         private bool AnimeExists(int id)
         {
-            return _context.Anime.Any(e => e.Id == id);
+            return _BL.GetAllAnime().Any(e => e.Id == id);
         }
     }
 }

@@ -24,6 +24,12 @@
             @Html.DisplayFor(model => model.Premiere)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StudioId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudioId)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ImageData)
         </dt>
         <dd class = "col-sm-10">
@@ -42,20 +48,10 @@
             @Html.DisplayFor(model => model.Episodes)
         </dd>
     </dl>
-	@if (ViewBag.HasCharacters == true)
-	{
-			<div class="alert alert-warning" role="alert">
-				This anime has associated characters and cannot be deleted.
-			</div>
-            <form asp-action="Index">
-                    <a asp-action="Index">Back to List</a>
-            </form>
-	}else{
+    
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-
-    }
 </div>
