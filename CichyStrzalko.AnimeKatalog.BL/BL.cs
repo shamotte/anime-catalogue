@@ -68,7 +68,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
         #region ANIMES
         public IEnumerable<IAnime> GetAllAnime() => dao.GetAllAnimes();
 
-        public IAnime GetAnimeByID(int id) => GetAllAnime().First(a => a.Id == id);
+        public IAnime GetAnimeByID(int id) => GetAllAnime().FirstOrDefault(a => a.Id == id,null);
 
         public IEnumerable<IAnime> GetAnimesByStudioID(int studioId) => GetAllAnime().Where(a => a.StudioId == studioId);
 
@@ -116,7 +116,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
 
         #region STUDIOS
         public IEnumerable<IStudio> GetAllStudios() => dao.GetAllStudios();
-        public IStudio GetStudioByID(int id) => GetAllStudios().First(a => a.Id == id);
+        public IStudio GetStudioByID(int id) => GetAllStudios().FirstOrDefault(a => a.Id == id,null);
 
         public OperationResponse<bool> DeleteStudio(int studioId)
         {
@@ -155,7 +155,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
         #region Characters
 
         public IEnumerable<ICharacter> GetAllCharacters() => dao.GetAllCharacters();
-        public ICharacter GetCharacterByID(int id) => GetAllCharacters().First(a => a.Id == id);
+        public ICharacter GetCharacterByID(int id) => GetAllCharacters().FirstOrDefault(a => a.Id == id,null);
 
         public IEnumerable<ICharacter> GetCharactersByAnimeID(int animeId) => GetAllCharacters().Where(c => c.AnimeId == animeId);
         public OperationResponse<bool> DeleteCharacter(int characterId)
