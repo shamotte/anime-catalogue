@@ -16,5 +16,6 @@ namespace CichyStrzalko.AnimeKatalog.Web.Data
 
         public DbSet<CichyStrzalko.AnimeKatalog.Web.Models.Studio> Studio { get; set; } = default!;
         public DbSet<CichyStrzalko.AnimeKatalog.Web.Models.Anime> Anime { get; set; } = default!;
+        public DbSet<CichyStrzalko.AnimeKatalog.Web.Models.Character> Character { get; set; } = default!;
     }
 }
