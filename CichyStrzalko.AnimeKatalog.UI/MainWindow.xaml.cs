@@ -26,7 +26,7 @@ namespace CichyStrzalko.AnimeKatalog.UI
 
         public MainWindow()
         {
-            DataContext = new MainViewModel();
+            
             InitializeComponent();
 
         }
@@ -34,6 +34,8 @@ namespace CichyStrzalko.AnimeKatalog.UI
         public MainWindow(MainViewModel model)
         {
             //TODO: real configuration here
+
+            
 
             if (model == null)
                 throw new Exception("MainViewModel is NULL");
