@@ -77,7 +77,11 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _BL.UpdateStudio(studio);
+                var s = _BL.CreateStudio();
+                s.Name = studio.Name;
+                s.Address = studio.Address;
+                s.Id = studio.Id;
+                _BL.UpdateStudio(s);
                 //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -111,15 +115,16 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 return NotFound();
             }
-            var edited = MapFromIStudio(_BL.GetStudioByID(id));
+            var edited = _BL.GetStudioByID(id);
             if (edited == null)
             {
                 return NotFound();
             }
             if (ModelState.IsValid)
             {
-                studio.Id = id;
-                _BL.UpdateStudio(studio);
+                edited.Name = studio.Name;
+                edited.Address = studio.Address;
+                _BL.UpdateStudio(edited);
                 return RedirectToAction(nameof(Index));
                 //    try
                 //    {
@@ -158,7 +163,6 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             }
             var animes = _BL.GetAllAnime().Where(a => a.StudioId == id);
             bool hasAnimes = animes.Any();
-            int animeCount = animes.Count();
             ViewBag.HasAnimes = hasAnimes;
             return View(studio);
         }
