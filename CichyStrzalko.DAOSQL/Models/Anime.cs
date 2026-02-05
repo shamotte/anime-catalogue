@@ -22,8 +22,8 @@ namespace CichyStrzalko.DAOSQL.Models
             public DateTime Premiere { get; set; }
             public Genre Genre { get; set; }
 
-            [NotMapped]
-            public IStudio Studio { get; set; }
+            
+            
 
             public int StudioId { get; set; }
             public byte[] ImageData { get; set; }

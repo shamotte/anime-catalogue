@@ -23,13 +23,23 @@ namespace CichyStrzalko.AnimeKatalog.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        //public MainWindow()
+        //{
+        //    DataContext = new MainViewModel();
+        //    InitializeComponent();
+
+        //}
+
+        public MainWindow(MainViewModel model)
         {
             //TODO: real configuration here
 
-            DataContext = new MainViewModel();
+            if (model == null)
+                throw new Exception("MainViewModel is NULL");
 
             InitializeComponent();
+            DataContext = model;
         }
     }
 }

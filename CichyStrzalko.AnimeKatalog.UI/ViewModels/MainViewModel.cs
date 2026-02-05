@@ -26,6 +26,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         public MainViewModel()
         {
             _configuration = AppConfiguration.Configuration;
+
+            if (_configuration == null)
+                throw new Exception("Configuration is NULL");
+
             _BL = new BL.BL(_configuration);
 
             RefreshStudios();
@@ -212,8 +216,12 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             else
             {
                 FilteredAnimes = new ObservableCollection<AnimeViewModel>(
-                    Animes.Where(a => a.Name.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Genres.Contains(value, StringComparison.OrdinalIgnoreCase) || a.Studio.Name.Contains(value, StringComparison.OrdinalIgnoreCase))
-                );
+                    Animes.Where(a =>
+                            (a.Name?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (a.Genres?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                            (a.Studio?.Name?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false))
+
+                    );
             }
         }
 

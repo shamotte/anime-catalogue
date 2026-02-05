@@ -90,18 +90,16 @@ namespace CichyStrzalko.DAOSQL
         public IEnumerable<IAnime> GetAllAnimes()
         {
             var x = context.Animes
-                .Include(a => a.Studio)
                 .ToList();
-            x.ForEach(a => a.Studio = context.Studios.FirstOrDefault(s => s.Id == a.StudioId)!);
+            
             return x;
         }
 
         public IEnumerable<ICharacter> GetAllCharacters()
         {
             var x = context.Characters
-                .Include(c => c.Anime)
                 .ToList();
-            x.ForEach(c => c.Anime = context.Animes.FirstOrDefault(a => a.Id == c.AnimeId)!);
+            
             return x;
         }
 
@@ -121,7 +119,7 @@ namespace CichyStrzalko.DAOSQL
                     context.Animes.Remove(remove);
                     
                 }
-                a.StudioId = a.Studio.Id;
+                
 
                 context.Animes.Add(a);
                 context.SaveChanges();
@@ -137,7 +135,7 @@ namespace CichyStrzalko.DAOSQL
                 {
                     context.Characters.Remove(remove);
                 }
-                c.AnimeId = c.Anime.Id;
+                
                 context.Characters.Add(c);
                 context.SaveChanges();
             }

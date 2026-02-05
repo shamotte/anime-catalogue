@@ -38,7 +38,7 @@ namespace CichyStrzalko.AnimeKatalog.Core
                 if (!File.Exists("appsettings.json"))
                 {
                     File.WriteAllText("appsettings.json", "{}");
-                    throw new FileNotFoundException("Brak pliku konfiguracyjnego 'appsettings.json'.");
+                    //throw new FileNotFoundException("Brak pliku konfiguracyjnego 'appsettings.json'.");
                 }
 
                 return new ConfigurationBuilder()

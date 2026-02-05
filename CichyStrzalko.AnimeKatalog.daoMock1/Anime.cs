@@ -15,8 +15,8 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
         public int Episodes { get; set; }
         public DateTime Premiere { get; set; }
         public Genre Genre { get; set; }
-        public IStudio Studio { get ; set ; }
-        
+        public int StudioId { get; set; }
+
 
         public byte[] ImageData { get; set; }
     }

@@ -15,9 +15,9 @@ namespace CichyStrzalko.AnimeKatalog.Interfaces
 
         Genre Genre { get; set; }
 
-        IStudio Studio { get; set; }
+        int StudioId { get; set; }
 
-        
+
 
         public byte[] ImageData { get; set; }
     }
