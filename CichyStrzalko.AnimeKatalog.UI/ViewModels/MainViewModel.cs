@@ -255,8 +255,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 FilteredAnimes = new ObservableCollection<AnimeViewModel>(
                     Animes.Where(a =>
                             (a.Name?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                            (a.Genres?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                            (a.Studio?.Name?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false))
+                            (a.Genres?.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false)
+                            //||
+                            //(Studios.First(s => {return s.Id == a.Id}).Name.Contains(value, StringComparison.OrdinalIgnoreCase) ?? false)
+                            )
 
                     );
             }
@@ -386,8 +388,10 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             else
             {
                 FilteredCharacters = new ObservableCollection<CharacterViewModel>(
-                    Characters.Where(c => c.Name.Contains(value, StringComparison.OrdinalIgnoreCase) ||
-                                      c.Anime.Name.Contains(value, StringComparison.OrdinalIgnoreCase))
+                    Characters.Where(c => c.Name.Contains(value, StringComparison.OrdinalIgnoreCase) 
+                                      //||
+                                      //c.Anime.Name.Contains(value, StringComparison.OrdinalIgnoreCase)
+                                      )
                 );
             }
         }
