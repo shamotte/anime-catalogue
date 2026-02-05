@@ -70,11 +70,11 @@ namespace CichyStrzalko.AnimeKatalog.BL
 
         public IAnime GetAnimeByID(int id) => GetAllAnime().First(a => a.Id == id);
 
-        public IEnumerable<IAnime> GetAnimesByStudioID(int studioId) => GetAllAnime().Where(a => a.Studio.Id == studioId);
+        public IEnumerable<IAnime> GetAnimesByStudioID(int studioId) => GetAllAnime().Where(a => a.StudioId == studioId);
 
         public OperationResponse<bool> DeleteAnime(int animeId)
         {
-            if (GetAllCharacters().Any(c => c.Anime.Id == animeId))
+            if (GetAllCharacters().Any(c => c.AnimeId == animeId))
             {
                 return new OperationResponse<bool>
                 {
@@ -120,7 +120,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
 
         public OperationResponse<bool> DeleteStudio(int studioId)
         {
-            if (GetAllAnime().Any(a => a.Studio.Id == studioId))
+            if (GetAllAnime().Any(a => a.StudioId == studioId))
             {
                 return new OperationResponse<bool>
                 {
@@ -157,7 +157,7 @@ namespace CichyStrzalko.AnimeKatalog.BL
         public IEnumerable<ICharacter> GetAllCharacters() => dao.GetAllCharacters();
         public ICharacter GetCharacterByID(int id) => GetAllCharacters().First(a => a.Id == id);
 
-        public IEnumerable<ICharacter> GetCharactersByAnimeID(int animeId) => GetAllCharacters().Where(c => c.Anime.Id == animeId);
+        public IEnumerable<ICharacter> GetCharactersByAnimeID(int animeId) => GetAllCharacters().Where(c => c.AnimeId == animeId);
         public OperationResponse<bool> DeleteCharacter(int characterId)
         {
             dao.DeleteCharacter(characterId);

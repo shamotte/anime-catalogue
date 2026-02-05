@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows.Navigation;
 using CichyStrzalko.AnimeKatalog.Core;
 using CichyStrzalko.AnimeKatalog.Interfaces;
@@ -26,6 +25,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         [Required]
+        [StringLength(100, MinimumLength = 1)]
         private DateTime premiere;
 
 
@@ -54,10 +54,9 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 this.name = anime.Name;
                 this.premiere = anime.Premiere;
                 this.genre = anime.Genre;
-                this.studio = new StudioViewModel(anime.Studio);
+                this.studio = new StudioViewModel(anime.StudioId);
                 this.episodes = anime.Episodes;
                 this.imageData = anime.ImageData;
-                ValidateAllProperties();
             }
 
 
@@ -76,10 +75,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 ImageData =  File.ReadAllBytes(dialog.FileName);
             }
         }
-        public void CheckValidity()
-        {
-            ValidateAllProperties();
-        }
+
         public IAnime ToModel()
         {
             Anime.Id = Id;

@@ -33,7 +33,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             this.character = character;
             this.id = character.Id;
             this.name = character.Name;
-            this.anime = new AnimeViewModel(character.Anime);
+            this.anime = new AnimeViewModel(character.AnimeId);
             this.imageData = character.ImageData;
         }
 
