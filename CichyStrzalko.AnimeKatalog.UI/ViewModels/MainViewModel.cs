@@ -330,7 +330,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditAnime))]
         private void EditAnime()
         {
-            if (EditedAnime != null)
+            if (EditedAnime != null && selectedStudioForEditedAnime != null)
             {
                 Genre genre = Genre.Unknown;
                 foreach(GenreViewModel g in EditedGenres)
