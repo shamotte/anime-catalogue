@@ -22,7 +22,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Models
         public byte[]? ImageData { get; set; }
         public Genre Genre { get; set; }
         [Required]
-        [IntegerValidator(MinValue = 1, MaxValue = int.MaxValue)]
+        [IntegerValidator(MinValue = 1, MaxValue = 1000000000)]
         public int Episodes { get; set; }
     }
 }
