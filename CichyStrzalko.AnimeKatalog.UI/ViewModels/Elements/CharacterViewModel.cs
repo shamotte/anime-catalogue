@@ -25,7 +25,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [Required]
         [ObservableProperty]
-        private AnimeViewModel anime;
+        private int animeID;
 
         [ObservableProperty]
         private Byte[] imageData;
@@ -33,12 +33,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             this.character = character;
             this.id = character.Id;
             this.name = character.Name;
-            this.anime = new AnimeViewModel(character.AnimeId);
+            this.animeID =  character.AnimeId;
             this.imageData = character.ImageData;
         }
 
         public string DisplayName { get => $"{Id}: {Name}"; }
-        public string DisplayAnime { get => $"{Anime.Id}: {Anime.Name} ({Anime.Premiere})"; }
 
         [RelayCommand]
         private void SetImage(object parameter)
@@ -53,7 +52,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             Character.Id = Id;
             Character.Name = Name;
-            Character.Anime = Anime.ToModel();
+            Character.AnimeId = AnimeID ;
             Character.ImageData = ImageData;
             return Character;
         }
@@ -62,7 +61,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             Id = c.Id;
             Name = c.Name;
-            Anime = c.Anime;
+            AnimeID = c.AnimeID;
             ImageData = c.ImageData;
             Character = ToModel();
         }

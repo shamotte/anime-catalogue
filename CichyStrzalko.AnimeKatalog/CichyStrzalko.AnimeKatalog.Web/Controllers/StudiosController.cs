@@ -156,7 +156,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 return NotFound();
             }
-            var animes = _BL.GetAllAnime().Where(a => a.Studio.Id == id);
+            var animes = _BL.GetAllAnime().Where(a => a.StudioId == id);
             bool hasAnimes = animes.Any();
             int animeCount = animes.Count();
             ViewBag.HasAnimes = hasAnimes;

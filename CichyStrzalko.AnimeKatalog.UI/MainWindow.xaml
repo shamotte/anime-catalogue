@@ -109,7 +109,7 @@
                         <TextBlock>Data premiery</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Premiere}"/>
                         <TextBlock>Studio</TextBlock>
-                        <TextBlock Text="{Binding Selectedanime.DisplayStudio}"/>
+                        <TextBlock Text="{Binding Selectedanime.StudioID}"/>
                         <TextBlock>Gatunki</TextBlock>
                         <TextBlock Text="{Binding Selectedanime.Genres}"/>
                         <!--"<Image Source="{Binding Selectedanime.ImageData, Converter={StaticResource ByteArrayToImage}}" Height="200" Margin="0,10,0,0"/> -->
@@ -124,7 +124,7 @@
                         <TextBlock>Premiera</TextBlock>
                         <DatePicker SelectedDate="{Binding NewAnime.Premiere}"/>
                         <TextBlock>Twórca</TextBlock>
-                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.Studio}">
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.StudioID}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -154,7 +154,7 @@
                         <TextBlock>Premiera</TextBlock>
                         <DatePicker SelectedDate="{Binding EditedAnime.Premiere}"/>
                         <TextBlock>Twórca</TextBlock>
-                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding EditedAnime.Studio}">
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding EditedAnime.StudioID}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -207,14 +207,14 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBlock Text="{Binding Selectedcharacter.Name}"/>
                         <TextBlock>Anime</TextBlock>
-                        <TextBlock Text="{Binding Selectedcharacter.DisplayAnime}"/>
+                        <TextBlock Text="{Binding Selectedcharacter.AnimeID}"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock> Dodaj Nową Postać</TextBlock>
                         <TextBlock>Nazwa</TextBlock>
                         <TextBox Text="{Binding NewCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Anime</TextBlock>
-                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding NewCharacter.Anime}">
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding NewCharacter.AnimeID}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -233,7 +233,7 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBox Text="{Binding EditedCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Anime</TextBlock>
-                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding EditedCharacter.Anime}">
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding EditedCharacter.AnimeID}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
