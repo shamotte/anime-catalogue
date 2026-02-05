@@ -35,7 +35,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
 
         [ObservableProperty]
         [Required]
-        private StudioViewModel studio;
+        private int studioID;
 
         [ObservableProperty]
         private int episodes;
@@ -54,7 +54,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                 this.name = anime.Name;
                 this.premiere = anime.Premiere;
                 this.genre = anime.Genre;
-                this.studio = new StudioViewModel(anime.Studio);
+                this.studioID = anime.StudioId;
                 this.episodes = anime.Episodes;
                 this.imageData = anime.ImageData;
                 ValidateAllProperties();
@@ -65,7 +65,6 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         public string Genres { get => Genre.ToString(); }
 
         public string DisplayName { get => $"{Id}: {Name} ({Premiere})"; }
-        public string DisplayStudio { get => $"{Studio.Id}: {Studio.Name}, {Studio.Address}"; }
 
         [RelayCommand]
         private void SetImage(object parameter)
@@ -86,7 +85,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Anime.Name = Name;
             Anime.Premiere = Premiere;
             Anime.Genre = Genre;
-            Anime.Studio = Studio.ToModel();
+            Anime.StudioId = StudioID;
             Anime.Episodes = Episodes;
             Anime.ImageData = ImageData;
             return Anime;
@@ -98,7 +97,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
             Name = a.Name;
             Premiere = a.Premiere;
             Genre = a.Genre;
-            Studio = a.Studio;
+            StudioID = a.StudioID;
             Episodes = a.Episodes;
             ImageData = a.ImageData;
             Anime = ToModel();
