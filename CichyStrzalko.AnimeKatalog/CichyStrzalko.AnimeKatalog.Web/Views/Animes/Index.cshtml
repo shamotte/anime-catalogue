@@ -43,7 +43,8 @@
                 @Html.DisplayFor(modelItem => item.Premiere)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StudioId)
+
+                @ViewBag.StudioNames[item.StudioId]
             </td>
             <td>
                     @if (item?.ImageData != null && item.ImageData.Length > 0)

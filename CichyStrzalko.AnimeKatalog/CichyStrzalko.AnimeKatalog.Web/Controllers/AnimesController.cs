@@ -10,6 +10,7 @@ using CichyStrzalko.AnimeKatalog.Web.Models;
 
 using CichyStrzalko.AnimeKatalog.Interfaces;
 using CichyStrzalko.AnimeKatalog.Core;
+using Microsoft.Graph.Education.Classes.Item.Assignments.Item.Submissions.Item.Return;
 namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 {
     public class AnimesController : Controller
@@ -61,6 +62,14 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 animes = animes.Where(a => a.Name.Contains(SearchString, StringComparison.OrdinalIgnoreCase));
             }
+            var AllStudios = _BL.GetAllStudios();
+
+            Dictionary<int, String> StudioNames = new Dictionary<int, string>();
+            foreach(IStudio s in AllStudios)
+            {
+                StudioNames[s.Id] = s.Name;
+            }
+            ViewBag.StudioNames = StudioNames;
             return View(animes);
         }
 
