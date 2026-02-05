@@ -25,12 +25,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="StudioId" class="control-label"></label>
-                <input asp-for="StudioId" class="form-control" />
+                <select asp-for="StudioId" asp-items="ViewBag.StudiosIds" class="form-control"></select>
                 <span asp-validation-for="StudioId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageData" class="control-label"></label>
-                <input asp-for="ImageData" class="form-control" />
+                <input id="imageFileInput"
+                       type="file"
+                       accept="image/*"
+                       class="form-control-file" />
+
+                <input type="hidden" asp-for="ImageData" id="Image" />
+
+                <img id="imagePreview"
+                     alt="Image preview"
+                     class="img-thumbnail mt-2"
+                     style="max-height:200px; display:none;" />
                 <span asp-validation-for="ImageData" class="text-danger"></span>
             </div>
             <div class="form-group">
