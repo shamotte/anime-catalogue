@@ -159,11 +159,8 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             var animes = _BL.GetAllAnime().Where(a => a.Studio.Id == id);
             bool hasAnimes = animes.Any();
             int animeCount = animes.Count();
-            if (hasAnimes)
-            {
-                ViewBag.ErrorMessage = $"Nie można usunąć studia, ponieważ istnieją {animeCount} anime z nim powiązane.";
-            }
-                return View(studio);
+            ViewBag.HasAnimes = hasAnimes;
+            return View(studio);
         }
 
         // POST: Studios/Delete/5

@@ -2,6 +2,7 @@
 using CichyStrzalko.AnimeKatalog.Core;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace CichyStrzalko.AnimeKatalog.Web.Models
 {
     public class Anime: IAnime
@@ -15,10 +16,10 @@ namespace CichyStrzalko.AnimeKatalog.Web.Models
         [Required]
         public DateTime Premiere { get; set; }
         [Required]
-        public IStudio Studio { get; set; }
+        [NotMapped]
+        public IStudio Studio { get ; set; }
         [ValidateNever]
         public byte[]? ImageData { get; set; }
-        [Required]
         public Genre Genre { get; set; }
         [Required]
         public int Episodes { get; set; }
