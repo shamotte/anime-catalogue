@@ -14,7 +14,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Models
 
         [Required]
 
-        public IAnime Anime { get; set; }
+        public int AnimeID { get; set; }
 
         public byte[]? ImageData { get; set; }
 
