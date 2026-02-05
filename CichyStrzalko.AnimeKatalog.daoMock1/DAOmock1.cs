@@ -40,7 +40,7 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
                 Id = x,
                 Premiere = DateTime.Now.AddDays(-rand.Next(0, 5000)),
                 Genre = Genre.Horror | Genre.SliceOfLife,
-                Studio = studios[rand.Next(0, studioCout)],
+                StudioId = studios[rand.Next(0, studioCout)].Id,
                 ImageData = Enumerable.Repeat((byte)rand.Next(0,255), 10000).ToArray()
             })
             .Cast<IAnime>()
@@ -53,7 +53,7 @@ namespace CichyStrzalko.AnimeKatalog.daoMock1
                 
                 Name = $"character no {x}",
                 Id = x,   
-                Anime = animes[rand.Next(0, animeCount)],
+                AnimeId = animes[rand.Next(0, animeCount)].Id,
                 ImageData = Enumerable.Repeat((byte)rand.Next(0, 255), 10000).ToArray()
             })
             .Cast<ICharacter>()

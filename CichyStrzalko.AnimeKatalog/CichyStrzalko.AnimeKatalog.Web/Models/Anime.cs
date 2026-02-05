@@ -17,7 +17,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Models
         public DateTime Premiere { get; set; }
         [Required]
         [NotMapped]
-        public IStudio Studio { get ; set; }
+        public int StudioId { get ; set; }
         [ValidateNever]
         public byte[]? ImageData { get; set; }
         public Genre Genre { get; set; }
