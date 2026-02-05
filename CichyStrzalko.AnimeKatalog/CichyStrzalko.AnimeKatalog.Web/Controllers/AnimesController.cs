@@ -28,6 +28,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 Id = anime.Id,
                 Name = anime.Name,
                 Premiere = anime.Premiere,
+                StudioId = anime.StudioId,
                 ImageData = anime.ImageData,
                 Genre = anime.Genre,
                 Episodes = anime.Episodes
@@ -151,7 +152,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                _BL.UpdateAnime(anime);
+                _BL.UpdateAnime(MapToIAnime(anime));
                 //try
                 //{
                 //    //await _context.SaveChangesAsync();
