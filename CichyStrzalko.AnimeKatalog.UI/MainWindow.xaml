@@ -124,7 +124,7 @@
                         <TextBlock>Premiera</TextBlock>
                         <DatePicker SelectedDate="{Binding NewAnime.Premiere}"/>
                         <TextBlock>Twórca</TextBlock>
-                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding NewAnime.StudioID}">
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding SelectedStudioForNewAnime}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -154,7 +154,7 @@
                         <TextBlock>Premiera</TextBlock>
                         <DatePicker SelectedDate="{Binding EditedAnime.Premiere}"/>
                         <TextBlock>Twórca</TextBlock>
-                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding EditedAnime.StudioID}">
+                        <ComboBox  ItemsSource="{Binding Studios}" SelectedItem="{Binding  SelectedStudioForEditedAnime}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -214,7 +214,7 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBox Text="{Binding NewCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Anime</TextBlock>
-                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding NewCharacter.AnimeID}">
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding SelectedAnimeForNewCharacter}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
@@ -233,7 +233,7 @@
                         <TextBlock>Nazwa</TextBlock>
                         <TextBox Text="{Binding EditedCharacter.Name, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock>Anime</TextBlock>
-                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding EditedCharacter.AnimeID}">
+                        <ComboBox ItemsSource="{Binding Animes}" SelectedItem="{Binding SelectedAnimeForEditedCharacter}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding DisplayName}"/>
