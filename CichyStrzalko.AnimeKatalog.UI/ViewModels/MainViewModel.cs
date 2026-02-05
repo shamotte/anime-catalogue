@@ -423,7 +423,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddCharacter))]
         private void AddCharacter()
         {
-            if(NewCharacter != null)
+            if(NewCharacter != null && SelectedAnimeForNewCharacter != null)
             {
                 NewCharacter.AnimeID = SelectedAnimeForNewCharacter.Id;
                 _BL.UpdateCharacter(NewCharacter.ToModel());
@@ -446,7 +446,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanEditCharacter))]
         private void EditCharacter()
         {
-            if (EditedCharacter != null)
+            if (EditedCharacter != null && selectedAnimeForEditedCharacter != null)
             {
                 EditedCharacter.AnimeID = selectedAnimeForEditedCharacter.Id;
                 _BL.UpdateCharacter(EditedCharacter.ToModel());
