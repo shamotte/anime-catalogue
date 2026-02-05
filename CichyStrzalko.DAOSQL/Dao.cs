@@ -117,7 +117,8 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Animes.Remove(remove);
-                    
+                    context.SaveChanges();
+
                 }
                 if(a.ImageData == null)
                 {
@@ -138,11 +139,13 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Characters.Remove(remove);
+                    context.SaveChanges();
                 }
 
                 if(c.ImageData == null)
                 {
                     c.ImageData = Array.Empty<byte>();
+
                 }
 
                 context.Characters.Add(c);
@@ -158,6 +161,7 @@ namespace CichyStrzalko.DAOSQL
                 if (remove != null)
                 {
                     context.Studios.Remove(remove);
+                    context.SaveChanges();
                 }
                 context.Studios.Add(s);
                 context.SaveChanges();
