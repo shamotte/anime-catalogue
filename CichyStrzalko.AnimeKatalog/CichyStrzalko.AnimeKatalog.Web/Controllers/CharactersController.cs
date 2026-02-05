@@ -61,13 +61,13 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var character = MapFromICharacter( _BL.GetCharacterByID(id.Value));
+            var character = _BL.GetCharacterByID(id.Value);
             if (character == null)
             {
                 return NotFound();
             }
 
-            return View(character);
+            return View(MapFromICharacter(character));
         }
 
         // GET: Characters/Create

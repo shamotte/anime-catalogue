@@ -53,13 +53,13 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
 
             }
-            var studio = MapFromIStudio(_BL.GetStudioByID(id));
+            var studio = _BL.GetStudioByID(id);
             if (studio == null)
             {
                 return NotFound();
             }
 
-            return View(studio);
+            return View(MapFromIStudio(studio));
         }
 
         // GET: Studios/Create
