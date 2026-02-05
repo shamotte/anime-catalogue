@@ -34,20 +34,6 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 Episodes = anime.Episodes
             };
         }
-
-        private IAnime MapToIAnime(Anime anime)
-        {
-            return new Anime
-            {
-                Id = anime.Id,
-                Name = anime.Name,
-                Premiere = anime.Premiere,
-                StudioId = anime.StudioId,
-                ImageData = anime.ImageData,
-                Genre = anime.Genre,
-                Episodes = anime.Episodes
-            };
-        }
         private IEnumerable<SelectListItem> GetAllGenres()
         {
             return Enum.GetValues<Genre>().Select(
@@ -143,7 +129,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Premiere,ImageData,Genre,Episodes")] Anime anime)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Premiere,StudioId,ImageData,Genre,Episodes")] Anime anime)
         {
             if (id != anime.Id)
             {
@@ -152,7 +138,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                _BL.UpdateAnime(MapToIAnime(anime));
+                _BL.UpdateAnime(anime);
                 //try
                 //{
                 //    //await _context.SaveChangesAsync();

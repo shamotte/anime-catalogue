@@ -57,10 +57,15 @@
             @Html.DisplayFor(model => model.Episodes)
         </dd>
     </dl>
-    
+    @if(ViewBag.HasCharacters){
+        <form asp-action="Index">
+        <a asp-action="Index">Back to List</a>
+        </form>
+    }else{
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
+    }
 </div>
