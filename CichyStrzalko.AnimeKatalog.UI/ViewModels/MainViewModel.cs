@@ -201,6 +201,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #region Anime
         [ObservableProperty]
         private AnimeViewModel? editedAnime;
+        [ObservableProperty]
+        private StudioViewModel? selectedStudioForEditedAnime;
         partial void OnSelectedanimeChanged(AnimeViewModel? value)
         {
             if(value != null)
@@ -270,8 +272,11 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         private AnimeViewModel? selectedanime;
 
         [ObservableProperty]
-        [NotifyCanExecuteChangedFor(nameof(AddAnimeCommand))]
+        [NotifyCanExecuteChangedFor(nameof(AddAnimeCommand))]        
         private AnimeViewModel? newAnime;
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddAnimeCommand))]
+        private StudioViewModel? selectedStudioForNewAnime;
         private bool CanAddAnime()
         {
             return NewAnime != null
@@ -300,13 +305,16 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (NewAnime != null)
             {
+                Genre genre = Genre.Unknown;
                 foreach (var g in AddeddGenres)
                 {
                     if (g.IsSelected)
                     {
-                        NewAnime.Genre |= g.SelectedGenre;
+                        genre |= g.SelectedGenre;
                     }
                 }
+                NewAnime.Genre = genre;
+                NewAnime.StudioID = SelectedStudioForNewAnime.Id;
                 _BL.UpdateAnime(NewAnime.ToModel());
                 NewAnime = new AnimeViewModel(_BL.CreateAnime());
                 RefreshAnimes();
@@ -340,6 +348,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
                     }
                 }
                 EditedAnime.Genre = genre;
+                EditedAnime.StudioID = selectedStudioForEditedAnime.Id;
                 _BL.UpdateAnime(EditedAnime.ToModel());
                 RefreshAnimes();
 
@@ -350,6 +359,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         #region Character
         [ObservableProperty]
         private CharacterViewModel? editedCharacter;
+        [ObservableProperty]
+        private AnimeViewModel? selectedAnimeForEditedCharacter;
         partial void OnSelectedcharacterChanged(CharacterViewModel? value)
         {
             if (value != null)
@@ -399,6 +410,8 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(AddCharacterCommand), nameof(EditCharacterCommand))]
         private CharacterViewModel? newCharacter;
+        [ObservableProperty]
+        private AnimeViewModel? selectedAnimeForNewCharacter;
         private bool CanAddCharacter()
         {
             // Implementation for determining if a character can be added
@@ -417,6 +430,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if(NewCharacter != null)
             {
+                NewCharacter.AnimeID = SelectedAnimeForNewCharacter.Id;
                 _BL.UpdateCharacter(NewCharacter.ToModel());
                 NewCharacter = new CharacterViewModel(_BL.CreateCharacter());
                 RefreshCharacters();
@@ -439,6 +453,7 @@ namespace CichyStrzalko.AnimeKatalog.UI.ViewModels
         {
             if (EditedCharacter != null)
             {
+                EditedCharacter.AnimeID = selectedAnimeForEditedCharacter.Id;
                 _BL.UpdateCharacter(EditedCharacter.ToModel());
                 RefreshCharacters();
             }
