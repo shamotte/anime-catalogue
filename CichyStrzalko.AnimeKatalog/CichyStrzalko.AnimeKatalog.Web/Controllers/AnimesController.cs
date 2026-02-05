@@ -98,7 +98,15 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _BL.UpdateAnime(anime);
+                var a = _BL.GetAnimeByID(anime.Id);
+                a.Id = anime.Id;
+                a.Name = anime.Name;
+                a.Premiere = anime.Premiere;
+                a.StudioId = anime.StudioId;
+                a.Genre = anime.Genre;
+                a.ImageData = anime.ImageData;
+                a.Episodes = anime.Episodes;
+                _BL.UpdateAnime(a);
                 //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -138,7 +146,15 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                _BL.UpdateAnime(anime);
+                var a = _BL.GetAnimeByID(anime.Id);
+                a.Id = anime.Id;
+                a.Name = anime.Name;
+                a.Premiere = anime.Premiere;
+                a.StudioId = anime.StudioId;
+                a.Genre = anime.Genre;
+                a.ImageData = anime.ImageData;
+                a.Episodes = anime.Episodes;
+                _BL.UpdateAnime(a);
                 //try
                 //{
                 //    //await _context.SaveChangesAsync();
