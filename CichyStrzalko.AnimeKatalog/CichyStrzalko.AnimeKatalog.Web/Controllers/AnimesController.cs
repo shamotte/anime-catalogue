@@ -98,7 +98,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var a = _BL.GetAnimeByID(anime.Id);
+                var a = _BL.CreateAnime();
                 a.Id = anime.Id;
                 a.Name = anime.Name;
                 a.Premiere = anime.Premiere;

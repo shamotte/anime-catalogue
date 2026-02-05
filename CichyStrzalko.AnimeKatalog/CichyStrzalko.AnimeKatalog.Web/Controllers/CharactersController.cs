@@ -86,7 +86,12 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _BL.UpdateCharacter(character);
+                var c = _BL.CreateCharacter();
+                c.Id = character.Id;
+                c.Name = character.Name;
+                c.AnimeId = character.Id;
+                c.ImageData = character.ImageData;
+                _BL.UpdateCharacter(c);
                 //_context.Add(character);
                 //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -142,7 +147,12 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 //        throw;
                 //    }
                 //}
-                _BL.UpdateCharacter(character);
+                var c = _BL.GetCharacterByID(id);
+                c.Id = character.Id;
+                c.Name = character.Name;
+                c.AnimeId = character.AnimeId;
+                c.ImageData = character.ImageData;
+                _BL.UpdateCharacter(c);
                 return RedirectToAction(nameof(Index));
             }
             return View(character);
