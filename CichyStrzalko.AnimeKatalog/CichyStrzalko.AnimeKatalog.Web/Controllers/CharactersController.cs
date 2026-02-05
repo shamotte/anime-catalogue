@@ -31,6 +31,16 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             };
         }
 
+        private IEnumerable<SelectListItem> GetAllAnimesId()
+        {
+            return _BL.GetAllAnime().Select(
+                a =>
+                {
+                    return new SelectListItem { Text = a.Name, Value = a.Id.ToString() };
+                }
+                );
+        }
+
         // GET: Characters
         public async Task<IActionResult> Index(String SearchString)
         {
@@ -64,6 +74,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
         // GET: Characters/Create
         public IActionResult Create()
         {
+            ViewBag.AnimeIds = GetAllAnimesId();
             return View();
         }
 
@@ -97,6 +108,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
             {
                 return NotFound();
             }
+            ViewBag.AnimeIds = GetAllAnimesId();
             return View(character);
         }
 
@@ -145,7 +157,7 @@ namespace CichyStrzalko.AnimeKatalog.Web.Controllers
                 return NotFound();
             }
 
-            var character =MapFromICharacter(_BL.GetCharacterByID(id.Value)) ;
+            var character = MapFromICharacter(_BL.GetCharacterByID(id.Value)) ;
             if (character == null)
             {
                 return NotFound();
