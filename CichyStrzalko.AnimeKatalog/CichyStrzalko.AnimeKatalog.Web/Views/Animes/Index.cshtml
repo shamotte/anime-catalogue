@@ -46,7 +46,16 @@
                 @Html.DisplayFor(modelItem => item.StudioId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageData)
+                    @if (item?.ImageData != null && item.ImageData.Length > 0)
+                    {
+                        var base64 = Convert.ToBase64String(item.ImageData);
+                        var imgSrc = $"data:image/png;base64,{base64}";
+                                            <img src="@imgSrc" alt="@item?.Name" style="max-height:200px" />
+                    }
+                    else
+                    {
+                                    <span>Brak Obrazka</span>
+                    }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Genre)
